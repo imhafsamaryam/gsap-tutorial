@@ -46,7 +46,7 @@ export default function ServicesGrid() {
   return (
     <div className="relative  min-h-screen py-12  ">
       <div>
-        <div className="  grid  md:grid-cols-2 lg:grid-cols-6 gap-4">
+        <div className="  grid  md:grid-cols-2 lg:grid-cols-6 gap-6">
           <ServiceItem
             spans={" col-span-3"}
             title={"ERP Softwares"}
@@ -66,7 +66,7 @@ export default function ServicesGrid() {
             image={"/images/hero1.jpg"}
           />
         </div>{" "}
-        <div className="py-4">
+        <div className="py-6">
           <ServiceItem
             spans={" "}
             title={"Software Support"}
@@ -77,10 +77,10 @@ export default function ServicesGrid() {
             image={"/images/hero1.jpg"}
           />
         </div>
-        <div className=" grid  md:grid-cols-2 lg:grid-cols-6 gap-4">
+        <div className=" grid  md:grid-cols-2 lg:grid-cols-6 gap-6">
           {" "}
           <ServiceItem
-            spans={"col-span-4 "}
+            spans={"col-span-3"}
             title={"Website Development"}
             description={
               "We design and develop high-performance websites tailored to your business needs. From corporate sites to eCommerce platforms, we bring your vision to life."
@@ -89,7 +89,7 @@ export default function ServicesGrid() {
             image={"/images/hero1.jpg"}
           />
           <ServiceItem
-            spans={" col-span-2"}
+            spans={" col-span-3"}
             title={"Hardware Solutions"}
             description={
               "Power your business with high-performance servers, laptops, and desktops designed for seamless productivity."
@@ -111,7 +111,7 @@ export default function ServicesGrid() {
 function ServiceItem({ title, subtitle, description, image, spans }) {
   return (
     <div
-      className={`${spans} border rounded-2xl border-gray-700   flex justify-between items-end  `}
+      className={`${spans} border rounded-xl border-gray-700 bg-gray-900 hover:bg-gray-950 hover:scale-105 duration-300   flex justify-between items-end  `}
     >
       <div className=" p-6 max-w-[60%] h-full flex flex-col justify-between items-start space-y-12 ">
         <div>
