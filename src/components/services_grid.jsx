@@ -7,39 +7,39 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default function ServicesGrid() {
   const services = [
     {
-      title: "UI UX Design",
-      subtitle: "Web, App, Product Design",
+      title: "ERP Softwares",
+      subtitle: "Sage 200, Sage 300, Busy ERP, ZOHO",
       description:
-        "At DevSed we're all about making your user’s lives easier. We tailor user challenges in detail to create designs that are not just intuitive, aesthetically pleasing, but downright functional.",
-      image: "/images/ui-ux.png",
+        "Enhance business efficiency with top-tier ERP solutions tailored to your needs. We offer Sage 200, Sage 300, Busy ERP, and ZOHO to streamline accounting, inventory, and enterprise management.",
+      image: "/images/hero1.jpg",
     },
     {
-      title: "Development",
-      subtitle: "Web, App, Ecommerce, Frontend, Backend",
+      title: "Cloud Hosting",
+      subtitle: "TS Plus",
       description:
-        "We're about creating, programming, and launching websites and apps that are responsive and downright awesome! We've got the programming skills for every SaaS solution.",
-      image: "/images/dev.png",
+        "Access your applications and data securely from anywhere with TS Plus – the leading remote access solution.",
+      image: "/images/hero1.jpg",
     },
     {
-      title: "Marketing",
-      subtitle: "Social Media, Ads Campaign",
+      title: "Software Support",
+      subtitle: "Software Troubleshooting",
       description:
-        "We fully tap into the current market. From targeted campaigns to engaging content, we'll help you cut through the noise and connect with your audience in meaningful ways.",
-      image: "/images/marketing.png",
+        "Ensure your business software runs smoothly with our dedicated support team. We handle troubleshooting, updates, and performance optimization to keep you up and running.",
+      image: "/images/hero1.jpg",
     },
     {
-      title: "Graphic Design",
-      subtitle: "Marketing Assets, Social Media posts.",
+      title: "Website Development",
+      subtitle: "Design, Development, Brand design,Frontend and Backend",
       description:
-        "That extra effort, that polished touch, that eye-catching visual to draw in your audience. We’re all about creating designs that make your brand unforgettable.",
-      image: "/images/graphic-design.png",
+        "We design and develop high-performance websites tailored to your business needs. From corporate sites to eCommerce platforms, we bring your vision to life.",
+      image: "/images/hero1.jpg",
     },
     {
-      title: "Branding Design",
-      subtitle: "Marketing Assets, Social Media posts.",
+      title: "Hardware Solutions",
+      subtitle: "Servers, Laptops, Desktops",
       description:
-        "We balance our creativity with the brand’s values, personality, and image. We help brands cut through the noise and position their identity as one of a kind.",
-      image: "/images/branding.png",
+        "Power your business with high-performance servers, laptops, and desktops designed for seamless productivity.",
+      image: "/images/hero1.jpg",
     },
   ];
 
@@ -49,53 +49,43 @@ export default function ServicesGrid() {
         <div className="  grid  md:grid-cols-2 lg:grid-cols-6 gap-6">
           <ServiceItem
             spans={" col-span-3"}
-            title={"ERP Softwares"}
-            description={
-              "Enhance business efficiency with top-tier ERP solutions tailored to your needs. We offer Sage 200, Sage 300, Busy ERP, and ZOHO to streamline accounting, inventory, and enterprise management."
-            }
-            subtitle={"Sage 200, Sage 300, Busy ERP, ZOHO"}
-            image={"/images/hero1.jpg"}
+            title={services[0].title}
+            description={services[0].description}
+            subtitle={services[0].subtitle}
+            image={services[0].image}
           />
           <ServiceItem
             spans={"col-span-3 "}
-            title={"Cloud Hosting"}
-            description={
-              "Access your applications and data securely from anywhere with TS Plus – the leading remote access solution."
-            }
-            subtitle={"TS Plus"}
-            image={"/images/hero1.jpg"}
+            title={services[1].title}
+            description={services[1].description}
+            subtitle={services[1].subtitle}
+            image={services[1].image}
           />
         </div>{" "}
         <div className="py-6">
           <ServiceItem
             spans={" "}
-            title={"Software Support"}
-            description={
-              "Ensure your business software runs smoothly with our dedicated support team. We handle troubleshooting, updates, and performance optimization to keep you up and running."
-            }
-            subtitle={"Software Troubleshooting"}
-            image={"/images/hero1.jpg"}
+            title={services[2].title}
+            description={services[2].description}
+            subtitle={services[2].subtitle}
+            image={services[2].image}
           />
         </div>
         <div className=" grid  md:grid-cols-2 lg:grid-cols-6 gap-6">
           {" "}
           <ServiceItem
             spans={"col-span-3"}
-            title={"Website Development"}
-            description={
-              "We design and develop high-performance websites tailored to your business needs. From corporate sites to eCommerce platforms, we bring your vision to life."
-            }
-            subtitle={"Design, Develop, Brand design"}
-            image={"/images/hero1.jpg"}
+            title={services[3].title}
+            description={services[3].description}
+            subtitle={services[3].subtitle}
+            image={services[3].image}
           />
           <ServiceItem
             spans={" col-span-3"}
-            title={"Hardware Solutions"}
-            description={
-              "Power your business with high-performance servers, laptops, and desktops designed for seamless productivity."
-            }
-            subtitle={"Servers, Laptops, Desktops"}
-            image={"/images/hero1.jpg"}
+            title={services[4].title}
+            description={services[4].description}
+            subtitle={services[4].subtitle}
+            image={services[4].image}
           />
         </div>{" "}
       </div>

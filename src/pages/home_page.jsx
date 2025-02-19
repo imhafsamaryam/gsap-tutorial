@@ -43,7 +43,6 @@ const HomePage = () => {
           start: "top 20%",
           end: "bottom 0%",
           scrub: true,
-          markers: true,
         },
       });
     });
@@ -75,7 +74,6 @@ const HomePage = () => {
         trigger: headlineRef.current, // Triggering on hero section
         start: "top 30%",
         end: "bottom 10%",
-        markers: true,
       },
     });
   });
@@ -131,7 +129,7 @@ const HomePage = () => {
           </button>{" "}
         </div>{" "}
         <div className="  pt-[20vh]  container max-w-7xl mx-auto    ">
-          <div className="  text-white tracking-wider leading-12  text-5xl font-medium ">
+          <div className="  text-white tracking-wide leading-12  text-5xl font-medium ">
             <div class="line">
               <span>What We Do</span>
             </div>
