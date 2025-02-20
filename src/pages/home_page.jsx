@@ -116,7 +116,7 @@ const HomePage = () => {
       </div>
       <div ref={headlineRef} className="container max-w-7xl mx-auto   ">
         <div className="px-4 md:px-0 flex flex-col md:flex-row items-start md:items-center justify-between   ">
-          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[40vw] tracking-wider leading-12 text-white text-5xl font-medium">
+          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[40vw] tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-medium">
             {" "}
             {/* Transform your business with our advanced ERP solutions, reliable
           cloud hosting, and top-tier hardware. Plus, our expert website
@@ -129,7 +129,7 @@ const HomePage = () => {
           </button>{" "}
         </div>{" "}
         <div className="  pt-[20vh] px-4 container md:max-w-7xl mx-auto    ">
-          <div className="  text-white tracking-wide leading-12  text-5xl font-medium ">
+          <div className="  text-white tracking-wide leading-12  text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-medium ">
             <div class="line">
               <span>What We Do</span>
             </div>
