@@ -34,7 +34,7 @@ export default function Appp() {
 
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-12">
-          <div className="max-w-7xl mx-auto px-4 text-center">
+          <div className="container mx-auto px-4 text-center">
             <p className="mb-4">
               © {new Date().getFullYear()} Able Software Solutions. All rights
               reserved.

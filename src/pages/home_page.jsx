@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ServicesGrid from "../components/services_grid";
+import ServicesHover from "../components/services_hover";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -96,7 +97,7 @@ const HomePage = () => {
           >
             <h1
               ref={titleRef}
-              className="tracking-tighter  text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] text-white font-semibold "
+              className="tracking-tight  text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] text-white font-semibold "
             >
               Transform your Business with <br />
               {/* Empowering Businesses with <br /> */}
@@ -104,36 +105,44 @@ const HomePage = () => {
                 Modern ERP Solutions {/* Smart IT Solutions{" "} */}
               </span>
             </h1>
-            <p
+            {/* <p
               ref={descriptionRef}
               className="text-xl mb-8 opacity-100 text-gray-400 transform translate-y-0"
             >
               We deliver cutting-edge technology solutions tailored to your
               needs.
-            </p>
+            </p> */}
           </div>
         </section>
       </div>
-      <div ref={headlineRef} className="container max-w-7xl mx-auto   ">
-        <div className="px-4 md:px-0 flex flex-col md:flex-row items-start md:items-center justify-between   ">
-          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[40vw] tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-medium">
+      <div ref={headlineRef} className="container  mx-auto">
+        <div className="px-4 md:px-0 flex flex-col md:flex-row items-start md:items-start justify-between   ">
+          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[40vw] tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-light">
             {" "}
             {/* Transform your business with our advanced ERP solutions, reliable
           cloud hosting, and top-tier hardware. Plus, our expert website
           development and software support ensure seamless operations. */}
+            We deliver cutting-edge technology solutions tailored to your needs.
+          </div>
+          <p
+            ref={descriptionRef}
+            className="text-xl mb-8 md:w-[20vw] opacity-100 text-white transform translate-y-0"
+          >
+            {" "}
             Empowering businesses with advanced ERP, secure cloud hosting, and
             expert web solutions for seamless operations.
-          </div>
-          <button className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+          </p>
+          {/* <button className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
             Get Started
-          </button>{" "}
+          </button>{" "} */}
         </div>{" "}
-        <div className="  pt-[20vh] px-4 container md:max-w-7xl mx-auto    ">
+        <div className="pt-[40vh] px-4 container  mx-auto    ">
           <div className="  text-white tracking-wide leading-12  text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-medium ">
             <div class="line">
               <span>What We Do</span>
             </div>
           </div>
+          <ServicesHover />
           <ServicesGrid />
         </div>{" "}
       </div>

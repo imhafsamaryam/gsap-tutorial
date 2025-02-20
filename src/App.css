@@ -276,10 +276,9 @@ html {
 
 .briefText {
   letter-spacing: -.01em;
-  line-height: 100%;
+  line-height: 110%;
   margin: 0;
-  color: #b6b6b6; 
-   
+    
 }
 
 
@@ -302,3 +301,5 @@ html {
     position: absolute;
   }
 }
+
+ 
