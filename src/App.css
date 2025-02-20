@@ -229,17 +229,17 @@ html {
   transform: translate(0);
   transform-style: preserve-3d;
 }
-.box sh {
+.box .glow {
   position: absolute;
   inset: -152px;
   border: 150px solid #0000;
- 
+
   transform: translateZ(-1px);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
-.box sh:before {
+.box .glow:before {
   content: "";
   position: absolute;
   inset: 0px;
@@ -272,18 +272,14 @@ html {
   }
 }
 
-
-
 .briefText {
-  letter-spacing: -.01em;
+  letter-spacing: -0.01em;
   line-height: 110%;
   margin: 0;
-    
 }
 
-
 .animatedText {
-  letter-spacing: -.01em;
+  letter-spacing: -0.01em;
   line-height: 100%;
   margin: 0;
   color: rgb(182, 182, 182, 0.2);
@@ -291,15 +287,22 @@ html {
   -webkit-background-clip: text;
   background-clip: text;
   background-size: 0%;
-  transition: background-size cubic-bezier(.1,.5,.5,1) 0.5s;  
+  transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 0.5s;
 }
-.line{
-  height: 70px;
+.line {
   position: relative;
+  display: flex; /* Allows the container to expand based on content */
+  align-items: center; /* Keeps text aligned at the top */
   overflow: hidden;
-  span{
-    position: absolute;
-  }
 }
 
- 
+.line span {
+  position: relative; /* Change from absolute to relative */
+  display: inline-block; /* Ensures proper height calculation */
+}
+
+.shared-image {
+  transition: opacity 0.2s ease-out;
+
+  z-index: 1000; /* Ensure image stays above content */
+}

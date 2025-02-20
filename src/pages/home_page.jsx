@@ -25,14 +25,14 @@ const HomePage = () => {
       ease: "power3.out",
     });
 
-    gsap.from(descriptionRef.current, {
-      opacity: 0,
-      y: 20,
-      stagger: 0.2,
-      duration: 1.5,
-      delay: 2,
-      ease: "power3.out",
-    });
+    // gsap.from(descriptionRef.current, {
+    //   opacity: 0,
+    //   y: 20,
+    //   stagger: 0.2,
+    //   duration: 1.5,
+    //   delay: 2,
+    //   ease: "power3.out",
+    // });
 
     // Set initial state
     gsap.utils.toArray(".heroSection").forEach((heroSection) => {
@@ -115,9 +115,12 @@ const HomePage = () => {
           </div>
         </section>
       </div>
-      <div ref={headlineRef} className="container  mx-auto">
-        <div className="px-4 md:px-0 flex flex-col md:flex-row items-start md:items-start justify-between   ">
-          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[40vw] tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-light">
+      <div
+        ref={headlineRef}
+        className="container  mx-auto  px-[1rem] md:px-[2rem]"
+      >
+        <div className=" flex flex-col md:flex-row items-start   justify-between   ">
+          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[60vw] tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-light">
             {" "}
             {/* Transform your business with our advanced ERP solutions, reliable
           cloud hosting, and top-tier hardware. Plus, our expert website
@@ -125,8 +128,8 @@ const HomePage = () => {
             We deliver cutting-edge technology solutions tailored to your needs.
           </div>
           <p
-            ref={descriptionRef}
-            className="text-xl mb-8 md:w-[20vw] opacity-100 text-white transform translate-y-0"
+            // ref={descriptionRef}
+            className="text-lg mb-8 md:w-[25vw] opacity-100 text-white transform translate-y-0"
           >
             {" "}
             Empowering businesses with advanced ERP, secure cloud hosting, and
@@ -136,15 +139,23 @@ const HomePage = () => {
             Get Started
           </button>{" "} */}
         </div>{" "}
-        <div className="pt-[40vh] px-4 container  mx-auto    ">
-          <div className="  text-white tracking-wide leading-12  text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-medium ">
-            <div class="line">
-              <span>What We Do</span>
+        <div className="py-[40vh]  px-[1rem] md:px-[2rem] container  mx-auto    ">
+          <div>
+            <div class="line h-[30px] mb-8 font-medium  text-white tracking-wider  text-[1.2rem]">
+              <span className="bg-gradient-to-r from-[#3c7321] via-[#edeb57] to-[#1a954b] text-transparent bg-clip-text drop-shadow-2xl">
+                Our Services
+              </span>
             </div>
+            <p className="line max-w-[70%] w-[90vw] opacity-100 briefText tracking-wider leading-12 text-white text-[2.3rem] md:text-[3rem]   font-light transform translate-y-0">
+              <span>
+                Transform your business with our advanced ERP solutions,
+                reliable cloud hosting, top-tier hardware
+              </span>
+            </p>
           </div>
           <ServicesHover />
-          <ServicesGrid />
         </div>{" "}
+        <ServicesGrid />
       </div>
     </div>
   );
