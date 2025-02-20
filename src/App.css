@@ -295,13 +295,10 @@ html {
   transition: background-size cubic-bezier(.1,.5,.5,1) 0.5s;  
 }
 .line{
-  width: 70%;
   height: 70px;
   position: relative;
   overflow: hidden;
   span{
     position: absolute;
-    font-size: 3rem;
-    line-height: 4.2rem;
   }
 }

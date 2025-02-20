@@ -44,7 +44,7 @@ export default function ServicesGrid() {
   ];
 
   return (
-    <div className="relative  min-h-screen py-12  ">
+    <div className="relative  min-h-screen py-8 md:py-12  ">
       <div>
         <div className="  grid  md:grid-cols-2 lg:grid-cols-6 gap-6">
           <ServiceItem
