@@ -3,6 +3,8 @@ import "../App.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedBorder from "./animated_border";
+import GradientSubtitle from "./gradient_subtitle";
 
 export default function ServicesGrid() {
   const services = [
@@ -44,25 +46,33 @@ export default function ServicesGrid() {
   ];
 
   return (
-    <div className="relative  min-h-screen py-8 md:py-12  ">
+    <div className="relative  min-h-screen    ">
       <div>
-        <div className="  grid  md:grid-cols-2 lg:grid-cols-6 gap-6">
+        <div className="  grid  md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            className={` px-6 py-12  h-full flex flex-col justify-between items-start  `}
+          >
+            {" "}
+            <GradientSubtitle text={"Our Values"} />
+            <h2 className="briefText  tracking-wider leading-12 text-white text-[2.3rem] md:text-[3rem]   font-light">
+              Built on Trust,
+              <br /> Driven by Values{" "}
+            </h2>
+          </div>
           <ServiceItem
-            spans={" col-span-3"}
+            spans={"  "}
             title={services[0].title}
             description={services[0].description}
             subtitle={services[0].subtitle}
             image={services[0].image}
           />
           <ServiceItem
-            spans={"col-span-3 "}
+            spans={" "}
             title={services[1].title}
             description={services[1].description}
             subtitle={services[1].subtitle}
             image={services[1].image}
-          />
-        </div>{" "}
-        <div className="py-6">
+          />{" "}
           <ServiceItem
             spans={" "}
             title={services[2].title}
@@ -70,18 +80,15 @@ export default function ServicesGrid() {
             subtitle={services[2].subtitle}
             image={services[2].image}
           />
-        </div>
-        <div className=" grid  md:grid-cols-2 lg:grid-cols-6 gap-6">
-          {" "}
           <ServiceItem
-            spans={"col-span-3"}
+            spans={" "}
             title={services[3].title}
             description={services[3].description}
             subtitle={services[3].subtitle}
             image={services[3].image}
           />
           <ServiceItem
-            spans={" col-span-3"}
+            spans={" "}
             title={services[4].title}
             description={services[4].description}
             subtitle={services[4].subtitle}
@@ -89,11 +96,6 @@ export default function ServicesGrid() {
           />
         </div>{" "}
       </div>
-      {/* <img
-        src={"/images/bgshadow1x.png"}
-        alt={"bg-shadow"}
-        className=" absolute bottom-0 left-1/2 w-full h-full object-cover  "
-      /> */}
     </div>
   );
 }
@@ -101,25 +103,18 @@ export default function ServicesGrid() {
 function ServiceItem({ title, subtitle, description, image, spans }) {
   return (
     <div
-      className={`${spans} border rounded-xl border-gray-700 bg-gray-900 hover:bg-gray-950 hover:scale-105 duration-300   flex justify-between items-end  `}
+      className={`${spans} border rounded-xl border-gray-800 bg-gradient-to-b from-slate-950  to-slate-900 hover:scale-105 duration-300   p-6  flex flex-col justify-center items-center  `}
     >
-      <div className=" p-6 max-w-[60%] h-full flex flex-col justify-between items-start space-y-12 ">
-        <div>
-          <h2 className="text-xl font-bold text-white">{title}</h2>
-          <p className="text-sm text-gray-400 mt-1">{subtitle}</p>
-          <p className="text-gray-300 mt-4 text-sm">{description}</p>
-        </div>
-        <button className="mt-4 bg-white text-sm text-gray-900 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition">
-          Discover
-        </button>
-      </div>
+      {" "}
       <div>
         <img
           src={image}
           alt={title}
-          className="w-full h-56 object-cover rounded-br-2xl "
+          className="w-full h-46 object-cover rounded-br-2xl "
         />
       </div>
+      <h2 className="text-lg font-semibold my-2 text-white">{title}</h2>
+      <p className="text-gray-400  text-sm text-center">{description}</p>
     </div>
   );
 }

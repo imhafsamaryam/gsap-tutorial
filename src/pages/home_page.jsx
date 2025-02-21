@@ -5,6 +5,8 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ServicesGrid from "../components/services_grid";
 import ServicesHover from "../components/services_hover";
+import GradientSubtitle from "../components/gradient_subtitle";
+import WhyChooseUs from "../components/why_choose_us";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -120,7 +122,7 @@ const HomePage = () => {
         className="container  mx-auto  px-[1rem] md:px-[2rem]"
       >
         <div className=" flex flex-col md:flex-row items-start   justify-between   ">
-          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[60vw] tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-light">
+          <div className="pb-12 md:pb-0 briefText w-[90vw] md:w-[40vw] tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-light">
             {" "}
             {/* Transform your business with our advanced ERP solutions, reliable
           cloud hosting, and top-tier hardware. Plus, our expert website
@@ -139,14 +141,10 @@ const HomePage = () => {
             Get Started
           </button>{" "} */}
         </div>{" "}
-        <div className="py-[40vh]  px-[1rem] md:px-[2rem] container  mx-auto    ">
+        <div className="py-[20vh] md:py-[40vh] 2xl:py-[20vh]  px-[1rem] md:px-[2rem] container  mx-auto    ">
           <div>
-            <div class="line h-[30px] mb-8 font-medium  text-white tracking-wider  text-[1.2rem]">
-              <span className="bg-gradient-to-r from-[#3c7321] via-[#edeb57] to-[#1a954b] text-transparent bg-clip-text drop-shadow-2xl">
-                Our Services
-              </span>
-            </div>
-            <p className="line max-w-[70%] w-[90vw] opacity-100 briefText tracking-wider leading-12 text-white text-[2.3rem] md:text-[3rem]   font-light transform translate-y-0">
+            <GradientSubtitle text={"Our Services"} />
+            <p className=" max-w-[70%] w-[90vw] opacity-100 briefText tracking-wider leading-12 text-white text-[2.3rem] md:text-[3rem]   font-light transform translate-y-0">
               <span>
                 Transform your business with our advanced ERP solutions,
                 reliable cloud hosting, top-tier hardware
@@ -156,6 +154,7 @@ const HomePage = () => {
           <ServicesHover />
         </div>{" "}
         <ServicesGrid />
+        <WhyChooseUs />
       </div>
     </div>
   );

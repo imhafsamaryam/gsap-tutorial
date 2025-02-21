@@ -73,13 +73,19 @@ export default function ServicesHover() {
     const sharedImg = sharedImgRef.current;
     const container = mainContainer.current;
 
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
     let hideTimeout;
+
     const updateImagePosition = (e) => {
       if (!container || !sharedImg) return;
       const rect = container.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-
+      // const mouseX = e.clientX - rect.left;
+      // const mouseY = e.clientY - rect.top;
+      mouseX = e.clientX - rect.left - sharedImg.offsetWidth;
+      mouseY = e.clientY - rect.top - sharedImg.offsetHeight;
       // Calculate horizontal movement
       const deltaX = e.clientX - prevMouseX.current;
       prevMouseX.current = e.clientX;
@@ -111,6 +117,17 @@ export default function ServicesHover() {
     };
     const textCards = gsap.utils.toArray(".hoverFn");
     let currentSectionIndex = -1;
+    const smoothFollow = () => {
+      currentX = gsap.utils.interpolate(currentX, mouseX, 0.04); // Smoothly move towards target
+      currentY = gsap.utils.interpolate(currentY, mouseY, 0.04);
+
+      gsap.set(sharedImg, {
+        x: currentX,
+        y: currentY,
+      });
+    };
+
+    gsap.ticker.add(smoothFollow); // Continuously run smooth follow effect
 
     textCards.forEach((el, index) => {
       const section = sections[index];
@@ -126,7 +143,7 @@ export default function ServicesHover() {
         currentSectionIndex = index;
         sharedImg.src = section.image;
         bgTween.play();
-        gsap.to(sharedImg, { opacity: 1, duration: 0.2 });
+        gsap.to(sharedImg, { opacity: 1, duration: 0.5 });
         el.addEventListener("mousemove", updateImagePosition);
       });
 
@@ -136,7 +153,7 @@ export default function ServicesHover() {
         el.removeEventListener("mousemove", updateImagePosition);
         setTimeout(() => {
           if (currentSectionIndex === index) {
-            gsap.to(sharedImg, { opacity: 0, duration: 0.2 });
+            gsap.to(sharedImg, { opacity: 0, duration: 0.5 });
           }
         }, 50);
       });
@@ -174,7 +191,7 @@ export default function ServicesHover() {
           </div>
           <img
             ref={sharedImgRef}
-            className="shared-image h-[35vh] w-[40vh] object-cover absolute shadow-[2px_2px_25px_#578340] pointer-events-none opacity-0 transform-gpu"
+            className="shared-image h-[30vh] w-[35vh] object-cover absolute shadow-[2px_2px_25px_#578340] pointer-events-none opacity-0 transform-gpu"
             alt="Service"
           />
         </div>
