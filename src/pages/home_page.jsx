@@ -7,6 +7,7 @@ import ServicesGrid from "../components/services_grid";
 import ServicesHover from "../components/services_hover";
 import GradientSubtitle from "../components/gradient_subtitle";
 import WhyChooseUs from "../components/why_choose_us";
+import GetInTouch from "../components/get_in_touch";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -82,7 +83,7 @@ const HomePage = () => {
   });
 
   return (
-    <div className="min-h-screen  bg-slate-950">
+    <div className="min-h-screen rounded-b-4xl bg-slate-950">
       <div className=" sticky top-0">
         <section className="relative h-screen z-50  flex items-center justify-center  overflow-hidden">
           <div
@@ -155,6 +156,7 @@ const HomePage = () => {
         </div>{" "}
         <ServicesGrid />
         <WhyChooseUs />
+        <GetInTouch />
       </div>
     </div>
   );

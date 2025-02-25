@@ -168,7 +168,7 @@ export default function ServicesHover() {
           className="relative hoverFn cursor-pointer"
           ref={mainContainer}
         >
-          <div className="textCard relative p-8  flex items-start justify-between overflow-hidden">
+          <div className="textCard relative md:px-8  py-8    flex flex-col md:flex-row items-start gap-4 md:justify-between overflow-hidden">
             <div className="background-overlay absolute inset-0 w-full h-full bg-indigo-900 opacity-10 origin-bottom scale-y-0" />
             {/* <div
               className="text-transparent text-6xl font-bold"
@@ -182,7 +182,7 @@ export default function ServicesHover() {
             >
               {`0${index + 1}.`}
             </div>
-            <div className="w-[50%] flex items-end justify-between">
+            <div className="md:w-[50%] flex flex-col md:flex-row gap-4 md:items-end justify-between">
               <h1 className="briefText tracking-wider leading-12 text-white text-[2.3rem] md:text-[3.5rem] font-light">
                 {section.title}
               </h1>
@@ -191,7 +191,7 @@ export default function ServicesHover() {
           </div>
           <img
             ref={sharedImgRef}
-            className="shared-image h-[30vh] w-[35vh] object-cover absolute shadow-[2px_2px_25px_#578340] pointer-events-none opacity-0 transform-gpu"
+            className="shared-image hidden md:block h-[30vh] w-[35vh] object-cover absolute shadow-[2px_2px_25px_#578340] pointer-events-none opacity-0 transform-gpu"
             alt="Service"
           />
         </div>

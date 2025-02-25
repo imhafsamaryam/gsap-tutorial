@@ -1,50 +1,44 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Navbar from "./components/navbar";
 import "./App.css";
-import HomeAboutSection from "./components/home_about_section";
-import AnimatedBorder from "./components/animated_border";
 import HomePage from "./pages/home_page";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import Footer from "./components/footer";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function App() {
+  useGSAP(() => {
+    gsap.to("main", {
+      scaleX: 0.96, // Moves the main content up to reveal the footer
+      scaleY: 0.98, // Moves the main content up to reveal the footer
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "footer",
+        start: "top bottom", // When the footer's top reaches the bottom of viewport
+        end: "top center", // When the footer's top reaches the center
+        scrub: 1, // Smooth effect
+      },
+    });
+  });
+
   return (
     <Router>
-      <div className="min-h-screen">
-        <Navbar />
+      <div className="relative bg-slate-900">
+        {/* Main Content */}
+        <main className="relative z-10 min-h-[200vh]">
+          <Navbar />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="/products" element={<ProductsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/about" element={<AboutPage />} /> */}
-        </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </main>
 
-        {/* Footer */}
-        <footer className="bg-gray-900 text-white py-12">
-          <div className="container mx-auto  px-[1rem] md:px-[2rem] text-center">
-            <p className="mb-4">
-              © {new Date().getFullYear()} Able Software Solutions. All rights
-              reserved.
-            </p>
-            <div className="flex justify-center space-x-6">
-              <a
-                href="/privacy"
-                className="hover:text-primary transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a href="/terms" className="hover:text-primary transition-colors">
-                Terms of Service
-              </a>
-              <a
-                href="/contact"
-                className="hover:text-primary transition-colors"
-              >
-                Contact Us
-              </a>
-            </div>
-          </div>
-        </footer>
+        {/* Footer Positioned Behind */}
+        <Footer />
       </div>
     </Router>
   );

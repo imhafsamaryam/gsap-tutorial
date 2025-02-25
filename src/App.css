@@ -181,45 +181,49 @@ html {
   background-color: #808;
   background-image: none;
 }
-
-/* Act as a border */
 .card-wrapper {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 50px;
   background: linear-gradient(to bottom, #1f2937, #1a202c);
+  display: inline-block;
 }
 
-/* Gradient */
+/* Animated Gradient Border */
 .card-wrapper::before {
-  background: conic-gradient(
-    rgba(215, 236, 101, 0.4) 0deg,
-    rgba(187, 213, 143, 0.4) 0deg,
-    transparent 120deg
-  );
+  content: "";
   position: absolute;
   left: -50%;
-  top: -50%;
-  height: 200%;
+  top: -150%;
   width: 200%;
-  animation: border-spin 15s linear infinite;
-  content: "";
-}
+  height: 400%;
+  background: conic-gradient(
+    rgba(215, 236, 101, 0.7) 0deg,
+    rgba(187, 213, 143, 0.7) 90deg,
+    transparent 180deg
+  );
+  animation: border-spin 7s linear infinite;
+  z-index: 1;
+ }
 
+/* Spinning Animation */
 @keyframes border-spin {
   100% {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
 
-/* Body */
+/* Card Content */
 .card-content {
-  position: absolute;
-  left: 1.5px;
-  top: 1.5px;
-  height: calc(100% - 3px);
-  width: calc(100% - 3px);
-  border-radius: 12px;
+  position: relative;
+  z-index: 2; /* Ensure content is above the animated border */
+  background: #0f172a; /* Dark background to contrast the effect */
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin: 1px;
+  border-radius: 50px;
 }
 
 .box {
