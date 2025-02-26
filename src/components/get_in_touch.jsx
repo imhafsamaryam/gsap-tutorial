@@ -15,7 +15,7 @@ const GetInTouch = () => {
         Got an idea? A project? Or just some questions? Let’s connect and
         explore how we can make it happen. Book a free consultation today!
       </p>
-      <div className="card-wrapper text-white ">
+      <div className="card-wrapper text-white hover:scale-105 duration-300  cursor-pointer ">
         <div className="card-content   text-sm font-semibold flex items-center">
           <div>Book a Call</div>{" "}
           <svg

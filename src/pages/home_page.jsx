@@ -3,10 +3,10 @@ import "../App.css";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ServicesGrid from "../components/services_grid";
-import ServicesHover from "../components/services_hover";
+import ServicesGrid from "../components/home_page/services_grid";
+import ServicesHover from "../components/home_page/services_hover";
 import GradientSubtitle from "../components/gradient_subtitle";
-import WhyChooseUs from "../components/why_choose_us";
+import WhyChooseUs from "../components/home_page/why_choose_us";
 import GetInTouch from "../components/get_in_touch";
 
 gsap.registerPlugin(ScrollTrigger);

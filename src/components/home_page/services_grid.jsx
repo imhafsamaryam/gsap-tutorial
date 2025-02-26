@@ -1,13 +1,13 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
-import "../App.css";
-import GradientSubtitle from "./gradient_subtitle";
+import "../../App.css";
+import GradientSubtitle from "../gradient_subtitle";
 
 export default function ServicesGrid() {
   const services = [

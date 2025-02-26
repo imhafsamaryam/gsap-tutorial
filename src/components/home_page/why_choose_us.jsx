@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GradientSubtitle from "./gradient_subtitle";
+import GradientSubtitle from "../gradient_subtitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,17 +62,17 @@ export default function WhyChooseUs() {
     >
       <div>
         <GradientSubtitle text={"Our Achievements"} />
-        <p className=" xl:max-w-[70%] w-[90vw] opacity-100 briefText tracking-wider leading-12 text-white text-[2.3rem] md:text-[3rem]   font-light transform translate-y-0">
+        <p className=" md:max-w-[70%] w-[90vw] opacity-100 briefText tracking-wider leading-12 text-white text-[2.3rem] md:text-[3rem]   font-light transform translate-y-0">
           <span>
             Transform your business with our advanced ERP solutions, reliable
             cloud hosting, top-tier hardware
           </span>
         </p>
       </div>{" "}
-      <div className="py-20 w-full flex flex-col md:flex-row  justify-between items-start gap-10">
+      <div className="py-20 w-full flex flex-col xl:flex-row  justify-between items-start gap-10">
         {stats.map((stat, index) => (
           <div key={index}>
-            <div className=" text-[6rem] md:text-[7rem]  2xl:text-[9.375em] font-semibold bg-gradient-to-r from-[#3c7321] via-[#edeb57] to-[#1a954b] text-transparent bg-clip-text  flex">
+            <div className=" text-[6rem] xl:text-[7rem]  2xl:text-[9.375em] font-semibold bg-gradient-to-r from-[#3c7321] via-[#edeb57] to-[#1a954b] text-transparent bg-clip-text  flex">
               <p ref={(el) => (countersRef.current[index] = el)}>
                 0{stat.suffix}
               </p>

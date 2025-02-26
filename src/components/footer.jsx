@@ -1,25 +1,39 @@
+import React from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
+import "../App.css";
 
 export default function Footer() {
-  const marqueeRef = useRef(null);
+  const sectionRef = useRef(null);
 
   useGSAP(() => {
-    gsap.to(marqueeRef.current, {
-      x: "-50%", // Moves half of the duplicated text width
-      duration: 10, // Adjust speed
-      repeat: -1,
-      ease: "linear",
+    const elements = sectionRef.current.querySelectorAll(".animate-item");
+
+    gsap.from(elements, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 70%",
+        end: "bottom 50%",
+        toggleActions: "play none none reverse",
+      },
     });
   });
   return (
-    <footer className="bg-slate-900 min-h-[90vh] text-gray-400  px-8 md:px-16   flex flex-col justify-between">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer
+      ref={sectionRef}
+      className="bg-slate-900 min-h-[90vh] text-gray-400 md:py-12   flex flex-col justify-between"
+    >
+      <div className="container  px-8  mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
         {/* Left Section - Logo & Copyright */}
         <div className="space-y-6">
           <h2 className="text-xl font-semibold text-white">
@@ -68,35 +82,35 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-white text-sm uppercase mb-4">Links</h3>
-            <ul className="space-y-2">
-              {["LinkedIn", "Instagram"].map((item, index) => (
-                <li key={index}>
-                  <a href="#" className="hover:text-white transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>{" "}
         {/* Bottom Links */}
-        <div className="container mx-auto flex justify-end text-xs text-gray-500 mt-12 space-x-6">
-          <p className="text-sm">
-            All rights reserved © {new Date().getFullYear()} Able Software
-            Solutions.
-          </p>
+        <div>
+          <h3 className="text-white text-sm uppercase mb-4">Links</h3>
+          <ul className="space-y-2">
+            {["LinkedIn", "Instagram"].map((item, index) => (
+              <li key={index}>
+                <a href="#" className="hover:text-white transition-colors">
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <div className="w-full overflow-hidden whitespace-nowrap   py-4  ">
-        <div
-          ref={marqueeRef}
-          className="flex space-x-10   text-[6rem] md:text-[7rem] 2xl:text-[15.4rem] font-semibold bg-slate-500 hover:bg-slate-600 text-transparent bg-clip-text"
-        >
-          <span>Get in Touch &nbsp; Get in Touch &nbsp; Get in Touch</span>
-          <span>Get in Touch &nbsp; Get in Touch &nbsp; Get in Touch</span>{" "}
-          {/* Duplicate for infinite effect */}
+      <div className="container mx-auto flex justify-end text-xs text-gray-500 mt-12 space-x-6">
+        <p className="text-sm">
+          All rights reserved © {new Date().getFullYear()} Able Software
+          Solutions.
+        </p>
+      </div>
+      <div class="marquee animate-item h-[8rem] md:h-[20rem] 2xl:h-[29rem] cursor-pointer ">
+        <div class="track">
+          <div class="text-content text-[6rem] md:text-[17rem] 2xl:text-[25.4rem] font-semibold bg-slate-700 hover:bg-transparent text-transparent bg-clip-text">
+            &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us
+            &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us
+            &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us
+            &nbsp;Contact Us &nbsp;Contact Us
+          </div>
         </div>
       </div>
     </footer>

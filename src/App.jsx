@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Footer from "./components/footer";
+import AboutPage from "./pages/about_page";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,6 +35,7 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
         </main>
 
