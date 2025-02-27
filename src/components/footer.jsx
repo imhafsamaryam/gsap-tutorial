@@ -103,13 +103,14 @@ export default function Footer() {
           Solutions.
         </p>
       </div>
-      <div class="marquee animate-item h-[8rem] md:h-[20rem] 2xl:h-[29rem] cursor-pointer ">
-        <div class="track">
-          <div class="text-content text-[6rem] md:text-[17rem] 2xl:text-[25.4rem] font-semibold bg-slate-700 hover:bg-transparent text-transparent bg-clip-text">
-            &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us
-            &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us
-            &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us &nbsp;Contact Us
-            &nbsp;Contact Us &nbsp;Contact Us
+      <div className="marquee animate-item h-[8rem] md:h-[20rem] 2xl:h-[29rem] cursor-pointer ">
+        <div className="track">
+          <div className="text-content text-[6rem] md:text-[17rem] 2xl:text-[25.4rem] font-semibold bg-slate-700 hover:bg-transparent text-transparent bg-clip-text">
+            {Array(15)
+              .fill("Contact Us")
+              .map((text, index) => (
+                <React.Fragment key={index}>&nbsp;{text}</React.Fragment>
+              ))}
           </div>
         </div>
       </div>

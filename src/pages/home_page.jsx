@@ -8,6 +8,7 @@ import ServicesHover from "../components/home_page/services_hover";
 import GradientSubtitle from "../components/gradient_subtitle";
 import WhyChooseUs from "../components/home_page/why_choose_us";
 import GetInTouch from "../components/get_in_touch";
+import AnimatedText from "../components/animated_text";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
@@ -118,6 +119,7 @@ const HomePage = () => {
           </div>
         </section>
       </div>
+
       <div
         ref={headlineRef}
         className="container  mx-auto  px-[1rem] md:px-[2rem]"
@@ -154,6 +156,7 @@ const HomePage = () => {
           </div>
           <ServicesHover />
         </div>{" "}
+        <AnimatedText />
         <ServicesGrid />
         <WhyChooseUs />
         <GetInTouch />
