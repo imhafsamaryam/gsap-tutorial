@@ -5,7 +5,7 @@ import "../App.css";
 
 const GetInTouch = () => {
   return (
-    <div className="min-h-screen py-28 flex flex-col justify-center items-center text-center">
+    <div className="  py-30 flex flex-col justify-center items-center text-center">
       <GradientSubtitle text={"Get in Touch"} />
       <h1 className="briefText tracking-wider leading-12 text-white text-[2.3rem] md:text-[3.5rem] font-light">
         The First Step?

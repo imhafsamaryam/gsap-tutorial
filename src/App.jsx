@@ -8,6 +8,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Footer from "./components/footer";
 import AboutPage from "./pages/about_page";
+import ContactUsPage from "./pages/contact-us";
+import ProductsPage from "./pages/products-page";
+import Sage200Page from "./pages/products/sage200-page";
+import BusyAccountingPage from "./pages/products/busaccounting-page";
+import Sage300Page from "./pages/products/sage300-page";
+import ServicesPage from "./pages/services-page";
+import ERPSupportPage from "./pages/services/erp-support";
+import ITSupportPage from "./pages/services/it-support";
+import CloudServicesPage from "./pages/services/cloud-services";
+import SecurityInstallationPage from "./pages/services/security"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +45,20 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/contact" element={<ContactUsPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+
+            <Route path="/services/erp-support" element={<ERPSupportPage />} />
+            <Route path="/services/it-support" element={<ITSupportPage />} />
+            <Route path="/services/cloud-services" element={<CloudServicesPage />} />
+            <Route path="/services/security-installation" element={<SecurityInstallationPage />} />
+
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/sage200" element={<Sage200Page />} />
+            <Route path="/products/sage300" element={<Sage300Page />} />
+
+            <Route path="/products/busy-accounting" element={<BusyAccountingPage />} />
           </Routes>
         </main>
 

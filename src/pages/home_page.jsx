@@ -156,9 +156,9 @@ const HomePage = () => {
           </div>
           <ServicesHover />
         </div>{" "}
-        <AnimatedText />
         <ServicesGrid />
         <WhyChooseUs />
+
         <GetInTouch />
       </div>
     </div>
