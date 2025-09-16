@@ -39,7 +39,7 @@ export default function Footer() {
         {/* Left Section - Logo & Copyright */}
         <div className="space-y-6">
           <a href="/" className="flex items-center">
-            <img src="/logo.png" alt="Able Software Solutions" className="h-10 mr-3" />
+            <img src="images/able-logo.png" alt="Able Software Solutions" className="h-10 mr-3" />
             <span className="text-white font-bold text-xl">Able Software</span>
           </a>
           <p className="text-sm">
