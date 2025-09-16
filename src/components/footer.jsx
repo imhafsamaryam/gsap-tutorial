@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="space-y-6">
           <a href="/" className="flex items-center">
             <img src="images/able-logo.png" alt="Able Software Solutions" className="h-10 mr-3" />
-            <span className="text-white font-bold text-xl">Able Software</span>
+            <span className="text-white font-bold text-xl">Able Software Solutions</span>
           </a>
           <p className="text-sm">
             Empowering businesses with innovative software solutions and IT services since 2010.
