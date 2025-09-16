@@ -85,7 +85,7 @@ export default function HomeAboutSection() {
   });
   return (
     <div className="min-h-screen bg-slate-950">
-      {textContent.map((content, index) => {
+      {/* {textContent.map((content, index) => {
         return (
           <div
             key={index}
@@ -115,7 +115,7 @@ export default function HomeAboutSection() {
             </div>
           </div>
         );
-      })}
+      })} */}
       <section class="black">
         <div class="text-wrap">
           <div class="panel-text blue-text">Blue</div>

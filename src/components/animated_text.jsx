@@ -1,45 +1,50 @@
-import React, { useEffect } from "react";
-import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "../App.css";
-import { useGSAP } from "@gsap/react";
+
+// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(useGSAP);
 
-const AnimatedText = () => {
-  useGSAP(() => {
-    const textElements = document.querySelectorAll(".animate");
+const AnimateText = () => {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
 
-    textElements.forEach((textElement) => {
-      const text = textElement.textContent;
-      textElement.innerHTML = text
-        .split("")
-        .map((char) => `<span>${char}</span>`)
-        .join("");
+  useEffect(() => {
+    const textElement = textRef.current;
+    const text = textElement.textContent;
+    textElement.innerHTML = text
+      .split("")
+      .map((char) => `<span>${char}</span>`)
+      .join("");
 
-      const chars = textElement.querySelectorAll("span");
+    const chars = textElement.querySelectorAll("span");
 
-      gsap.from(chars, {
-        scrollTrigger: {
-          trigger: ".next-section",
-          start: "center center",
-          end: "60% 35%",
-          scrub: true,
-          pin: ".ourpurposet",
-          toggleActions: "play none none none",
-        },
-        color: "grey",
-        stagger: 0.2,
-        duration: 3,
-      });
+    gsap.from(chars, {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "center center",
+        end: "60% 35%",
+        scrub: true,
+        pin: containerRef.current,
+        toggleActions: "play none none none",
+      },
+      color: "grey",
+      stagger: 0.2,
+      duration: 3,
     });
-  });
+  }, []);
 
   return (
-    <section class="next-section">
-      <div class="container ourpurposet">
-        <p class="description animate py-40  briefText w-[80vw]   tracking-wider leading-12 text-white text-[2.3rem] md:text-[4rem]  lg:text-[4.5rem] font-light">
-          Our purpose is to enrich the lives of people around the World, by
+    <section
+      ref={containerRef}
+      className="relative z-10 flex h-[150vh] items-center justify-center   text-white shadow-none transition-shadow duration-500 ease-in-out"
+    >
+      <div className="container text-center">
+        <p
+          ref={textRef}
+          className="animate text-center text-4xl font-medium leading-[60px] sm:max-w-[83%] sm:mx-auto sm:text-5xl"
+        >
+          Our purpose is to enrich the lives of people around the world by
           creating extraordinary moments, which celebrate the power of optimism
           and togetherness.
         </p>
@@ -48,4 +53,4 @@ const AnimatedText = () => {
   );
 };
 
-export default AnimatedText;
+export default AnimateText;
