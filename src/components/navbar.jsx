@@ -144,7 +144,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <a href="/" className="flex items-center">
-            <img src="images/able-logo.png" alt="Able Software Solutions" className="h-10 mr-3" />
+            <img src="/images/able-logo.png" alt="Able Software Solutions" className="h-10 mr-3" />
             <span className="text-white font-bold text-xl">Able Softwares Solutions</span>
           </a>
 
