@@ -12,6 +12,7 @@ import AnimatedText from "../components/animated_text";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
+//edwef
 
 const HomePage = () => {
   const titleRef = useRef(null);
