@@ -8,9 +8,15 @@
   ],
   "routes": [
     {
+      "handle": "files"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "outputDirectory": "dist"
+  ]
 }
