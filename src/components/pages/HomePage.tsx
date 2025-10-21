@@ -5,6 +5,7 @@ import { Badge } from "../ui/badge";
 import { AnimatedSection } from "../ui/animated-section";
 import { AnimatedCounter } from "../ui/animated-counter";
 import { CTASection } from "../CTASection";
+import React from "react";
 
 interface HomePageProps {
   onPageChange: (page: string) => void;

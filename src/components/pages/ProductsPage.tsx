@@ -5,6 +5,7 @@ import { Badge } from "../ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { AnimatedSection } from "../ui/animated-section";
 import { TouchCarousel } from "../ui/touch-carousel";
+import React from "react";
 
 interface ProductsPageProps {
   onPageChange: (page: string) => void;
@@ -17,7 +18,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
       <section className="py-20 bg-gradient-to-br from-green-50 to-white relative overflow-hidden">
         <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-[#018136]/5"></div>
         <div className="absolute bottom-20 left-20 w-48 h-48 rounded-full bg-[#FFDF58]/10"></div>
-        
+
         <div className="relative max-w-6xl mx-auto px-6">
           <div className="text-center">
             <Badge className="bg-[#018136]/10 text-[#018136] px-4 py-2 mb-6">OUR PRODUCTS</Badge>
@@ -25,7 +26,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
               Comprehensive ERP Solutions for Every Business Size
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              From small businesses to large enterprises, we offer proven ERP solutions 
+              From small businesses to large enterprises, we offer proven ERP solutions
               that streamline operations, improve efficiency, and drive growth.
             </p>
           </div>
@@ -41,10 +42,10 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                 Why Choose Our ERP Solutions?
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Our ERP products are designed to integrate seamlessly with your existing processes, 
+                Our ERP products are designed to integrate seamlessly with your existing processes,
                 providing comprehensive business management capabilities that grow with your organization.
               </p>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 rounded-full bg-[#018136] flex items-center justify-center">
@@ -80,7 +81,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-white p-8 rounded-3xl shadow-xl">
                 <div className="space-y-6">
@@ -118,7 +119,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
               <TabsTrigger value="zoho">Zoho Books</TabsTrigger>
               <TabsTrigger value="busy">Busy Accounting</TabsTrigger>
             </TabsList>
-            
+
             {/* Sage 300 */}
             <TabsContent value="sage300" className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -126,10 +127,10 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                   <Badge className="bg-[#018136]/10 text-[#018136]">ENTERPRISE SOLUTION</Badge>
                   <h3 className="text-3xl font-bold text-gray-900">Sage 300</h3>
                   <p className="text-lg text-gray-600">
-                    Comprehensive enterprise-level ERP solution designed for large organizations 
+                    Comprehensive enterprise-level ERP solution designed for large organizations
                     with complex business requirements and multiple locations.
                   </p>
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-semibold text-gray-900">Key Features:</h4>
                     <ul className="space-y-2 text-gray-600">
@@ -151,12 +152,12 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <Button className="bg-[#018136] hover:bg-[#016429] text-white">
                     Learn More About Sage 300
                   </Button>
                 </div>
-                
+
                 <Card className="p-8">
                   <CardContent className="p-0 space-y-6">
                     <h4 className="font-semibold text-gray-900">Perfect For:</h4>
@@ -174,7 +175,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                         <span className="text-sm text-gray-600">Multiple offices/warehouses</span>
                       </div>
                     </div>
-                    
+
                     <div className="pt-4 border-t">
                       <h5 className="font-medium text-gray-900 mb-2">Implementation Timeline:</h5>
                       <p className="text-sm text-gray-600">6-12 months for full deployment</p>
@@ -183,7 +184,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                 </Card>
               </div>
             </TabsContent>
-            
+
             {/* Sage 200 */}
             <TabsContent value="sage200" className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -191,10 +192,10 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                   <Badge className="bg-[#FFDF58]/20 text-gray-800">MID-MARKET SOLUTION</Badge>
                   <h3 className="text-3xl font-bold text-gray-900">Sage 200</h3>
                   <p className="text-lg text-gray-600">
-                    Perfect mid-market ERP solution for growing businesses that need robust 
+                    Perfect mid-market ERP solution for growing businesses that need robust
                     functionality without enterprise-level complexity.
                   </p>
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-semibold text-gray-900">Key Features:</h4>
                     <ul className="space-y-2 text-gray-600">
@@ -216,12 +217,12 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <Button className="bg-[#018136] hover:bg-[#016429] text-white">
                     Learn More About Sage 200
                   </Button>
                 </div>
-                
+
                 <Card className="p-8">
                   <CardContent className="p-0 space-y-6">
                     <h4 className="font-semibold text-gray-900">Perfect For:</h4>
@@ -239,7 +240,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                         <span className="text-sm text-gray-600">Professional services firms</span>
                       </div>
                     </div>
-                    
+
                     <div className="pt-4 border-t">
                       <h5 className="font-medium text-gray-900 mb-2">Implementation Timeline:</h5>
                       <p className="text-sm text-gray-600">3-6 months for full deployment</p>
@@ -248,7 +249,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                 </Card>
               </div>
             </TabsContent>
-            
+
             {/* Zoho Books */}
             <TabsContent value="zoho" className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -256,10 +257,10 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                   <Badge className="bg-[#018136]/10 text-[#018136]">CLOUD-BASED SOLUTION</Badge>
                   <h3 className="text-3xl font-bold text-gray-900">Zoho Books</h3>
                   <p className="text-lg text-gray-600">
-                    Modern cloud-based accounting solution with AI-powered automation, 
+                    Modern cloud-based accounting solution with AI-powered automation,
                     perfect for businesses seeking flexible, scalable financial management.
                   </p>
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-semibold text-gray-900">Key Features:</h4>
                     <ul className="space-y-2 text-gray-600">
@@ -281,12 +282,12 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <Button className="bg-[#018136] hover:bg-[#016429] text-white">
                     Learn More About Zoho Books
                   </Button>
                 </div>
-                
+
                 <Card className="p-8">
                   <CardContent className="p-0 space-y-6">
                     <h4 className="font-semibold text-gray-900">Perfect For:</h4>
@@ -304,7 +305,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                         <span className="text-sm text-gray-600">Distributed workforces</span>
                       </div>
                     </div>
-                    
+
                     <div className="pt-4 border-t">
                       <h5 className="font-medium text-gray-900 mb-2">Implementation Timeline:</h5>
                       <p className="text-sm text-gray-600">2-4 weeks for full setup</p>
@@ -313,7 +314,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                 </Card>
               </div>
             </TabsContent>
-            
+
             {/* Busy Accounting */}
             <TabsContent value="busy" className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -321,10 +322,10 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                   <Badge className="bg-[#FFDF58]/20 text-gray-800">SME FOCUSED</Badge>
                   <h3 className="text-3xl font-bold text-gray-900">Busy Accounting</h3>
                   <p className="text-lg text-gray-600">
-                    User-friendly accounting solution designed specifically for small and 
+                    User-friendly accounting solution designed specifically for small and
                     medium enterprises with industry-specific modules and local compliance.
                   </p>
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-semibold text-gray-900">Key Features:</h4>
                     <ul className="space-y-2 text-gray-600">
@@ -346,12 +347,12 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <Button className="bg-[#018136] hover:bg-[#016429] text-white">
                     Learn More About Busy Accounting
                   </Button>
                 </div>
-                
+
                 <Card className="p-8">
                   <CardContent className="p-0 space-y-6">
                     <h4 className="font-semibold text-gray-900">Perfect For:</h4>
@@ -369,7 +370,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
                         <span className="text-sm text-gray-600">India-focused compliance</span>
                       </div>
                     </div>
-                    
+
                     <div className="pt-4 border-t">
                       <h5 className="font-medium text-gray-900 mb-2">Implementation Timeline:</h5>
                       <p className="text-sm text-gray-600">1-3 weeks for full setup</p>
@@ -393,7 +394,7 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
               Find the perfect fit for your business size and industry requirements
             </p>
           </div>
-          
+
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -507,14 +508,14 @@ export function ProductsPage({ onPageChange }: ProductsPageProps) {
             Let our experts help you select the perfect ERP system for your business needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               onClick={() => onPageChange('contact')}
               className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-4 rounded-full text-lg font-medium"
             >
               Schedule Consultation
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-4 rounded-full text-lg font-medium"
             >
               Request Demo

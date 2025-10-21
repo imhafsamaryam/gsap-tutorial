@@ -14,6 +14,7 @@ import {
 import { Label } from "../ui/label";
 import { AnimatedSection } from "../ui/animated-section";
 import { CollapsibleFAQ } from "../ui/collapsible-faq";
+import React from "react";
 
 interface ContactPageProps {
   onPageChange: (page: string) => void;

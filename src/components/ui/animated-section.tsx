@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import { useIntersectionObserver } from "./use-intersection-observer";
+import React from "react";
 
 interface AnimatedSectionProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   animation?: 'fadeInUp' | 'fadeIn' | 'slideInLeft' | 'slideInRight' | 'zoomIn' | 'staggeredGrid';
   delay?: number;
@@ -36,12 +37,12 @@ const animations = {
   },
 };
 
-export function AnimatedSection({ 
-  children, 
-  className = "", 
+export function AnimatedSection({
+  children = React.ReactNode,
+  className = "",
   animation = 'fadeInUp',
   delay = 0,
-  duration = 0.6 
+  duration = 0.6
 }: AnimatedSectionProps) {
   const { elementRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,

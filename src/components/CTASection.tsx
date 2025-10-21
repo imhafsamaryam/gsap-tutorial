@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { AnimatedSection } from "./ui/animated-section";
+import React from "react";
 
 interface CTASectionProps {
   onPageChange: (page: string) => void;

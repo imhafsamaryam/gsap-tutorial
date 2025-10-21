@@ -1,4 +1,5 @@
 import { Badge } from "./ui/badge";
+import React from "react";
 
 export function ComparisonSection() {
   return (
@@ -10,7 +11,7 @@ export function ComparisonSection() {
             to Other Odoo Partners?
           </h2>
         </div>
-        
+
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -43,7 +44,7 @@ export function ComparisonSection() {
                     <div className="text-sm text-gray-600 mt-1">120+ Days</div>
                   </td>
                 </tr>
-                
+
                 <tr className="hover:bg-gray-50/50 transition-colors">
                   <td className="py-4 px-8 font-medium text-gray-900">AI-Powered Efficiency</td>
                   <td className="py-4 px-8 text-center">
@@ -61,7 +62,7 @@ export function ComparisonSection() {
                     </div>
                   </td>
                 </tr>
-                
+
                 <tr className="hover:bg-gray-50/50 transition-colors">
                   <td className="py-4 px-8 font-medium text-gray-900">Custom Tailored Scaling</td>
                   <td className="py-4 px-8 text-center">
@@ -79,7 +80,7 @@ export function ComparisonSection() {
                     </div>
                   </td>
                 </tr>
-                
+
                 <tr className="hover:bg-gray-50/50 transition-colors">
                   <td className="py-4 px-8 font-medium text-gray-900">Ongoing Support & Optimization</td>
                   <td className="py-4 px-8 text-center">
@@ -97,7 +98,7 @@ export function ComparisonSection() {
                     </div>
                   </td>
                 </tr>
-                
+
                 <tr className="hover:bg-gray-50/50 transition-colors">
                   <td className="py-4 px-8 font-medium text-gray-900">Lead Business Expertise</td>
                   <td className="py-4 px-8 text-center">

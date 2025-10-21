@@ -15,6 +15,7 @@ import {
 import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface ServersPageProps {
   onPageChange: (page: string) => void;

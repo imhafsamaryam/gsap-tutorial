@@ -16,6 +16,7 @@ import {
 import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface SoftwareSupportPageProps {
   onPageChange: (page: string) => void;
@@ -208,11 +209,10 @@ export function SoftwareSupportPage({
                   </motion.div>
                 )}
                 <Card
-                  className={`p-8 h-full ${
-                    plan.popular
+                  className={`p-8 h-full ${plan.popular
                       ? "ring-2 ring-[#018136] shadow-2xl"
                       : "shadow-lg"
-                  }`}
+                    }`}
                 >
                   <div className="text-center mb-8">
                     <h3 className="text-2xl text-gray-900 mb-2">{plan.name}</h3>
@@ -239,11 +239,10 @@ export function SoftwareSupportPage({
 
                   <Button
                     onClick={() => onPageChange("contact")}
-                    className={`w-full py-3 rounded-full ${
-                      plan.popular
+                    className={`w-full py-3 rounded-full ${plan.popular
                         ? "bg-[#018136] hover:bg-[#016429] text-white"
                         : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
-                    }`}
+                      }`}
                     variant={plan.popular ? "default" : "outline"}
                   >
                     Choose Plan

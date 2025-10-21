@@ -22,6 +22,7 @@ import { DesktopsPage } from "./components/pages/subpages/DesktopsPage";
 // Service Sub-pages
 import { ProductDevelopmentPage } from "./components/pages/subpages/ProductDevelopmentPage";
 import { SoftwareSupportPage } from "./components/pages/subpages/SoftwareSupportPage";
+import React from "react";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -29,7 +30,7 @@ export default function App() {
 
   const handlePageChange = (newPage: string) => {
     if (newPage === currentPage) return;
-    
+
     setIsPageChanging(true);
     setTimeout(() => {
       setCurrentPage(newPage);
@@ -100,7 +101,7 @@ export default function App() {
     <PerformanceWrapper>
       <div className="min-h-screen bg-white">
         <Navigation currentPage={currentPage} onPageChange={handlePageChange} />
-        
+
         <AnimatePresence mode="wait">
           <motion.main
             key={currentPage}

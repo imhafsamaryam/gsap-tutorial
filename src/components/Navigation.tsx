@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "./ui/button";
 import { ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
+import React from "react";
 
 interface NavigationProps {
   currentPage: string;
@@ -490,11 +491,10 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
             ) : (
               <button
                 onClick={() => handlePageChange(item.id)}
-                className={`w-full text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-300 ${
-                  currentPage === item.id
+                className={`w-full text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-300 ${currentPage === item.id
                     ? "text-[#018136] bg-[#018136]/10"
                     : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
-                }`}
+                  }`}
               >
                 {item.label}
               </button>
@@ -508,9 +508,8 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   return (
     <>
       <motion.header
-        className={`fixed w-full px-6 py-4 bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300 ${
-          isScrolled ? "py-3" : "py-4"
-        }`}
+        className={`fixed w-full px-6 py-4 bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300 ${isScrolled ? "py-3" : "py-4"
+          }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -547,9 +546,8 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
               >
                 <motion.button
                   onClick={() => !item.subPages && handlePageChange(item.id)}
-                  className={`relative flex items-center space-x-1 text-gray-700 hover:text-[#018136] font-medium transition-colors duration-300 ${
-                    currentPage === item.id ? "text-[#018136]" : ""
-                  }`}
+                  className={`relative flex items-center space-x-1 text-gray-700 hover:text-[#018136] font-medium transition-colors duration-300 ${currentPage === item.id ? "text-[#018136]" : ""
+                    }`}
                   whileHover={{ y: -2 }}
                   whileTap={{ y: 0 }}
                 >

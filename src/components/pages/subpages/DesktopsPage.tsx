@@ -14,6 +14,7 @@ import {
 import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface DesktopsPageProps {
   onPageChange: (page: string) => void;
@@ -190,8 +191,8 @@ export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
                 )}
                 <Card
                   className={`p-8 h-full ${desktop.popular
-                      ? "ring-2 ring-[#018136] shadow-2xl"
-                      : "shadow-lg"
+                    ? "ring-2 ring-[#018136] shadow-2xl"
+                    : "shadow-lg"
                     }`}
                 >
                   <motion.div
@@ -229,8 +230,8 @@ export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
                   <Button
                     onClick={() => onPageChange("contact")}
                     className={`w-full py-3 rounded-full ${desktop.popular
-                        ? "bg-[#018136] hover:bg-[#016429] text-white"
-                        : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                      ? "bg-[#018136] hover:bg-[#016429] text-white"
+                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
                     variant={desktop.popular ? "default" : "outline"}
                   >

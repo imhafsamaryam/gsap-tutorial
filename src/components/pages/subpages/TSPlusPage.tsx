@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface TSPlusPageProps {
   onPageChange: (page: string) => void;
@@ -264,8 +265,8 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                 )}
                 <Card
                   className={`p-8 h-full ${pkg.popular
-                      ? "ring-2 ring-[#018136] shadow-2xl"
-                      : "shadow-lg"
+                    ? "ring-2 ring-[#018136] shadow-2xl"
+                    : "shadow-lg"
                     }`}
                 >
                   <div className="text-center mb-8">
@@ -300,8 +301,8 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                   <Button
                     onClick={() => onPageChange("contact")}
                     className={`w-full py-3 rounded-full ${pkg.popular
-                        ? "bg-[#018136] hover:bg-[#016429] text-white"
-                        : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                      ? "bg-[#018136] hover:bg-[#016429] text-white"
+                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
                     variant={pkg.popular ? "default" : "outline"}
                   >

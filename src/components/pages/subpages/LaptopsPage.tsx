@@ -14,6 +14,7 @@ import {
 import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface LaptopsPageProps {
   onPageChange: (page: string) => void;
@@ -156,8 +157,8 @@ export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
                 )}
                 <Card
                   className={`p-8 h-full ${laptop.popular
-                      ? "ring-2 ring-[#018136] shadow-2xl"
-                      : "shadow-lg"
+                    ? "ring-2 ring-[#018136] shadow-2xl"
+                    : "shadow-lg"
                     }`}
                 >
                   <motion.div
@@ -193,8 +194,8 @@ export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
                   <Button
                     onClick={() => onPageChange("contact")}
                     className={`w-full py-3 rounded-full ${laptop.popular
-                        ? "bg-[#018136] hover:bg-[#016429] text-white"
-                        : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                      ? "bg-[#018136] hover:bg-[#016429] text-white"
+                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
                     variant={laptop.popular ? "default" : "outline"}
                   >

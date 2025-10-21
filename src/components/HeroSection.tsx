@@ -3,6 +3,8 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { AnimatedSection } from "./ui/animated-section";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import React from "react";
+
 interface HeroSectionProps {
   onPageChange: (page: string) => void;
   badge: string;

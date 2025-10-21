@@ -5,6 +5,7 @@ import { Badge } from "../ui/badge";
 import { AnimatedSection } from "../ui/animated-section";
 import { Code, Headphones, ArrowRight, CheckCircle } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import React from "react";
 
 interface ServicesPageProps {
   onPageChange: (page: string) => void;
@@ -61,7 +62,7 @@ export function ServicesPage({ onPageChange }: ServicesPageProps) {
                   <span className="block text-[#018136]">for Your Business</span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                  From custom software development to ongoing technical support, Able Software Solution 
+                  From custom software development to ongoing technical support, Able Software Solution
                   delivers end-to-end IT services that drive business growth and operational excellence.
                 </p>
               </motion.div>
@@ -91,12 +92,12 @@ export function ServicesPage({ onPageChange }: ServicesPageProps) {
                   >
                     <service.icon className="w-8 h-8 text-white" />
                   </motion.div>
-                  
+
                   <h3 className="text-2xl text-gray-900 mb-4 group-hover:text-[#018136] transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mb-6">{service.description}</p>
-                  
+
                   <div className="space-y-3 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center space-x-3">
@@ -105,8 +106,8 @@ export function ServicesPage({ onPageChange }: ServicesPageProps) {
                       </div>
                     ))}
                   </div>
-                  
-                  <Button 
+
+                  <Button
                     className="w-full bg-[#018136] hover:bg-[#016429] text-white rounded-full group-hover:shadow-lg transition-all"
                   >
                     <span className="flex items-center justify-center">
@@ -136,13 +137,13 @@ export function ServicesPage({ onPageChange }: ServicesPageProps) {
               Partner with Able Software Solution for expert IT services that deliver measurable results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <Button
                 onClick={() => onPageChange('contact')}
                 className="bg-white text-[#018136] hover:bg-gray-100 px-8 py-3 rounded-full text-lg"
               >
                 Get Started
               </Button>
-              <Button 
+              <Button
                 variant="outline"
                 onClick={() => onPageChange('contact')}
                 className="border-white text-white hover:bg-white hover:text-[#018136] px-8 py-3 rounded-full text-lg"

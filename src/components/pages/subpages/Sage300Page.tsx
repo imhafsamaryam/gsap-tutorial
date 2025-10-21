@@ -6,6 +6,7 @@ import { AnimatedSection } from "../../ui/animated-section";
 import { CTASection } from "../../CTASection";
 import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface Sage300PageProps {
   onPageChange: (page: string) => void;

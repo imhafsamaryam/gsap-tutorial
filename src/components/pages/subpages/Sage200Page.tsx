@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface Sage200PageProps {
   onPageChange: (page: string) => void;

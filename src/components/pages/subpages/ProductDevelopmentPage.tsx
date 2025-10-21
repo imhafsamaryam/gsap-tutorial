@@ -16,6 +16,7 @@ import {
 import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import React from "react";
 
 interface ProductDevelopmentPageProps {
   onPageChange: (page: string) => void;

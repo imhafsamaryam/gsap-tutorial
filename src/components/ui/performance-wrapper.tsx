@@ -1,5 +1,6 @@
 import { useEffect, useState, createContext, useContext } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import React from "react";
 
 interface PerformanceContextType {
   isLowPerformance: boolean;
@@ -18,7 +19,7 @@ const PerformanceContext = createContext<PerformanceContextType>({
 export const usePerformance = () => useContext(PerformanceContext);
 
 interface PerformanceWrapperProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   fallback?: React.ReactNode;
 }
 
@@ -66,7 +67,7 @@ export function PerformanceWrapper({ children, fallback }: PerformanceWrapperPro
 
       // Check for mobile device with potentially slower CPU
       const hardwareConcurrency = navigator.hardwareConcurrency || 4;
-      
+
       if (isMobile && hardwareConcurrency < 4) {
         setIsLowPerformance(true);
       }
@@ -77,7 +78,7 @@ export function PerformanceWrapper({ children, fallback }: PerformanceWrapperPro
     // Listen for network changes
     if ('connection' in navigator) {
       (navigator as any).connection.addEventListener('change', checkPerformance);
-      
+
       return () => {
         (navigator as any).connection.removeEventListener('change', checkPerformance);
       };
@@ -87,7 +88,7 @@ export function PerformanceWrapper({ children, fallback }: PerformanceWrapperPro
   // Apply performance-based CSS variables
   useEffect(() => {
     const root = document.documentElement;
-    
+
     if (isLowPerformance || shouldReduceMotion) {
       root.style.setProperty('--animation-duration', '0.1s');
       root.style.setProperty('--transition-duration', '0.1s');
