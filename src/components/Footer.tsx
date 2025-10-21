@@ -61,19 +61,19 @@ export function Footer({ onPageChange }: FooterProps) {
             transition={{ duration: 0.6 }}
           >
             <div>
-              <motion.h3
-                className="text-2xl font-bold text-[#018136] mb-4"
-                whileHover={{ scale: 1.05 }}
-              >
+              <motion.h3 whileHover={{ scale: 1.05 }}>
                 <a href="/" className="flex items-center">
                   <img
                     src="/images/able-logo.png"
                     alt="Able Software Solutions"
                     className="h-16 mr-3"
                   />{" "}
-                  <p className="text-xl pl-2 font-bold text-[#018136] hover:text-[#016429] transition-colors duration-300">
-                    Able Softwares Solutions
-                  </p>
+                  <button
+                    // onClick={() => handlePageChange("home")}
+                    className="text-xl pl-2 font-bold text-[#018136] hover:text-[#016429] transition-colors duration-300"
+                  >
+                    Able Software Solutions
+                  </button>
                 </a>{" "}
               </motion.h3>
               <p className="text-gray-600 leading-relaxed mb-6">

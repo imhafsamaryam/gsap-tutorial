@@ -1,63 +1,113 @@
 import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
+import { motion } from "motion/react";
+import { AnimatedSection } from "./ui/animated-section";
 
-export function CTASection() {
+interface CTASectionProps {
+  onPageChange: (page: string) => void;
+}
+
+export function CTASection({ onPageChange }: CTASectionProps) {
   return (
-    <section className="py-20 bg-gradient-to-br from-[#018136]/5 via-white to-[#FFDF58]/10 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-10 right-20 w-64 h-64 rounded-full bg-[#018136]/5"></div>
-        <div className="absolute bottom-20 left-20 w-48 h-48 rounded-full bg-[#FFDF58]/10"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-[#018136]/5 to-[#FFDF58]/5"></div>
-      </div>
-      
+    <AnimatedSection
+      className="py-20 bg-gradient-to-br from-[#018136]/5 via-white to-[#FFDF58]/10 relative overflow-hidden"
+      animation="zoomIn"
+    >
+      <motion.div
+        className="absolute top-0 left-0 w-full h-full"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        <motion.div
+          className="absolute top-10 right-20 w-40 sm:w-64 h-40 sm:h-64 rounded-full bg-[#018136]/5"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.5, 0.8, 0.5],
+          }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-32 sm:w-48 h-32 sm:h-48 rounded-full bg-[#FFDF58]/10"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+        />
+      </motion.div>
+
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="text-center space-y-8">
-          {/* Training & Support Badge */}
-          <div className="inline-flex items-center">
-            <Badge className="bg-[#FFDF58]/20 text-gray-800 px-6 py-2 text-sm font-medium border border-[#FFDF58]/30">
-              Trainings & Ongoing Support
-            </Badge>
-          </div>
-          
-          <h2 className="text-5xl font-bold text-gray-900 leading-tight max-w-4xl mx-auto">
-            Ready to Scale with Conexa?
-          </h2>
-          
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Let's build the perfect Odoo solution for your business.
-            Faster, smarter, and tailored for success.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-4 rounded-full text-lg font-medium">
-              Schedule Free Call
-            </Button>
-            <Button variant="outline" className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-4 rounded-full text-lg font-medium">
-              View Case Studies
-            </Button>
-          </div>
-          
-          {/* Stats or additional info */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-[#018136] mb-2">30%</div>
-              <div className="text-gray-600">Faster Deployment</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-[#018136] mb-2">100+</div>
-              <div className="text-gray-600">Successful Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-[#018136] mb-2">24/7</div>
-              <div className="text-gray-600">Expert Support</div>
-            </div>
-          </div>
-        </div>
+        <motion.div
+          className="text-center space-y-8"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight max-w-4xl mx-auto"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Ready to Transform Your Business Operations?
+          </motion.h2>
+
+          <motion.p
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Join thousands of businesses that have streamlined their operations
+            with our ERP solutions. Get started with a free consultation today.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                onClick={() => onPageChange("contact")}
+                className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-4 rounded-full text-lg font-medium relative overflow-hidden group min-h-[52px]"
+              >
+                <motion.div className="absolute inset-0 bg-[#016429] -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                <span className="relative z-10">
+                  Schedule Free Consultation
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-white/20 rounded-full"
+                  animate={{
+                    scale: [0, 1.5, 0],
+                    opacity: [0, 0.5, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }}
+                />
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                onClick={() => onPageChange("products")}
+                variant="outline"
+                className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 min-h-[52px] hover:shadow-lg"
+              >
+                Compare Solutions
+              </Button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
-      
-      {/* Bottom decorative wave */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#018136]/5 to-transparent"></div>
-    </section>
+    </AnimatedSection>
   );
 }
