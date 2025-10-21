@@ -6,17 +6,22 @@ import { PerformanceWrapper } from "./components/ui/performance-wrapper";
 import { HomePage } from "./components/pages/HomePage";
 import { AboutPage } from "./components/pages/AboutPage";
 import { ProductsPage } from "./components/pages/ProductsPage";
-import { CloudPage } from "./components/pages/CloudPage";
-import { HardwarePage } from "./components/pages/HardwarePage";
+import { ServicesPage } from "./components/pages/ServicesPage";
 import { ContactPage } from "./components/pages/ContactPage";
-// Product Sub-pages
+// ERP Software Sub-pages
 import { Sage300Page } from "./components/pages/subpages/Sage300Page";
 import { Sage200Page } from "./components/pages/subpages/Sage200Page";
-import { ZohoBooksPage } from "./components/pages/subpages/ZohoBooksPage";
+import { ZohoPage } from "./components/pages/subpages/ZohoPage";
 import { BusyAccountingPage } from "./components/pages/subpages/BusyAccountingPage";
 // Cloud Hosting Sub-pages
-import { MicrosoftAzurePage } from "./components/pages/subpages/MicrosoftAzurePage";
 import { TSPlusPage } from "./components/pages/subpages/TSPlusPage";
+// Hardware Sub-pages
+import { ServersPage } from "./components/pages/subpages/ServersPage";
+import { LaptopsPage } from "./components/pages/subpages/LaptopsPage";
+import { DesktopsPage } from "./components/pages/subpages/DesktopsPage";
+// Service Sub-pages
+import { ProductDevelopmentPage } from "./components/pages/subpages/ProductDevelopmentPage";
+import { SoftwareSupportPage } from "./components/pages/subpages/SoftwareSupportPage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -58,33 +63,34 @@ export default function App() {
         return <AboutPage onPageChange={handlePageChange} />;
       case 'products':
         return <ProductsPage onPageChange={handlePageChange} />;
-      case 'cloud':
-        return <CloudPage onPageChange={handlePageChange} />;
-      case 'hardware':
-        return <HardwarePage onPageChange={handlePageChange} />;
+      case 'services':
+        return <ServicesPage onPageChange={handlePageChange} />;
       case 'contact':
         return <ContactPage onPageChange={handlePageChange} />;
-      // Product Sub-pages
+      // ERP Software Sub-pages
       case 'sage300':
         return <Sage300Page onPageChange={handlePageChange} />;
       case 'sage200':
         return <Sage200Page onPageChange={handlePageChange} />;
-      case 'zoho-books':
-        return <ZohoBooksPage onPageChange={handlePageChange} />;
-      case 'busy-accounting':
+      case 'zoho':
+        return <ZohoPage onPageChange={handlePageChange} />;
+      case 'busy-erp':
         return <BusyAccountingPage onPageChange={handlePageChange} />;
       // Cloud Hosting Sub-pages
-      case 'microsoft-azure':
-        return <MicrosoftAzurePage onPageChange={handlePageChange} />;
       case 'ts-plus':
         return <TSPlusPage onPageChange={handlePageChange} />;
-      // Hardware Sub-pages (placeholders for now)
+      // Hardware Sub-pages
       case 'servers':
+        return <ServersPage onPageChange={handlePageChange} />;
       case 'laptops':
+        return <LaptopsPage onPageChange={handlePageChange} />;
       case 'desktops':
-      case 'networking':
-      case 'maintenance':
-        return <HardwarePage onPageChange={handlePageChange} />;
+        return <DesktopsPage onPageChange={handlePageChange} />;
+      // Service Sub-pages
+      case 'product-development':
+        return <ProductDevelopmentPage onPageChange={handlePageChange} />;
+      case 'software-support':
+        return <SoftwareSupportPage onPageChange={handlePageChange} />;
       default:
         return <HomePage onPageChange={handlePageChange} />;
     }

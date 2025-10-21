@@ -1,65 +1,93 @@
+import { motion } from "motion/react";
+import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-
-export function HeroSection() {
+import { AnimatedSection } from "./ui/animated-section";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+interface HeroSectionProps {
+  onPageChange: (page: string) => void;
+  badge: string;
+  title1: string;
+  title2: string;
+  description: string;
+  imgSrc: string;
+}
+export function HeroSection({
+  onPageChange,
+  badge,
+  title1,
+  title2,
+  description,
+  imgSrc,
+}: HeroSectionProps) {
   return (
-    <section className="relative min-h-[600px] bg-gradient-to-br from-green-50 to-white overflow-hidden">
-      {/* Background geometric shapes */}
-      <div className="absolute inset-0">
-        {/* Large curved background shape */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] opacity-20">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-[#018136]/30 to-[#FFDF58]/20 transform translate-x-1/3 -translate-y-1/4"></div>
-        </div>
-        
-        {/* Curved accent shape */}
-        <div className="absolute top-20 right-20 w-[400px] h-[400px] opacity-30">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-[#018136]/40 to-transparent"></div>
-        </div>
-        
-        {/* Smaller decorative elements */}
-        <div className="absolute top-40 right-40 w-[200px] h-[200px] opacity-40">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-[#FFDF58]/60 to-transparent"></div>
-        </div>
-      </div>
-      
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="text-sm text-[#018136] font-medium tracking-wide uppercase">
-              AI-POWERED WAREHOUSE CONSTRUCTION EFFICIENCIES
-            </div>
-            
-            <h1 className="text-5xl font-bold text-gray-900 leading-tight">
-              Faster, Smarter,<br />
-              Tailored for You
+    <AnimatedSection className="py-20 bg-gradient-to-br from-green-50 to-white relative overflow-hidden">
+      <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-[#018136]/5"></div>
+      <div className="absolute bottom-20 left-20 w-48 h-48 rounded-full bg-[#FFDF58]/10"></div>
+
+      <div className="relative max-w-6xl mx-auto ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
+          <motion.div
+            className="space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Badge className="bg-[#018136]/10 text-[#018136] px-4 py-2 uppercase">
+              {badge}{" "}
+            </Badge>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              {title1} <span className="  text-[#018136]">{title2} </span>
             </h1>
-            
-            <p className="text-lg text-gray-600 leading-relaxed max-w-md">
-              We leverage advanced automation, industry insights, and dynamic integrations to craft seamless, efficient systems and support that revolutionize your business and operations.
+            <p className="text-[20px] text-gray-600 leading-relaxed">
+              {description}
             </p>
-            
-            <Button className="bg-[#FFDF58] hover:bg-[#e6c84d] text-gray-900 px-8 py-3 rounded-full font-medium">
-              Get Free Consultation
-            </Button>
-          </div>
-          
-          <div className="relative">
-            {/* Geometric illustration area */}
-            <div className="relative w-full h-[400px]">
-              {/* Main curved element */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-80 h-80 rounded-full border-8 border-[#018136]/20 flex items-center justify-center">
-                  <div className="w-60 h-60 rounded-full bg-gradient-to-br from-[#018136]/10 to-[#FFDF58]/10"></div>
-                </div>
+
+            {/* <div className="flex flex-col sm:flex-row gap-4">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  onClick={() => onPageChange("contact")}
+                  className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-3 rounded-full font-medium min-h-[44px]"
+                >
+                  Request Demo
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  onClick={() => onPageChange("products")}
+                  variant="outline"
+                  className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-3 rounded-full font-medium min-h-[44px]"
+                >
+                  Compare Products
+                </Button>
+              </motion.div>
+            </div> */}
+          </motion.div>
+
+          <AnimatedSection>
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="absolute  inset-0   rounded-3xl blur-3xl" />
+              <div className="  rounded-3xl  shadow-2xl">
+                <ImageWithFallback
+                  src={imgSrc}
+                  alt={title2}
+                  className="w-full h-full rounded-xl"
+                />
               </div>
-              
-              {/* Floating accent elements */}
-              <div className="absolute top-10 left-10 w-16 h-16 rounded-full bg-[#FFDF58]/40"></div>
-              <div className="absolute bottom-20 right-10 w-12 h-12 rounded-full bg-[#018136]/30"></div>
-              <div className="absolute top-1/2 right-0 w-8 h-8 rounded-full bg-[#FFDF58]/60"></div>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatedSection>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

@@ -1,17 +1,24 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "./ui/button";
-import { ChevronDown, ArrowLeft } from "lucide-react";
+import { ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
 
 interface NavigationProps {
   currentPage: string;
   onPageChange: (page: string) => void;
 }
 
+interface SubSubPage {
+  id: string;
+  label: string;
+  description?: string;
+}
+
 interface SubPage {
   id: string;
   label: string;
   description?: string;
+  subPages?: SubSubPage[];
 }
 
 interface NavItem {
@@ -25,6 +32,9 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [mobileActiveMenu, setMobileActiveMenu] = useState<string | null>(null);
+  const [mobileActiveSubMenu, setMobileActiveSubMenu] = useState<string | null>(
+    null
+  );
   const [mobileMenuHistory, setMobileMenuHistory] = useState<string[]>([]);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
@@ -35,71 +45,81 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
       label: "Products",
       subPages: [
         {
-          id: "sage300",
-          label: "Sage 300",
-          description: "Advanced ERP for mid-market businesses",
+          id: "erp-softwares",
+          label: "ERP Softwares",
+          description: "Comprehensive business management solutions",
+          subPages: [
+            {
+              id: "sage300",
+              label: "Sage 300",
+              description: "Advanced ERP for mid-market businesses",
+            },
+            {
+              id: "sage200",
+              label: "Sage 200",
+              description: "Comprehensive business management solution",
+            },
+            {
+              id: "busy-erp",
+              label: "Busy ERP",
+              description: "GST-ready accounting solution",
+            },
+            {
+              id: "zoho",
+              label: "ZOHO",
+              description: "Cloud-based business applications",
+            },
+          ],
         },
         {
-          id: "sage200",
-          label: "Sage 200",
-          description: "Comprehensive business management solution",
+          id: "cloud-hosting",
+          label: "Cloud Hosting",
+          description: "Secure cloud infrastructure solutions",
+          subPages: [
+            {
+              id: "ts-plus",
+              label: "TS Plus",
+              description: "Remote desktop hosting solutions",
+            },
+          ],
         },
         {
-          id: "zoho-books",
-          label: "Zoho Books",
-          description: "Cloud-based accounting software",
-        },
-        {
-          id: "busy-accounting",
-          label: "Busy Accounting",
-          description: "GST-ready accounting solution",
+          id: "hardware",
+          label: "Hardware",
+          description: "Enterprise-grade hardware solutions",
+          subPages: [
+            {
+              id: "servers",
+              label: "Servers",
+              description: "High-performance server configurations",
+            },
+            {
+              id: "laptops",
+              label: "Laptops",
+              description: "Business-grade mobile workstations",
+            },
+            {
+              id: "desktops",
+              label: "Desktops",
+              description: "Custom desktop workstations",
+            },
+          ],
         },
       ],
     },
     {
-      id: "cloud",
-      label: "Cloud Hosting",
+      id: "services",
+      label: "Services",
       subPages: [
         {
-          id: "microsoft-azure",
-          label: "Microsoft Azure",
-          description: "Enterprise cloud infrastructure",
+          id: "product-development",
+          label: "Product Development",
+          description: "Custom software development solutions",
         },
         {
-          id: "ts-plus",
-          label: "TS Plus",
-          description: "Remote desktop hosting solutions",
-        },
-      ],
-    },
-    {
-      id: "hardware",
-      label: "Hardware",
-      subPages: [
-        {
-          id: "servers",
-          label: "Servers",
-          description: "High-performance server configurations",
-        },
-        {
-          id: "laptops",
-          label: "Laptops",
-          description: "Business-grade mobile workstations",
-        },
-        {
-          id: "desktops",
-          label: "Desktops",
-          description: "Custom desktop workstations",
-        },
-        {
-          id: "networking",
-          label: "Networking",
-          description: "Network infrastructure solutions",
-        },
-        {
-          id: "maintenance",
-          label: "Annual Maintenance",
-          description: "Comprehensive support plans",
+          id: "software-support",
+          label: "Software Support",
+          description: "Comprehensive technical support services",
         },
       ],
     },
@@ -133,31 +153,134 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
     onPageChange(pageId);
     setIsMenuOpen(false);
     setMobileActiveMenu(null);
+    setMobileActiveSubMenu(null);
     setMobileMenuHistory([]);
+    timeoutRef.current = setTimeout(() => {
+      setHoveredMenu(null);
+    }, 150);
   };
 
   const handleMobileSubMenu = (menuId: string) => {
-    if (mobileActiveMenu === menuId) {
-      // Going back
+    if (mobileActiveMenu === menuId && !mobileActiveSubMenu) {
       setMobileActiveMenu(null);
       setMobileMenuHistory([]);
     } else {
-      // Going forward
-      setMobileMenuHistory([...mobileMenuHistory, menuId]);
+      setMobileMenuHistory([menuId]);
       setMobileActiveMenu(menuId);
+      setMobileActiveSubMenu(null);
     }
+  };
+
+  const handleMobileSubSubMenu = (subMenuId: string) => {
+    setMobileMenuHistory([...mobileMenuHistory, subMenuId]);
+    setMobileActiveSubMenu(subMenuId);
   };
 
   const handleMobileBack = () => {
     const newHistory = [...mobileMenuHistory];
     newHistory.pop();
     setMobileMenuHistory(newHistory);
-    setMobileActiveMenu(newHistory[newHistory.length - 1] || null);
+
+    if (newHistory.length === 0) {
+      setMobileActiveMenu(null);
+      setMobileActiveSubMenu(null);
+    } else if (newHistory.length === 1) {
+      setMobileActiveSubMenu(null);
+    } else {
+      setMobileActiveSubMenu(newHistory[newHistory.length - 1]);
+    }
   };
 
   const renderDesktopDropdown = (item: NavItem) => {
     if (!item.subPages) return null;
 
+    // Check if this menu has nested sub-pages (mega menu layout)
+    const hasNestedSubPages = item.subPages.some((subPage) => subPage.subPages);
+
+    // Use mega menu for products, regular dropdown for services
+    if (hasNestedSubPages && item.id === "products") {
+      return (
+        <AnimatePresence>
+          {hoveredMenu === item.id && (
+            <motion.div
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] max-w-[90vw] bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onMouseEnter={() => handleMouseEnter(item.id)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="p-8">
+                <motion.h3
+                  className="text-xl text-[#018136] mb-6"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  {item.label}
+                </motion.h3>
+
+                <div className="grid grid-cols-3 gap-8">
+                  {item.subPages.map((subPage, index) => (
+                    <motion.div
+                      key={subPage.id}
+                      className="space-y-3"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05 }}
+                    >
+                      <div className="flex items-start space-x-2 pb-2 border-b border-gray-200">
+                        <div className="w-2 h-2 bg-[#018136] rounded-full mt-2 flex-shrink-0" />
+                        <div>
+                          <h4 className="text-gray-900 font-medium">
+                            {subPage.label}
+                          </h4>
+                          {subPage.description && (
+                            <p className="text-xs text-gray-500 mt-1">
+                              {subPage.description}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      {subPage.subPages && (
+                        <div className="space-y-2 pl-4">
+                          {subPage.subPages.map((subSubPage, subIndex) => (
+                            <motion.button
+                              key={subSubPage.id}
+                              onClick={() => handlePageChange(subSubPage.id)}
+                              className="w-full text-left p-2 rounded-lg hover:bg-[#018136]/5 transition-all duration-300 group"
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{
+                                delay: 0.2 + index * 0.05 + subIndex * 0.03,
+                              }}
+                              whileHover={{ x: 4 }}
+                            >
+                              <div className="text-sm text-gray-700 group-hover:text-[#018136] transition-colors duration-300">
+                                {subSubPage.label}
+                              </div>
+                              {subSubPage.description && (
+                                <p className="text-xs text-gray-500 mt-0.5 group-hover:text-gray-600">
+                                  {subSubPage.description}
+                                </p>
+                              )}
+                            </motion.button>
+                          ))}
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      );
+    }
+
+    // Regular dropdown for services and other items
     return (
       <AnimatePresence>
         {hoveredMenu === item.id && (
@@ -217,93 +340,168 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   };
 
   const renderMobileMenu = () => {
-    if (!mobileActiveMenu) {
-      // Main menu
+    // Third level - Sub-sub pages
+    if (mobileActiveSubMenu) {
+      const activeItem = navigationItems.find(
+        (item) => item.id === mobileActiveMenu
+      );
+      const activeSubItem = activeItem?.subPages?.find(
+        (sub) => sub.id === mobileActiveSubMenu
+      );
+
+      if (!activeSubItem?.subPages) return null;
+
       return (
-        <div className="flex flex-col space-y-4">
-          {navigationItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.3 }}
-            >
-              {item.subPages ? (
-                <button
-                  onClick={() => handleMobileSubMenu(item.id)}
-                  className="w-full flex items-center justify-between text-left text-lg font-medium py-3 px-4 text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
-                >
-                  <span>{item.label}</span>
-                  <motion.div
-                    animate={{ rotate: mobileActiveMenu === item.id ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ChevronDown className="w-5 h-5" />
-                  </motion.div>
-                </button>
-              ) : (
-                <button
-                  onClick={() => handlePageChange(item.id)}
-                  className={`w-full text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-300 ${
-                    currentPage === item.id
-                      ? "text-[#018136] bg-[#018136]/10"
-                      : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              )}
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          key={`${mobileActiveMenu}-${mobileActiveSubMenu}`}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.3 }}
+          className="space-y-4"
+        >
+          <button
+            onClick={handleMobileBack}
+            className="flex items-center space-x-3 text-[#018136] py-3 px-4 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>Back to {activeSubItem.label}</span>
+          </button>
+
+          <div className="space-y-3">
+            {activeSubItem.subPages.map((subSubPage, index) => (
+              <motion.button
+                key={subSubPage.id}
+                onClick={() => handlePageChange(subSubPage.id)}
+                className="w-full text-left p-4 bg-gray-50 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+              >
+                <h4 className="text-gray-800 hover:text-[#018136] transition-colors duration-300">
+                  {subSubPage.label}
+                </h4>
+                {subSubPage.description && (
+                  <p className="text-sm text-gray-500 mt-1">
+                    {subSubPage.description}
+                  </p>
+                )}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
       );
     }
 
-    // Sub-menu
-    const activeItem = navigationItems.find(
-      (item) => item.id === mobileActiveMenu
-    );
-    if (!activeItem?.subPages) return null;
+    // Second level - Sub pages
+    if (mobileActiveMenu) {
+      const activeItem = navigationItems.find(
+        (item) => item.id === mobileActiveMenu
+      );
+      if (!activeItem?.subPages) return null;
 
-    return (
-      <motion.div
-        key={mobileActiveMenu}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
-        transition={{ duration: 0.3 }}
-        className="space-y-4"
-      >
-        <button
-          onClick={handleMobileBack}
-          className="flex items-center space-x-3 text-[#018136] py-3 px-4 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+      return (
+        <motion.div
+          key={mobileActiveMenu}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.3 }}
+          className="space-y-4"
         >
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back to {activeItem.label}</span>
-        </button>
+          <button
+            onClick={handleMobileBack}
+            className="flex items-center space-x-3 text-[#018136] py-3 px-4 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>Back to Menu</span>
+          </button>
 
-        <div className="space-y-3">
-          {activeItem.subPages.map((subPage, index) => (
-            <motion.button
-              key={subPage.id}
-              onClick={() => handlePageChange(subPage.id)}
-              className="w-full text-left p-4 bg-gray-50 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.3 }}
-            >
-              <h4 className="text-gray-800 hover:text-[#018136] transition-colors duration-300">
-                {subPage.label}
-              </h4>
-              {subPage.description && (
-                <p className="text-sm text-gray-500 mt-1">
-                  {subPage.description}
-                </p>
-              )}
-            </motion.button>
-          ))}
-        </div>
-      </motion.div>
+          <div className="space-y-3">
+            {activeItem.subPages.map((subPage, index) => (
+              <motion.div
+                key={subPage.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+              >
+                {subPage.subPages ? (
+                  <button
+                    onClick={() => handleMobileSubSubMenu(subPage.id)}
+                    className="w-full text-left p-4 bg-gray-50 hover:bg-[#018136]/5 rounded-xl transition-all duration-300 flex items-center justify-between"
+                  >
+                    <div>
+                      <h4 className="text-gray-800 hover:text-[#018136] transition-colors duration-300">
+                        {subPage.label}
+                      </h4>
+                      {subPage.description && (
+                        <p className="text-sm text-gray-500 mt-1">
+                          {subPage.description}
+                        </p>
+                      )}
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-gray-400" />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handlePageChange(subPage.id)}
+                    className="w-full text-left p-4 bg-gray-50 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+                  >
+                    <h4 className="text-gray-800 hover:text-[#018136] transition-colors duration-300">
+                      {subPage.label}
+                    </h4>
+                    {subPage.description && (
+                      <p className="text-sm text-gray-500 mt-1">
+                        {subPage.description}
+                      </p>
+                    )}
+                  </button>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      );
+    }
+
+    // First level - Main menu
+    return (
+      <div className="flex flex-col space-y-4">
+        {navigationItems.map((item, index) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.3 }}
+          >
+            {item.subPages ? (
+              <button
+                onClick={() => handleMobileSubMenu(item.id)}
+                className="w-full flex items-center justify-between text-left text-lg font-medium py-3 px-4 text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+              >
+                <span>{item.label}</span>
+                <motion.div
+                  animate={{ rotate: mobileActiveMenu === item.id ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="w-5 h-5" />
+                </motion.div>
+              </button>
+            ) : (
+              <button
+                onClick={() => handlePageChange(item.id)}
+                className={`w-full text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-300 ${
+                  currentPage === item.id
+                    ? "text-[#018136] bg-[#018136]/10"
+                    : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
+                }`}
+              >
+                {item.label}
+              </button>
+            )}
+          </motion.div>
+        ))}
+      </div>
     );
   };
 
@@ -333,14 +531,14 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                 onClick={() => handlePageChange("home")}
                 className="text-xl pl-2 font-bold text-[#018136] hover:text-[#016429] transition-colors duration-300"
               >
-                Able Softwares Solutions
+                Able Software Solutions
               </button>
             </a>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navigationItems.slice(0, -1).map((item) => (
+            {navigationItems.map((item) => (
               <div
                 key={item.id}
                 className="relative"
@@ -422,21 +620,6 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
               />
             </motion.div>
           </motion.button>
-
-          {/* Desktop CTA Button */}
-          <motion.div
-            className="hidden lg:block"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              onClick={() => handlePageChange("contact")}
-              className="bg-[#018136] hover:bg-[#016429] text-white px-6 py-2 rounded-full overflow-hidden relative group"
-            >
-              <motion.div className="absolute inset-0 bg-[#016429] -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-              <span className="relative z-10">Get Free Demo</span>
-            </Button>
-          </motion.div>
         </div>
       </motion.header>
 
@@ -465,20 +648,6 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                     {renderMobileMenu()}
                   </AnimatePresence>
                 </nav>
-
-                <motion.div
-                  className="mt-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.3 }}
-                >
-                  <Button
-                    onClick={() => handlePageChange("contact")}
-                    className="w-full bg-[#018136] hover:bg-[#016429] text-white py-3 rounded-full"
-                  >
-                    Get Free Demo
-                  </Button>
-                </motion.div>
               </div>
             </motion.div>
           </>

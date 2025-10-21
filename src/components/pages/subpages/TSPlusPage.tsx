@@ -4,7 +4,18 @@ import { Card } from "../../ui/card";
 import { Badge } from "../../ui/badge";
 import { AnimatedSection } from "../../ui/animated-section";
 import { AnimatedCounter } from "../../ui/animated-counter";
-import { CheckCircle, Monitor, Smartphone, Users, Cloud, Shield, Zap, ArrowRight } from "lucide-react";
+import {
+  CheckCircle,
+  Monitor,
+  Smartphone,
+  Users,
+  Cloud,
+  Shield,
+  Zap,
+  ArrowRight,
+} from "lucide-react";
+import { CTASection } from "../../CTASection";
+import { HeroSection } from "../../HeroSection";
 
 interface TSPlusPageProps {
   onPageChange: (page: string) => void;
@@ -12,12 +23,36 @@ interface TSPlusPageProps {
 
 export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
   const features = [
-    { icon: Monitor, title: "Remote Desktop Access", description: "Access any Windows application remotely" },
-    { icon: Smartphone, title: "Multi-Device Support", description: "Works on Windows, Mac, iOS, Android, Linux" },
-    { icon: Users, title: "Multi-User Sessions", description: "Multiple users can work simultaneously" },
-    { icon: Cloud, title: "Cloud Integration", description: "Deploy on-premises or in the cloud" },
-    { icon: Shield, title: "Secure Connections", description: "SSL encryption and advanced security" },
-    { icon: Zap, title: "High Performance", description: "Optimized for fast remote connections" }
+    {
+      icon: Monitor,
+      title: "Remote Desktop Access",
+      description: "Access any Windows application remotely",
+    },
+    {
+      icon: Smartphone,
+      title: "Multi-Device Support",
+      description: "Works on Windows, Mac, iOS, Android, Linux",
+    },
+    {
+      icon: Users,
+      title: "Multi-User Sessions",
+      description: "Multiple users can work simultaneously",
+    },
+    {
+      icon: Cloud,
+      title: "Cloud Integration",
+      description: "Deploy on-premises or in the cloud",
+    },
+    {
+      icon: Shield,
+      title: "Secure Connections",
+      description: "SSL encryption and advanced security",
+    },
+    {
+      icon: Zap,
+      title: "High Performance",
+      description: "Optimized for fast remote connections",
+    },
   ];
 
   const packages = [
@@ -31,9 +66,9 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
         "Basic Web Portal",
         "Standard Security",
         "Email Support",
-        "Windows Applications"
+        "Windows Applications",
       ],
-      popular: false
+      popular: false,
     },
     {
       name: "TS Plus Professional",
@@ -47,9 +82,9 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
         "Priority Support",
         "Mobile Apps",
         "Printing Solutions",
-        "Advanced Security"
+        "Advanced Security",
       ],
-      popular: true
+      popular: true,
     },
     {
       name: "TS Plus Enterprise",
@@ -64,114 +99,54 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
         "API Integration",
         "Advanced Analytics",
         "Multi-Server Support",
-        "Custom Development"
+        "Custom Development",
       ],
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   const useCases = [
-    { title: "Remote Work", description: "Enable employees to work from anywhere", icon: Users },
-    { title: "Application Hosting", description: "Host legacy applications in the cloud", icon: Monitor },
-    { title: "BYOD Support", description: "Allow personal devices to access business apps", icon: Smartphone },
-    { title: "Cost Reduction", description: "Reduce hardware and software licensing costs", icon: Cloud }
+    {
+      title: "Remote Work",
+      description: "Enable employees to work from anywhere",
+      icon: Users,
+    },
+    {
+      title: "Application Hosting",
+      description: "Host legacy applications in the cloud",
+      icon: Monitor,
+    },
+    {
+      title: "BYOD Support",
+      description: "Allow personal devices to access business apps",
+      icon: Smartphone,
+    },
+    {
+      title: "Cost Reduction",
+      description: "Reduce hardware and software licensing costs",
+      icon: Cloud,
+    },
   ];
 
   const stats = [
     { value: 50000, label: "Active Installations", suffix: "+" },
     { value: 140, label: "Countries", suffix: "+" },
     { value: 99.9, label: "Uptime Guarantee", suffix: "%" },
-    { value: 24, label: "Support Hours", suffix: "/7" }
+    { value: 24, label: "Support Hours", suffix: "/7" },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
-      {/* Hero Section */}
-      <section className="relative px-6 py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#018136]/5 to-purple-500/5" />
-        <div className="relative max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <AnimatedSection className="space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Badge className="bg-purple-100 text-purple-700 border-purple-200 mb-4">
-                  Remote Desktop Solutions
-                </Badge>
-                <h1 className="text-4xl lg:text-6xl text-gray-900 mb-6">
-                  TS Plus
-                  <span className="block text-[#018136]">Remote Access</span>
-                </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Powerful and affordable remote desktop solution that enables secure access 
-                  to Windows applications from any device, anywhere in the world.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="flex flex-col sm:flex-row gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Button 
-                  onClick={() => onPageChange('contact')}
-                  className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-3 rounded-full text-lg group overflow-hidden relative"
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-[#016429] -translate-x-full group-hover:translate-x-0 transition-transform duration-300"
-                  />
-                  <span className="relative z-10 flex items-center">
-                    Try Free Demo <ArrowRight className="ml-2 w-5 h-5" />
-                  </span>
-                </Button>
-                <Button 
-                  variant="outline"
-                  onClick={() => onPageChange('contact')}
-                  className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-3 rounded-full text-lg"
-                >
-                  Get Quote
-                </Button>
-              </motion.div>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#018136]/20 to-purple-500/20 rounded-3xl blur-3xl" />
-                <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
-                  <div className="grid grid-cols-2 gap-6">
-                    {stats.map((stat, index) => (
-                      <motion.div
-                        key={stat.label}
-                        className="text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 + index * 0.1 }}
-                      >
-                        <div className="text-3xl text-[#018136] mb-2">
-                          <AnimatedCounter 
-                            value={stat.value} 
-                            suffix={stat.suffix}
-                            duration={2000}
-                          />
-                        </div>
-                        <div className="text-sm text-gray-600">{stat.label}</div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        badge={"Remote Desktop Solutions"}
+        title1="TS Plus"
+        title2="Remote Access"
+        description=" Powerful and affordable remote desktop solution that enables
+                  secure access to Windows applications from any device,
+                  anywhere in the world."
+        onPageChange={onPageChange}
+        imgSrc={"/images/tsplus.png"}
+      />
 
       {/* Key Features */}
       <AnimatedSection className="px-6 py-20 bg-white">
@@ -181,7 +156,8 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
               Powerful Remote Desktop Features
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              TS Plus provides everything you need for secure and efficient remote access
+              TS Plus provides everything you need for secure and efficient
+              remote access
             </p>
           </div>
 
@@ -201,7 +177,9 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                   >
                     <feature.icon className="w-6 h-6 text-purple-600 group-hover:text-white transition-colors duration-300" />
                   </motion.div>
-                  <h3 className="text-xl text-gray-900 mb-3">{feature.title}</h3>
+                  <h3 className="text-xl text-gray-900 mb-3">
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-600">{feature.description}</p>
                 </Card>
               </motion.div>
@@ -238,7 +216,9 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                   >
                     <useCase.icon className="w-8 h-8 text-[#018136] group-hover:text-white transition-colors duration-300" />
                   </motion.div>
-                  <h3 className="text-xl text-gray-900 mb-3">{useCase.title}</h3>
+                  <h3 className="text-xl text-gray-900 mb-3">
+                    {useCase.title}
+                  </h3>
                   <p className="text-gray-600">{useCase.description}</p>
                 </Card>
               </motion.div>
@@ -282,16 +262,23 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                     </Badge>
                   </motion.div>
                 )}
-                <Card className={`p-8 h-full ${pkg.popular ? 'ring-2 ring-[#018136] shadow-2xl' : 'shadow-lg'}`}>
+                <Card
+                  className={`p-8 h-full ${pkg.popular
+                      ? "ring-2 ring-[#018136] shadow-2xl"
+                      : "shadow-lg"
+                    }`}
+                >
                   <div className="text-center mb-8">
                     <h3 className="text-2xl text-gray-900 mb-2">{pkg.name}</h3>
                     <p className="text-gray-600 mb-4">{pkg.description}</p>
                     <div className="flex items-baseline justify-center">
-                      <span className="text-4xl text-[#018136]">₹{pkg.price.toLocaleString()}</span>
+                      <span className="text-4xl text-[#018136]">
+                        ₹{pkg.price.toLocaleString()}
+                      </span>
                       <span className="text-gray-600 ml-1">{pkg.period}</span>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4 mb-8">
                     {pkg.features.map((feature, featureIndex) => (
                       <motion.div
@@ -299,7 +286,9 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                         className="flex items-center space-x-3"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
+                        transition={{
+                          delay: index * 0.1 + featureIndex * 0.05,
+                        }}
                         viewport={{ once: true }}
                       >
                         <CheckCircle className="w-5 h-5 text-[#018136] flex-shrink-0" />
@@ -307,15 +296,14 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                       </motion.div>
                     ))}
                   </div>
-                  
-                  <Button 
-                    onClick={() => onPageChange('contact')}
-                    className={`w-full py-3 rounded-full ${
-                      pkg.popular 
-                        ? 'bg-[#018136] hover:bg-[#016429] text-white' 
-                        : 'border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white'
-                    }`}
-                    variant={pkg.popular ? 'default' : 'outline'}
+
+                  <Button
+                    onClick={() => onPageChange("contact")}
+                    className={`w-full py-3 rounded-full ${pkg.popular
+                        ? "bg-[#018136] hover:bg-[#016429] text-white"
+                        : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                      }`}
+                    variant={pkg.popular ? "default" : "outline"}
                   >
                     Get Started
                   </Button>
@@ -334,16 +322,33 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
               Simple Implementation Process
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get your remote desktop solution up and running quickly with our proven process
+              Get your remote desktop solution up and running quickly with our
+              proven process
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Assessment", description: "Analyze your requirements and infrastructure" },
-              { step: "02", title: "Setup", description: "Install and configure TS Plus on your servers" },
-              { step: "03", title: "Configuration", description: "Customize settings and user permissions" },
-              { step: "04", title: "Go-Live", description: "Deploy and provide user training and support" }
+              {
+                step: "01",
+                title: "Assessment",
+                description: "Analyze your requirements and infrastructure",
+              },
+              {
+                step: "02",
+                title: "Setup",
+                description: "Install and configure TS Plus on your servers",
+              },
+              {
+                step: "03",
+                title: "Configuration",
+                description: "Customize settings and user permissions",
+              },
+              {
+                step: "04",
+                title: "Go-Live",
+                description: "Deploy and provide user training and support",
+              },
             ].map((phase, index) => (
               <motion.div
                 key={phase.step}
@@ -376,10 +381,10 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                 Expert Support & Maintenance
               </h2>
               <p className="text-xl text-gray-600 mb-8">
-                Our certified TS Plus specialists provide comprehensive support 
+                Our certified TS Plus specialists provide comprehensive support
                 to ensure optimal performance and user experience.
               </p>
-              
+
               <div className="space-y-4">
                 {[
                   "Complete installation and configuration",
@@ -387,7 +392,7 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                   "24/7 monitoring and maintenance",
                   "Performance optimization",
                   "Security updates and patches",
-                  "Ongoing technical support"
+                  "Ongoing technical support",
                 ].map((service, index) => (
                   <motion.div
                     key={service}
@@ -403,7 +408,7 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                 ))}
               </div>
             </div>
-            
+
             <motion.div
               className="relative"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -413,12 +418,15 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#018136]/20 to-purple-500/20 rounded-3xl blur-3xl" />
               <Card className="relative p-8 bg-white shadow-2xl">
-                <h3 className="text-2xl text-gray-900 mb-4">Ready to Enable Remote Work?</h3>
+                <h3 className="text-2xl text-gray-900 mb-4">
+                  Ready to Enable Remote Work?
+                </h3>
                 <p className="text-gray-600 mb-6">
-                  Contact us for a free consultation and see how TS Plus can transform your business.
+                  Contact us for a free consultation and see how TS Plus can
+                  transform your business.
                 </p>
-                <Button 
-                  onClick={() => onPageChange('contact')}
+                <Button
+                  onClick={() => onPageChange("contact")}
                   className="w-full bg-[#018136] hover:bg-[#016429] text-white py-3 rounded-full"
                 >
                   Schedule Consultation
@@ -430,38 +438,7 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <AnimatedSection className="px-6 py-20 bg-gradient-to-br from-[#018136] to-purple-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl lg:text-5xl text-white mb-6">
-              Start Your Remote Desktop Journey
-            </h2>
-            <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of businesses worldwide who trust TS Plus for secure remote access.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={() => onPageChange('contact')}
-                className="bg-white text-[#018136] hover:bg-gray-100 px-8 py-3 rounded-full text-lg"
-              >
-                Start Free Trial
-              </Button>
-              <Button 
-                variant="outline"
-                onClick={() => onPageChange('contact')}
-                className="border-white text-white hover:bg-white hover:text-[#018136] px-8 py-3 rounded-full text-lg"
-              >
-                Contact Sales
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </AnimatedSection>
+      <CTASection onPageChange={onPageChange} />
     </div>
   );
 }
