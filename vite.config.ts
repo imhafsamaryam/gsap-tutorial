@@ -52,8 +52,6 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'dist',
-    assetsDir: 'assets',
-    emptyOutDir: true, // This clears the dist folder on each build
   },
   server: {
     port: 3000,
