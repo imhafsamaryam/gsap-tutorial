@@ -65,7 +65,7 @@ export function Footer({ onPageChange }: FooterProps) {
               <motion.h3 whileHover={{ scale: 1.05 }}>
                 <a href="/" className="flex items-center">
                   <img
-                    src="/images/able-logo.png"
+                    src="/able-logo.png"
                     alt="Able Software Solutions"
                     className="h-16 mr-3"
                   />{" "}
