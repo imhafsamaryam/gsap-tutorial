@@ -172,7 +172,7 @@ export function ZohoPage({ onPageChange }: ZohoPageProps) {
                 leverage Zoho's comprehensive suite—from CRM and accounting to
                 HR and automation tools."
         onPageChange={onPageChange}
-        imgSrc={"/images/zoho.webp"}
+        imgSrc={"/zoho.webp"}
       />
 
       {/* Why Choose Zoho */}

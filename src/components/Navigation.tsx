@@ -492,8 +492,8 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
               <button
                 onClick={() => handlePageChange(item.id)}
                 className={`w-full text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-300 ${currentPage === item.id
-                    ? "text-[#018136] bg-[#018136]/10"
-                    : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
+                  ? "text-[#018136] bg-[#018136]/10"
+                  : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
                   }`}
               >
                 {item.label}
@@ -522,7 +522,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
           >
             <a href="/" className="flex items-center">
               <img
-                src="/images/able-logo.png"
+                src="/able-logo.png"
                 alt="Able Software Solutions"
                 className="h-16 mr-3"
               />{" "}

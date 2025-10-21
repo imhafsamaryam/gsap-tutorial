@@ -151,7 +151,7 @@ export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
                   professional workstations, we deliver systems configured
                   precisely to your requirements."
         onPageChange={onPageChange}
-        imgSrc={"/images/desktops1.jpeg"}
+        imgSrc={"/desktops1.jpeg"}
       />
 
       {/* Desktop Categories */}

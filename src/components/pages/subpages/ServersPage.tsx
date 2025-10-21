@@ -121,7 +121,7 @@ export function ServersPage({ onPageChange }: ServersPageProps) {
                   infrastructure tailored to your specific business requirements
                   and growth objectives."
         onPageChange={onPageChange}
-        imgSrc={"/images/servers.webp"}
+        imgSrc={"/servers.webp"}
       />
 
       {/* Server Types */}

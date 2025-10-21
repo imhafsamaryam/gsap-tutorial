@@ -117,7 +117,7 @@ export function ProductDevelopmentPage({
                   services that align perfectly with your unique business
                   requirements and strategic goals."
         onPageChange={onPageChange}
-        imgSrc={"/images/product4.jpg"}
+        imgSrc={"/product4.jpg"}
       />
       {/* Services */}
       <AnimatedSection className="px-6 py-20 bg-white">

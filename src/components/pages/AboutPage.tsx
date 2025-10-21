@@ -23,7 +23,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 cutting-edge technology solutions, transforming how companies
                 manage their resources and drive growth."
         onPageChange={onPageChange}
-        imgSrc={"/images/aboutus.jpg"}
+        imgSrc={"/aboutus.jpg"}
       />
 
       {/* Enhanced Mission Section */}
@@ -67,7 +67,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
             >
               <div className="rounded-2xl overflow-hidden h-[400px]">
                 <motion.img
-                  src="images/collab3.jpg"
+                  src="/collab3.jpg"
                   alt="Client Meeting"
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.1 }}
@@ -191,7 +191,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
             >
               <div className="rounded-2xl overflow-hidden h-[450px]">
                 <motion.img
-                  src="images/collab1.jpg"
+                  src="/collab1.jpg"
                   alt="Client Meeting"
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.1 }}
@@ -268,32 +268,32 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: "/images/quality-assurance.png",
+                icon: "/quality-assurance.png",
                 title: "Integrity",
                 description: "We conduct our business with the highest ethical standards, ensuring transparency and honesty in all our interactions with clients, partners, and team members."
               },
               {
-                icon: "/images/innovation.png",
+                icon: "/innovation.png",
                 title: "Innovation",
                 description: "We continuously explore new technologies and methodologies to provide our clients with cutting-edge solutions that keep them ahead in today's competitive business environment."
               },
               {
-                icon: "/images/experience.png",
+                icon: "/experience.png",
                 title: "Client Focus",
                 description: "We put our clients at the center of everything we do, taking the time to understand their unique needs and challenges to deliver tailored solutions that drive real business value."
               },
               {
-                icon: "/images/technology.png",
+                icon: "/technology.png",
                 title: "Excellence",
                 description: "We strive for excellence in every aspect of our work, from the quality of our software implementations to the level of support we provide, ensuring that we exceed client expectations."
               },
               {
-                icon: "/images/quality-assurance.png",
+                icon: "/quality-assurance.png",
                 title: "Reliability",
                 description: "We are committed to being a dependable partner for our clients, delivering on our promises and providing consistent, high-quality service they can count on."
               },
               {
-                icon: "/images/quality-assurance.png",
+                icon: "/quality-assurance.png",
                 title: "Continuous Learning",
                 description: "We invest in ongoing education and professional development for our team, ensuring we stay at the forefront of technology trends and best practices to better serve our clients."
               }

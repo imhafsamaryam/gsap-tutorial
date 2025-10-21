@@ -23,7 +23,7 @@ export function Sage300Page({ onPageChange }: Sage300PageProps) {
                 organizations with complex business requirements, multi-company
                 operations, and global reach."
         onPageChange={onPageChange}
-        imgSrc={"/images/sage300.jpg"}
+        imgSrc={"/sage300.jpg"}
       />
 
       {/* Key Features */}

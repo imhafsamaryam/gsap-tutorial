@@ -116,7 +116,7 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
                   Manage finances, operations, and customer relationships from a
                   single, integrated platform."
         onPageChange={onPageChange}
-        imgSrc={"/images/sage200.png"}
+        imgSrc={"/sage200.png"}
       />
 
       {/* Key Features */}

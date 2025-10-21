@@ -116,7 +116,7 @@ export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
                   workstations designed for productivity, security, and
                   long-term reliability."
         onPageChange={onPageChange}
-        imgSrc={"/images/laptops.webp"}
+        imgSrc={"/laptops.webp"}
       />
 
       {/* Laptop Categories */}

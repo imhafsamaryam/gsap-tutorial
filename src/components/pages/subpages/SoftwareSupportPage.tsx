@@ -129,7 +129,7 @@ export function SoftwareSupportPage({
                   expert team provides proactive maintenance, rapid issue
                   resolution, and continuous optimization."
         onPageChange={onPageChange}
-        imgSrc={"/images/support2.jpg"}
+        imgSrc={"/support2.jpg"}
       />
 
       {/* Features */}
@@ -210,8 +210,8 @@ export function SoftwareSupportPage({
                 )}
                 <Card
                   className={`p-8 h-full ${plan.popular
-                      ? "ring-2 ring-[#018136] shadow-2xl"
-                      : "shadow-lg"
+                    ? "ring-2 ring-[#018136] shadow-2xl"
+                    : "shadow-lg"
                     }`}
                 >
                   <div className="text-center mb-8">
@@ -240,8 +240,8 @@ export function SoftwareSupportPage({
                   <Button
                     onClick={() => onPageChange("contact")}
                     className={`w-full py-3 rounded-full ${plan.popular
-                        ? "bg-[#018136] hover:bg-[#016429] text-white"
-                        : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                      ? "bg-[#018136] hover:bg-[#016429] text-white"
+                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
                     variant={plan.popular ? "default" : "outline"}
                   >

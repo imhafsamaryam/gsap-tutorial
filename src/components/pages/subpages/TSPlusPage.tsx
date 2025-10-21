@@ -146,7 +146,7 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                   secure access to Windows applications from any device,
                   anywhere in the world."
         onPageChange={onPageChange}
-        imgSrc={"/images/tsplus.png"}
+        imgSrc={"/tsplus.png"}
       />
 
       {/* Key Features */}

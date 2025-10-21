@@ -128,7 +128,7 @@ export function BusyAccountingPage({ onPageChange }: BusyAccountingPageProps) {
                   GST compliance, inventory management, and business
                   intelligence for all business sizes."
         onPageChange={onPageChange}
-        imgSrc={"/images/busyerp.jpg"}
+        imgSrc={"/busyerp.jpg"}
       />
 
       {/* Key Features */}
