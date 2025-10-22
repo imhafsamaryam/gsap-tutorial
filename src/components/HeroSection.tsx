@@ -22,7 +22,7 @@ export function HeroSection({
   imgSrc,
 }: HeroSectionProps) {
   return (
-    <AnimatedSection className="py-20 bg-gradient-to-br from-green-50 to-white relative overflow-hidden">
+    <AnimatedSection className="px-4 py-20 bg-gradient-to-br from-green-50 to-white relative overflow-hidden">
       <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-[#018136]/5"></div>
       <div className="absolute bottom-20 left-20 w-48 h-48 rounded-full bg-[#FFDF58]/10"></div>
 

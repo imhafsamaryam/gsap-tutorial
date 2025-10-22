@@ -6,6 +6,7 @@ import { AnimatedSection } from "../ui/animated-section";
 import { AnimatedCounter } from "../ui/animated-counter";
 import { CTASection } from "../CTASection";
 import React from "react";
+import FeaturesUpClose from "../featurecard";
 
 interface HomePageProps {
   onPageChange: (page: string) => void;
@@ -15,7 +16,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[600px] sm:min-h-[700px] bg-gradient-to-br from-green-50 to-white overflow-hidden">
+      <section className=" relative min-h-[600px] sm:min-h-[700px] bg-gradient-to-br from-green-50 to-white overflow-hidden">
         {/* Background geometric shapes */}
         <motion.div
           className="absolute inset-0"
@@ -67,8 +68,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
           </motion.div>
         </motion.div>
 
-        <div className="relative z-10 max-w-6xl mx-auto  py-20 sm:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="px-4 relative z-10 max-w-6xl mx-auto py-20 sm:py-32">
+          <div className=" grid grid-cols-1 lg:grid-cols-2 gap-12 items-center  ">
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, x: -50 }}
@@ -81,7 +82,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                AI-POWERED ERP SOLUTIONS
+                SINCE 2015
               </motion.div>
 
               <motion.h1
@@ -90,9 +91,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Transform Your Business
-                <br />
-                with{" "}
+                Empowering UAE Businesses                <br />
+                with {" "}
                 <motion.span
                   className="text-[#018136]"
                   animate={{
@@ -104,11 +104,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
                     ease: "easeInOut",
                   }}
                 >
-                  AI-Powered
-                </motion.span>
-                <br />
-                ERP Solutions
-              </motion.h1>
+                  Integrated              </motion.span>
+                Technology              </motion.h1>
 
               <motion.p
                 className="text-lg text-gray-600 leading-relaxed max-w-md"
@@ -116,9 +113,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                Streamline operations across departments with our integrated
-                platform. From finance to inventory, CRM to reporting - manage
-                everything from one powerful system.
+                From Sage ERP implementations and Zoho CRM to custom software, hardware, and ongoing support we're your single source for technology that drives growth.
               </motion.p>
 
               <motion.div
@@ -144,7 +139,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button
-                    onClick={() => onPageChange("products")}
+                    onClick={() => onPageChange("sage300")}
                     variant="outline"
                     className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 min-h-[44px]"
                   >
@@ -384,7 +379,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
           </div>
         </div>
       </AnimatedSection>
-
+      <FeaturesUpClose />
       {/* Product Showcase */}
       <AnimatedSection className="py-20 bg-white" animation="fadeInUp">
         <div className="max-w-6xl mx-auto px-6">
@@ -407,7 +402,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                badge: {
+                page: "sage300", badge: {
                   text: "Enterprise",
                   className: "bg-[#018136]/10 text-[#018136]",
                 },
@@ -416,7 +411,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
                   "Comprehensive enterprise solution for large organizations with complex requirements.",
               },
               {
-                badge: {
+                page: "sage200", badge: {
                   text: "Mid-Market",
                   className: "bg-[#FFDF58]/20 text-gray-800",
                 },
@@ -425,16 +420,16 @@ export function HomePage({ onPageChange }: HomePageProps) {
                   "Perfect for growing businesses that need robust functionality without enterprise complexity.",
               },
               {
-                badge: {
+                page: "zoho", badge: {
                   text: "Cloud-Based",
                   className: "bg-[#018136]/10 text-[#018136]",
                 },
                 title: "Zoho Books",
                 description:
-                  "Modern cloud accounting solution with AI-powered automation and integrations.",
+                  "An integrated suite of web-based applications. From CRM and email to projects and finance, run your entire business from one ecosystem.",
               },
               {
-                badge: {
+                page: "busy-erp", badge: {
                   text: "SME Focused",
                   className: "bg-[#FFDF58]/20 text-gray-800",
                 },
@@ -457,7 +452,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
               >
                 <Card
                   className="p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer group h-full border-gray-100"
-                  onClick={() => onPageChange("products")}
+                  onClick={() => onPageChange(product.page)}
                 >
                   <CardContent className="p-0 flex flex-col h-full">
                     <motion.div

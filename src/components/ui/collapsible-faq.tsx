@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Card, CardContent } from "./card";
-
+import React from "react";
 interface FAQItemProps {
   question: string;
   answer: string;
@@ -21,7 +21,7 @@ function FAQItem({ question, answer, isOpen, onToggle, delay = 0 }: FAQItemProps
       <Card className="hover:shadow-lg transition-shadow duration-300">
         <CardContent className="p-0">
           <motion.button
-            className="w-full p-6 text-left focus:outline-none focus:ring-2 focus:ring-[#018136] focus:ring-offset-2 rounded-lg"
+            className="w-full p-6 text-left  rounded-lg"
             onClick={onToggle}
             whileHover={{ backgroundColor: "rgba(1, 129, 54, 0.02)" }}
             whileTap={{ scale: 0.99 }}

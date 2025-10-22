@@ -14,8 +14,34 @@ interface AboutPageProps {
 
 export function AboutPage({ onPageChange }: AboutPageProps) {
   return (
-    <div className="min-h-screen bg-white">
-      <HeroSection
+    <div className="min-h-screen bg-white ">
+      <AnimatedSection className=" bg-gradient-to-br from-green-50 to-white relative overflow-hidden">
+        <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-[#018136]/5"></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 rounded-full bg-[#FFDF58]/10"></div>
+
+        <div className="relative max-w-6xl mx-auto px-6 py-20 lg:py-32">
+          <div className="grid grid-cols-1  gap-16 items-end">
+            <motion.div
+              className="space-y-6 flex flex-col items-center"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge className="bg-[#018136]/10 text-[#018136] px-4 py-2 uppercase">
+                ABOUT US
+              </Badge>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-center">
+                Leading ERP Solutions Provider  <span className="  text-[#018136]">Since 2015 </span>
+              </h1>
+              <p className="text-[20px] text-gray-600 leading-relaxed text-center max-w-3xl ">
+                We've been helping businesses optimize their operations through cutting-edge technology solutions, transforming how companies manage their resources and drive growth.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* <HeroSection
         badge={" ABOUT US "}
         title1=" Leading ERP Solutions Provider "
         title2="Since 2015"
@@ -24,7 +50,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 manage their resources and drive growth."
         onPageChange={onPageChange}
         imgSrc={"/aboutus.jpg"}
-      />
+      /> */}
 
       {/* Enhanced Mission Section */}
       <AnimatedSection
@@ -56,11 +82,11 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
           />
         </motion.div>
 
-        <div className="max-w-6xl mx-auto relative">
-          <div className="flex flex-row md:flex-row-reverse gap-12 items-center">
+        <div className="max-w-6xl mx-auto relative px-6">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div
               className="w-full lg:w-1/2"
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -111,8 +137,8 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                   "Beyond just providing software, we aim to be a trusted technology partner for our clients, offering ongoing support, training, and consultation to help them maximize their investment and adapt to changing business needs."
                 ].map((text, index) => (
                   <motion.p
-                    key={index}
-                    className="text-md leading-relaxed text-gray-600"
+                    key={index} style={{ textAlign: "justify" }}
+                    className="text-md leading-relaxed text-gray-600  "
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -132,7 +158,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
         className="py-20 bg-white relative overflow-hidden"
         animation="fadeInUp"
       >
-        <div className="max-w-6xl mx-auto relative">
+        <div className="max-w-6xl mx-auto relative px-6">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div
               className="w-full lg:w-1/2"
@@ -169,7 +195,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                   "Through continuous innovation and unwavering commitment to our clients' success, we aim to set new standards in the ERP industry while maintaining the personal touch and deep partnerships that have defined our journey since 2015."
                 ].map((text, index) => (
                   <motion.p
-                    key={index}
+                    key={index} style={{ textAlign: "justify" }}
                     className="text-md leading-relaxed text-gray-600"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -268,9 +294,9 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: "/quality-assurance.png",
-                title: "Integrity",
-                description: "We conduct our business with the highest ethical standards, ensuring transparency and honesty in all our interactions with clients, partners, and team members."
+                icon: "",
+                title: "Built on Trust,",
+                description: " Driven by Purpose"
               },
               {
                 icon: "/innovation.png",
@@ -293,9 +319,9 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 description: "We are committed to being a dependable partner for our clients, delivering on our promises and providing consistent, high-quality service they can count on."
               },
               {
-                icon: "/quality-assurance.png",
-                title: "Continuous Learning",
-                description: "We invest in ongoing education and professional development for our team, ensuring we stay at the forefront of technology trends and best practices to better serve our clients."
+                icon: "",
+                title: " Rooted in Integrity, ",
+                description: " Growing with You"
               }
             ].map((value, index) => (
               <motion.div
@@ -306,7 +332,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
               >
-                <Card className="p-6 text-center hover:shadow-xl transition-shadow h-full">
+                {value.icon !== "" ? <Card className="p-6 text-center hover:shadow-xl transition-shadow h-full">
                   <CardContent className="p-0 flex flex-col items-center justify-center h-full">
                     <motion.div
                       className="w-16 h-16 mx-auto flex items-center justify-center mb-4"
@@ -327,7 +353,17 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                       {value.description}
                     </p>
                   </CardContent>
-                </Card>
+                </Card> :
+                  <div className="p-6 text-left    h-full">
+                    <div style={{ "justify-content": "end" }} className="p-0 flex flex-col items-end justify-end h-full">
+
+
+                      <h3 className="text-3xl   lg:text-4xl  text-gray-900 leading-tight text-left">
+                        {value.title} <span className="  text-[#018136]">{value.description} </span>
+                      </h3>
+
+                    </div>
+                  </div>}
               </motion.div>
             ))}
           </div>

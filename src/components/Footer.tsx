@@ -10,22 +10,29 @@ export function Footer({ onPageChange }: FooterProps) {
     {
       title: "Products",
       links: [
-        { label: "Sage 300", onClick: () => onPageChange("products") },
-        { label: "Sage 200", onClick: () => onPageChange("products") },
-        { label: "Zoho Books", onClick: () => onPageChange("products") },
-        { label: "Busy Accounting", onClick: () => onPageChange("products") },
+        { label: "Sage 300", onClick: () => onPageChange("sage300") },
+        { label: "Sage 200", onClick: () => onPageChange("sage200") },
+        { label: "Busy Accounting", onClick: () => onPageChange("busy-erp") },
+        { label: "Zoho Books", onClick: () => onPageChange("zoho") },
+        { label: "TS Plus", onClick: () => onPageChange("ts-plus") },
+      ],
+    },
+    {
+      title: "Hardware",
+      links: [
+        {
+          label: "Servers",
+          onClick: () => onPageChange("servers"),
+        },
+        { label: "Laptops", onClick: () => onPageChange("laptops") },
+        { label: "Desktops", onClick: () => onPageChange("desktops") },
       ],
     },
     {
       title: "Services",
       links: [
-        { label: "Cloud Hosting", onClick: () => onPageChange("cloud") },
-        {
-          label: "Hardware Solutions",
-          onClick: () => onPageChange("hardware"),
-        },
-        { label: "Microsoft Azure", onClick: () => onPageChange("cloud") },
-        { label: "TS Plus", onClick: () => onPageChange("cloud") },
+        { label: "Product Development", onClick: () => onPageChange("product-development") },
+        { label: "Software Support", onClick: () => onPageChange("software-support") },
       ],
     },
     {
@@ -33,29 +40,27 @@ export function Footer({ onPageChange }: FooterProps) {
       links: [
         { label: "About Us", onClick: () => onPageChange("about") },
         { label: "Contact", onClick: () => onPageChange("contact") },
-        { label: "Careers", onClick: () => onPageChange("about") },
-        { label: "Blog", onClick: () => onPageChange("home") },
       ],
     },
-    {
-      title: "Support",
-      links: [
-        { label: "Help Center", onClick: () => onPageChange("contact") },
-        { label: "Documentation", onClick: () => onPageChange("contact") },
-        { label: "24/7 Support", onClick: () => onPageChange("contact") },
-        { label: "Training", onClick: () => onPageChange("contact") },
-      ],
-    },
+    // {
+    //   title: "Support",
+    //   links: [
+    //     { label: "Help Center", onClick: () => onPageChange("contact") },
+    //     { label: "Documentation", onClick: () => onPageChange("contact") },
+    //     { label: "24/7 Support", onClick: () => onPageChange("contact") },
+    //     { label: "Training", onClick: () => onPageChange("contact") },
+    //   ],
+    // },
   ];
 
   return (
     <footer className="bg-gradient-to-b from-gray-50 to-white border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5  12">
           {/* Company Info */}
           <motion.div
-            className="lg:col-span-2 space-y-6"
+            className="lg:col-span-2 space-y-6 " style={{ "padding-bottom": '40px', "padding-right": "20px" }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -77,7 +82,7 @@ export function Footer({ onPageChange }: FooterProps) {
                   </button>
                 </a>{" "}
               </motion.h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-gray-600 leading-relaxed mb-6" style={{ "padding-top": '10px' }}>
                 Leading ERP solutions provider helping businesses streamline
                 operations, increase efficiency, and drive growth through
                 innovative technology and exceptional support.
@@ -97,7 +102,7 @@ export function Footer({ onPageChange }: FooterProps) {
                   </svg>
                 </div>
                 <span className="text-gray-600 text-sm">
-                  123 Business District, San Francisco, CA 94105
+                  Hamriyah Free Zone, Sharjah, UAE
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -106,9 +111,9 @@ export function Footer({ onPageChange }: FooterProps) {
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
                 </div>
-                <span className="text-gray-600 text-sm">+1 (800) 555-0199</span>
+                <span className="text-gray-600 text-sm">+971 585198723</span>
               </div>
-              <div className="flex items-center space-x-3">
+              {/* <div className="flex items-center space-x-3">
                 <div className="w-5 h-5 text-[#018136]">
                   <svg fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -117,6 +122,16 @@ export function Footer({ onPageChange }: FooterProps) {
                 </div>
                 <span className="text-gray-600 text-sm">
                   sales@erpsolutions.com
+                </span>
+              </div> */}
+              <div className="flex items-center space-x-3">
+                <div className="w-5 h-5 text-[#018136]">
+                  <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75zm0 18.5a8.25 8.25 0 1 1 8.25-8.25 8.259 8.259 0 0 1-8.25 8.25zm.75-12.75a.75.75 0 0 0-1.5 0v5a.75.75 0 0 0 .22.53l3 3a.75.75 0 0 0 1.06-1.06l-2.78-2.78z" />
+                  </svg>
+                </div>
+                <span className="text-gray-600 text-sm">
+                  7:30AM-5:30PM (Sun – Thur)
                 </span>
               </div>
             </div>
@@ -163,7 +178,7 @@ export function Footer({ onPageChange }: FooterProps) {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-gray-600 text-sm">
-              © 2024 ERPSolutions. All rights reserved.
+              © 2025 Able Software Solutions. All rights reserved.
             </div>
 
             {/* Social Links */}

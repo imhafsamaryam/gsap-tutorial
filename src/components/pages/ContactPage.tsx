@@ -309,7 +309,7 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className="space-y-8 my-auto">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                   Get in Touch
@@ -338,12 +338,11 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                     </div>
                     <div className="space-y-3">
                       <h3 className="font-semibold text-gray-900">
-                        Headquarters
+                        Main Office
                       </h3>
                       <div className="space-y-1 text-gray-600">
-                        <p>123 Business District</p>
-                        <p>Suite 500, Technology Tower</p>
-                        <p>San Francisco, CA 94105</p>
+                        <p>Hamriyah Free Zone, Sharjah, UAE</p>
+
                       </div>
                     </div>
                   </div>
@@ -399,16 +398,16 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                     </div>
                     <div>
                       <div className="font-medium text-gray-900">
-                        Sales Hotline
+                        Phone Number
                       </div>
-                      <div className="text-gray-600">+1 (800) 555-0199</div>
+                      <div className="text-gray-600">+971 585198723</div>
                       <div className="text-sm text-gray-500">
-                        Mon-Fri 8AM-6PM PST
+                        Sun-Thurs 7:30AM-5:30PM GST
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-4">
+                  {/* <div className="flex items-center space-x-4">
                     <div className="w-10 h-10 rounded-full bg-[#FFDF58]/20 flex items-center justify-center">
                       <svg
                         className="w-5 h-5 text-gray-800"
@@ -430,7 +429,7 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                         Response within 2 hours
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* <div className="flex items-center space-x-4">
                     <div className="w-10 h-10 rounded-full bg-[#018136]/10 flex items-center justify-center">
@@ -455,7 +454,7 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                     </div>
                   </div> */}
 
-                  <div className="flex items-center space-x-4">
+                  {/* <div className="flex items-center space-x-4">
                     <div className="w-10 h-10 rounded-full bg-[#FFDF58]/20 flex items-center justify-center">
                       <svg
                         className="w-5 h-5 text-gray-800"
@@ -474,7 +473,7 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                         24/7 technical support
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -486,21 +485,21 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Button
-                    onClick={() => onPageChange("products")}
+                    onClick={() => onPageChange("sage300")}
                     variant="outline"
                     className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
                   >
                     View Products
                   </Button>
                   <Button
-                    onClick={() => onPageChange("cloud")}
+                    onClick={() => onPageChange("ts-plus")}
                     variant="outline"
                     className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
                   >
                     Cloud Hosting
                   </Button>
                   <Button
-                    onClick={() => onPageChange("hardware")}
+                    onClick={() => onPageChange("laptops")}
                     variant="outline"
                     className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
                   >
@@ -519,7 +518,22 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
           </div>
         </div>
       </section>
-
+      <section className="my-16 max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          Find Us On The Map
+        </h2>
+        <div className="bg-slate-900 rounded-3xl p-2 border border-gray-800 overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.1730893573307!2d55.2021!3d25.1107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDA2JzM4LjUiTiA1NcKwMTInMDcuNiJF!5e0!3m2!1sen!2sae!4v1620000000000!5m2!1sen!2sae"
+            width="100%"
+            height="550"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            className="rounded-2xl"
+          ></iframe>
+        </div>
+      </section>
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-br from-green-50 to-white">
         <div className="max-w-4xl mx-auto px-6">
