@@ -83,7 +83,7 @@ export function HeroSection({
                 <ImageWithFallback
                   src={imgSrc}
                   alt={title2}
-                  className="w-full h-full rounded-xl"
+                  className="w-full h-full rounded-3xl"
                 />
               </div>
             </motion.div>

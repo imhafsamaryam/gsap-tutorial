@@ -36,7 +36,7 @@ function FeatureCard({ title, desc, image, index }) {
 
     return (
         <motion.div
-            className="feature-card flex flex-col gap-6 justify-center items-center p-6"
+            className="feature-card flex flex-col gap-2 justify-center items-center p-6"
             initial={{ opacity: 0, x: isOdd ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -117,7 +117,7 @@ export default function FeaturesUpClose() {
             </div>
 
             <motion.div
-                className="grid grid-cols-1  lg:grid-cols-2 gap-8 mt-8"
+                className="grid grid-cols-1  lg:grid-cols-2 gap-0 mt-8"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

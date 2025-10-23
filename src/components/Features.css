@@ -42,8 +42,8 @@
 }
 
 .feature-img img {
-    width: 48rem;
-    height: 25rem;
+    width: 40rem;
+    height: 22rem;
     object-fit: cover;
     /* Replace with desired image size */
     border-radius: 25px;

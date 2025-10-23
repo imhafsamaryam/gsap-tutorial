@@ -123,13 +123,20 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
       <AnimatedSection className="px-6 py-20 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl text-gray-900 mb-6">
+            <motion.h2
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 py-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               Powerful Features for Growing Businesses
-            </h2>
+            </motion.h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Sage 200 provides everything you need to manage your business
               operations efficiently
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -163,13 +170,20 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
       <AnimatedSection className="px-6 py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl text-gray-900 mb-6">
+            <motion.h2
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 py-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               Comprehensive Business Modules
-            </h2>
+            </motion.h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Core modules included with additional options for complete
               business management
             </p>
+
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
@@ -232,13 +246,20 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
       <AnimatedSection className="px-6 py-20 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl text-gray-900 mb-6">
+            <motion.h2
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 py-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               Proven Implementation Process
-            </h2>
+            </motion.h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our structured approach ensures successful Sage 200 deployment
               with minimal disruption
             </p>
+
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">

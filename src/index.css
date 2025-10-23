@@ -1262,6 +1262,11 @@
     border-radius: var(--radius-3xl);
   }
 
+  .rounded-3xl-top {
+    border-top-left-radius: var(--radius-3xl);
+    border-top-right-radius: var(--radius-3xl);
+  }
+
   .rounded-full {
     border-radius: 3.40282e38px;
   }
@@ -1280,6 +1285,10 @@
 
   .rounded-xl {
     border-radius: calc(var(--radius) + 4px);
+  }
+
+  .object-cover {
+    object-fit: cover;
   }
 
   .border {
@@ -1785,6 +1794,10 @@
 
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
+  }
+
+  .pr-4 {
+    padding-right: calc(var(--spacing) * 2);
   }
 
   .pr-4 {
