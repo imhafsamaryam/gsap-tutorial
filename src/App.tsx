@@ -23,6 +23,9 @@ import { DesktopsPage } from "./components/pages/subpages/DesktopsPage";
 import { ProductDevelopmentPage } from "./components/pages/subpages/ProductDevelopmentPage";
 import { SoftwareSupportPage } from "./components/pages/subpages/SoftwareSupportPage";
 import React from "react";
+import { NetworkingPage } from "./components/pages/subpages/NetworkingPage";
+import { AnnualSupportPage } from "./components/pages/subpages/AnnualSupportPage";
+import { AzurePage } from "./components/pages/subpages/AzurePage";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -78,6 +81,8 @@ export default function App() {
       case 'busy-erp':
         return <BusyAccountingPage onPageChange={handlePageChange} />;
       // Cloud Hosting Sub-pages
+      case 'azure':
+        return <AzurePage onPageChange={handlePageChange} />;
       case 'ts-plus':
         return <TSPlusPage onPageChange={handlePageChange} />;
       // Hardware Sub-pages
@@ -87,6 +92,10 @@ export default function App() {
         return <LaptopsPage onPageChange={handlePageChange} />;
       case 'desktops':
         return <DesktopsPage onPageChange={handlePageChange} />;
+      case 'networking':
+        return <NetworkingPage onPageChange={handlePageChange} />;
+      case 'annual-support':
+        return <AnnualSupportPage onPageChange={handlePageChange} />;
       // Service Sub-pages
       case 'product-development':
         return <ProductDevelopmentPage onPageChange={handlePageChange} />;

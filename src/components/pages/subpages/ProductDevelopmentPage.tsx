@@ -220,16 +220,7 @@ export function ProductDevelopmentPage({
                 className="group cursor-pointer"
               >
                 <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300 border-0 rounded-3xl">
-                  {/* <div className="relative h-48 overflow-hidden">
-                    <ImageWithFallback
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      fallbackSrc="/placeholder-service.jpg"
-                    /> 
-                  
 
-                  </div> */}
                   <motion.div
                     className=" rounded-3xl-top overflow-hidden"
                     transition={{ duration: 0.3 }}

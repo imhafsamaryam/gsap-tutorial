@@ -78,6 +78,11 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
           description: "Secure cloud infrastructure solutions",
           subPages: [
             {
+              id: "azure",
+              label: "Microsoft Azure",
+              description: "Remote desktop hosting solutions",
+            },
+            {
               id: "ts-plus",
               label: "TS Plus",
               description: "Remote desktop hosting solutions",
@@ -102,6 +107,16 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
             {
               id: "desktops",
               label: "Desktops",
+              description: "Custom desktop workstations",
+            },
+            {
+              id: "networking",
+              label: "Networking",
+              description: "Custom desktop workstations",
+            },
+            {
+              id: "annual-support",
+              label: "Annual Maintenance Support",
               description: "Custom desktop workstations",
             },
           ],
