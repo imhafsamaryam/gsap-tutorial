@@ -109,16 +109,6 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
               label: "Desktops",
               description: "Custom desktop workstations",
             },
-            {
-              id: "networking",
-              label: "Networking",
-              description: "Custom desktop workstations",
-            },
-            {
-              id: "annual-support",
-              label: "Annual Maintenance Support",
-              description: "Custom desktop workstations",
-            },
           ],
         },
       ],
@@ -241,6 +231,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                   {item.subPages.map((subPage, index) => (
                     <motion.div
                       key={subPage.id}
+                      onClick={() => handlePageChange(subPage.id)}
                       className="space-y-3"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}

@@ -23,12 +23,12 @@ import { DesktopsPage } from "./components/pages/subpages/DesktopsPage";
 import { ProductDevelopmentPage } from "./components/pages/subpages/ProductDevelopmentPage";
 import { SoftwareSupportPage } from "./components/pages/subpages/SoftwareSupportPage";
 import React from "react";
-import { NetworkingPage } from "./components/pages/subpages/NetworkingPage";
-import { AnnualSupportPage } from "./components/pages/subpages/AnnualSupportPage";
 import { AzurePage } from "./components/pages/subpages/AzurePage";
+import { ERPSoftwaresPage } from "./components/pages/ErpPage";
+import { CloudHostingPage } from "./components/pages/CloudHostingPage";
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
   const [isPageChanging, setIsPageChanging] = useState(false);
 
   const handlePageChange = (newPage: string) => {
@@ -38,7 +38,7 @@ export default function App() {
     setTimeout(() => {
       setCurrentPage(newPage);
       setIsPageChanging(false);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }, 150);
   };
 
@@ -50,56 +50,56 @@ export default function App() {
         e.preventDefault();
         const element = document.querySelector(target.hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }
     };
 
-    document.addEventListener('click', handleSmoothScroll);
-    return () => document.removeEventListener('click', handleSmoothScroll);
+    document.addEventListener("click", handleSmoothScroll);
+    return () => document.removeEventListener("click", handleSmoothScroll);
   }, []);
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'home':
+      case "home":
         return <HomePage onPageChange={handlePageChange} />;
-      case 'about':
+      case "about":
         return <AboutPage onPageChange={handlePageChange} />;
-      case 'products':
+      case "products":
         return <ProductsPage onPageChange={handlePageChange} />;
-      case 'services':
+      case "services":
         return <ServicesPage onPageChange={handlePageChange} />;
-      case 'contact':
+      case "contact":
         return <ContactPage onPageChange={handlePageChange} />;
       // ERP Software Sub-pages
-      case 'sage300':
+      case "erp-softwares":
+        return <ERPSoftwaresPage onPageChange={handlePageChange} />;
+      case "sage300":
         return <Sage300Page onPageChange={handlePageChange} />;
-      case 'sage200':
+      case "sage200":
         return <Sage200Page onPageChange={handlePageChange} />;
-      case 'zoho':
+      case "zoho":
         return <ZohoPage onPageChange={handlePageChange} />;
-      case 'busy-erp':
+      case "busy-erp":
         return <BusyAccountingPage onPageChange={handlePageChange} />;
       // Cloud Hosting Sub-pages
-      case 'azure':
+      case "cloud-hosting":
+        return <CloudHostingPage onPageChange={handlePageChange} />;
+      case "azure":
         return <AzurePage onPageChange={handlePageChange} />;
-      case 'ts-plus':
+      case "ts-plus":
         return <TSPlusPage onPageChange={handlePageChange} />;
       // Hardware Sub-pages
-      case 'servers':
+      case "servers":
         return <ServersPage onPageChange={handlePageChange} />;
-      case 'laptops':
+      case "laptops":
         return <LaptopsPage onPageChange={handlePageChange} />;
-      case 'desktops':
+      case "desktops":
         return <DesktopsPage onPageChange={handlePageChange} />;
-      case 'networking':
-        return <NetworkingPage onPageChange={handlePageChange} />;
-      case 'annual-support':
-        return <AnnualSupportPage onPageChange={handlePageChange} />;
       // Service Sub-pages
-      case 'product-development':
+      case "product-development":
         return <ProductDevelopmentPage onPageChange={handlePageChange} />;
-      case 'software-support':
+      case "software-support":
         return <SoftwareSupportPage onPageChange={handlePageChange} />;
       default:
         return <HomePage onPageChange={handlePageChange} />;
@@ -115,7 +115,10 @@ export default function App() {
           <motion.main
             key={currentPage}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isPageChanging ? 0 : 1, y: isPageChanging ? 20 : 0 }}
+            animate={{
+              opacity: isPageChanging ? 0 : 1,
+              y: isPageChanging ? 20 : 0,
+            }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="min-h-screen"
