@@ -219,7 +219,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
         <AnimatePresence>
           {hoveredMenu === item.id && (
             <motion.div
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] max-w-[90vw] bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50"
+              className="absolute top-full left-30 -translate-x-1/2 mt-2 w-[800px] max-w-[90vw] bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50"
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -301,7 +301,7 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
       <AnimatePresence>
         {hoveredMenu === item.id && (
           <motion.div
-            className="absolute top-full left-0 mt-2 w-80 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50"
+            className="absolute top-full left-30 mt-2 w-80 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50"
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
