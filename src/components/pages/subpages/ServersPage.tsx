@@ -16,12 +16,9 @@ import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
+import { Link } from "react-router-dom";
 
-interface ServersPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function ServersPage({ onPageChange }: ServersPageProps) {
+export function ServersPage() {
   const serverTypes = [
     {
       name: "Entry-Level Servers",
@@ -120,7 +117,6 @@ export function ServersPage({ onPageChange }: ServersPageProps) {
                   Software Solution. We provide robust, scalable server
                   infrastructure tailored to your specific business requirements
                   and growth objectives."
-        onPageChange={onPageChange}
         imgSrc={"/servers.webp"}
       />
 
@@ -161,19 +157,22 @@ export function ServersPage({ onPageChange }: ServersPageProps) {
                   </motion.div>
                 )}
                 <Card
-                  className={`p-8 h-full ${server.popular
-                    ? "ring-2 ring-[#018136] shadow-2xl"
-                    : "shadow-lg"
-                    }`}
+                  className={`p-8 h-full ${
+                    server.popular
+                      ? "ring-2 ring-[#018136] shadow-2xl"
+                      : "shadow-lg"
+                  }`}
                 >
                   <motion.div
-                    className={`w-12 h-12 ${server.popular ? "bg-[#018136]" : "bg-[#018136]/10"
-                      } rounded-xl flex items-center justify-center mb-6`}
+                    className={`w-12 h-12 ${
+                      server.popular ? "bg-[#018136]" : "bg-[#018136]/10"
+                    } rounded-xl flex items-center justify-center mb-6`}
                     whileHover={{ scale: 1.1 }}
                   >
                     <server.icon
-                      className={`w-6 h-6 ${server.popular ? "text-white" : "text-[#018136]"
-                        }`}
+                      className={`w-6 h-6 ${
+                        server.popular ? "text-white" : "text-[#018136]"
+                      }`}
                     />
                   </motion.div>
 
@@ -196,16 +195,18 @@ export function ServersPage({ onPageChange }: ServersPageProps) {
                     ))}
                   </div>
 
-                  <Button
-                    onClick={() => onPageChange("contact")}
-                    className={`w-full py-3 rounded-full ${server.popular
-                      ? "bg-[#018136] hover:bg-[#016429] text-white"
-                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                  <Link to="/contact-us">
+                    <Button
+                      className={`w-full py-3 rounded-full ${
+                        server.popular
+                          ? "bg-[#018136] hover:bg-[#016429] text-white"
+                          : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
-                    variant={server.popular ? "default" : "outline"}
-                  >
-                    Get Quote
-                  </Button>
+                      variant={server.popular ? "default" : "outline"}
+                    >
+                      Get Quote
+                    </Button>
+                  </Link>
                 </Card>
               </motion.div>
             ))}
@@ -313,7 +314,7 @@ export function ServersPage({ onPageChange }: ServersPageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

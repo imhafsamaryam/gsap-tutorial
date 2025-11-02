@@ -1,34 +1,39 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
 import React from "react";
 
 interface NavigationProps {
-  currentPage: string;
-  onPageChange: (page: string) => void;
+  // Remove currentPage and onPageChange props since we'll use React Router
 }
 
 interface SubSubPage {
   id: string;
   label: string;
   description?: string;
+  path: string; // Add path for routing
 }
 
 interface SubPage {
   id: string;
   label: string;
   description?: string;
+  path: string; // Add path for routing
   subPages?: SubSubPage[];
 }
 
 interface NavItem {
   id: string;
   label: string;
+  path?: string; // Add path for direct navigation
   subPages?: SubPage[];
 }
 
-export function Navigation({ currentPage, onPageChange }: NavigationProps) {
+export function Navigation({}: NavigationProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
@@ -40,96 +45,112 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const navigationItems: NavItem[] = [
-    { id: "about", label: "About Us" },
+    { id: "about", label: "About Us", path: "/about" },
     {
       id: "products",
       label: "Products",
+      // path: "/products",
       subPages: [
         {
           id: "erp-softwares",
           label: "ERP Softwares",
           description: "Comprehensive business management solutions",
+          path: "/erp-softwares",
           subPages: [
             {
               id: "sage300",
               label: "Sage 300",
               description: "Advanced ERP for mid-market businesses",
+              path: "/sage300",
             },
             {
               id: "sage200",
               label: "Sage 200",
               description: "Comprehensive business management solution",
+              path: "/sage200",
             },
             {
               id: "busy-erp",
               label: "Busy ERP",
               description: "GST-ready accounting solution",
+              path: "/busy-erp",
             },
             {
               id: "zoho",
               label: "ZOHO",
               description: "Cloud-based business applications",
+              path: "/zoho",
             },
           ],
         },
-        {
-          id: "cloud-hosting",
-          label: "Cloud Hosting",
-          description: "Secure cloud infrastructure solutions",
-          subPages: [
-            {
-              id: "azure",
-              label: "Microsoft Azure",
-              description: "Remote desktop hosting solutions",
-            },
-            {
-              id: "ts-plus",
-              label: "TS Plus",
-              description: "Remote desktop hosting solutions",
-            },
-          ],
-        },
-        {
-          id: "hardware",
-          label: "Hardware",
-          description: "Enterprise-grade hardware solutions",
-          subPages: [
-            {
-              id: "servers",
-              label: "Servers",
-              description: "High-performance server configurations",
-            },
-            {
-              id: "laptops",
-              label: "Laptops",
-              description: "Business-grade mobile workstations",
-            },
-            {
-              id: "desktops",
-              label: "Desktops",
-              description: "Custom desktop workstations",
-            },
-          ],
-        },
+        // {
+        //   id: "cloud-hosting",
+        //   label: "Cloud Hosting",
+        //   description: "Secure cloud infrastructure solutions",
+        //   path: "/cloud-hosting",
+        //   // subPages: [
+        //   //   {
+        //   //     id: "azure",
+        //   //     label: "Microsoft Azure",
+        //   //     description: "Remote desktop hosting solutions",
+        //   //     path: "/azure",
+        //   //   },
+        //   //   {
+        //   //     id: "ts-plus",
+        //   //     label: "TS Plus",
+        //   //     description: "Remote desktop hosting solutions",
+        //   //     path: "/ts-plus",
+        //   //   },
+        //   // ],
+        // },
+        // {
+        //   id: "hardware",
+        //   label: "Hardware",
+        //   description: "Enterprise-grade hardware solutions",
+        //   path: "/hardware",
+        //   // subPages: [
+        //   //   {
+        //   //     id: "servers",
+        //   //     label: "Servers",
+        //   //     description: "High-performance server configurations",
+        //   //     path: "/servers",
+        //   //   },
+        //   //   {
+        //   //     id: "laptops",
+        //   //     label: "Laptops",
+        //   //     description: "Business-grade mobile workstations",
+        //   //     path: "/laptops",
+        //   //   },
+        //   //   {
+        //   //     id: "desktops",
+        //   //     label: "Desktops",
+        //   //     description: "Custom desktop workstations",
+        //   //     path: "/desktops",
+        //   //   },
+        //   // ],
+        // },
       ],
     },
     {
       id: "services",
       label: "Services",
+      // path: "/services",
       subPages: [
         {
           id: "product-development",
           label: "Product Development",
           description: "Custom software development solutions",
+          path: "/product-development",
         },
         {
           id: "software-support",
           label: "Software Support",
           description: "Comprehensive technical support services",
+          path: "/software-support",
         },
       ],
     },
-    { id: "contact", label: "Contact Us" },
+    { id: "contact", label: "Contact Us", path: "/contact" },
   ];
 
   useEffect(() => {
@@ -155,8 +176,9 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
     }, 150);
   };
 
-  const handlePageChange = (pageId: string) => {
-    onPageChange(pageId);
+  // Updated navigation handler using React Router
+  const handleNavigation = (path: string) => {
+    navigate(path);
     setIsMenuOpen(false);
     setMobileActiveMenu(null);
     setMobileActiveSubMenu(null);
@@ -197,6 +219,28 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
     }
   };
 
+  // Helper function to check if a path is active
+  const isActivePath = (path: string) => {
+    return location.pathname === path;
+  };
+
+  // Helper function to check if any child path is active
+  const hasActiveChild = (item: NavItem): boolean => {
+    if (item.path && isActivePath(item.path)) return true;
+    if (item.subPages) {
+      return item.subPages.some((subPage) => {
+        if (subPage.path && isActivePath(subPage.path)) return true;
+        if (subPage.subPages) {
+          return subPage.subPages.some(
+            (subSubPage) => subSubPage.path && isActivePath(subSubPage.path)
+          );
+        }
+        return false;
+      });
+    }
+    return false;
+  };
+
   const renderDesktopDropdown = (item: NavItem) => {
     if (!item.subPages) return null;
 
@@ -218,29 +262,41 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
               onMouseLeave={handleMouseLeave}
             >
               <div className="p-8">
-                <motion.h3
-                  className="text-xl text-[#018136] mb-6"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 }}
-                >
-                  {item.label}
-                </motion.h3>
+                <Link to={item.path || "#"}>
+                  <motion.h3
+                    className="text-xl text-[#018136] mb-6 cursor-pointer hover:text-[#016429] transition-colors duration-300"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    {item.label}
+                  </motion.h3>
+                </Link>
 
-                <div className="grid grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 gap-8">
                   {item.subPages.map((subPage, index) => (
                     <motion.div
                       key={subPage.id}
-                      onClick={() => handlePageChange(subPage.id)}
                       className="space-y-3"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 + index * 0.05 }}
                     >
-                      <div className="flex items-start space-x-2 pb-2 border-b border-gray-200">
+                      <div
+                        onClick={() =>
+                          subPage.path && handleNavigation(subPage.path)
+                        }
+                        className="flex items-start space-x-2 pb-2 border-b border-gray-200 cursor-pointer hover:bg-[#018136]/5 rounded-lg p-2 transition-all duration-300"
+                      >
                         <div className="w-2 h-2 bg-[#018136] rounded-full mt-2 flex-shrink-0" />
                         <div>
-                          <h4 className="text-gray-900 font-medium">
+                          <h4
+                            className={`font-medium ${
+                              isActivePath(subPage.path)
+                                ? "text-[#018136]"
+                                : "text-gray-900"
+                            }`}
+                          >
                             {subPage.label}
                           </h4>
                           {subPage.description && (
@@ -256,8 +312,12 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                           {subPage.subPages.map((subSubPage, subIndex) => (
                             <motion.button
                               key={subSubPage.id}
-                              onClick={() => handlePageChange(subSubPage.id)}
-                              className="w-full text-left p-2 rounded-lg hover:bg-[#018136]/5 transition-all duration-300 group"
+                              onClick={() => handleNavigation(subSubPage.path)}
+                              className={`w-full text-left p-2 rounded-lg transition-all duration-300 group ${
+                                isActivePath(subSubPage.path)
+                                  ? "bg-[#018136]/10 text-[#018136]"
+                                  : "hover:bg-[#018136]/5"
+                              }`}
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{
@@ -265,7 +325,13 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                               }}
                               whileHover={{ x: 4 }}
                             >
-                              <div className="text-sm text-gray-700 group-hover:text-[#018136] transition-colors duration-300">
+                              <div
+                                className={`text-sm transition-colors duration-300 ${
+                                  isActivePath(subSubPage.path)
+                                    ? "text-[#018136] font-medium"
+                                    : "text-gray-700 group-hover:text-[#018136]"
+                                }`}
+                              >
                                 {subSubPage.label}
                               </div>
                               {subSubPage.description && (
@@ -279,6 +345,48 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                       )}
                     </motion.div>
                   ))}
+                  <div>
+                    <div
+                      onClick={() => handleNavigation("/cloud-hosting")}
+                      className="flex items-start space-x-2 pb-2 border-b border-gray-200 cursor-pointer hover:bg-[#018136]/5 rounded-lg p-2 transition-all duration-300"
+                    >
+                      <div className="w-2 h-2 bg-[#018136] rounded-full mt-2 flex-shrink-0" />
+                      <div>
+                        <h4
+                          className={`font-medium ${
+                            isActivePath("/cloud-hosting")
+                              ? "text-[#018136]"
+                              : "text-gray-900"
+                          }`}
+                        >
+                          Cloud Hosting
+                        </h4>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Secure cloud infrastructure solutions
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      onClick={() => handleNavigation("/hardware")}
+                      className="flex items-start space-x-2 pt-6 pb-2 border-b border-gray-200 cursor-pointer hover:bg-[#018136]/5 rounded-lg p-2 transition-all duration-300"
+                    >
+                      <div className="w-2 h-2 bg-[#018136] rounded-full mt-2 flex-shrink-0" />
+                      <div>
+                        <h4
+                          className={`font-medium ${
+                            isActivePath("/hardware")
+                              ? "text-[#018136]"
+                              : "text-gray-900"
+                          }`}
+                        >
+                          Hardware
+                        </h4>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Enterprise-grade hardware solutions{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -301,20 +409,26 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
             onMouseLeave={handleMouseLeave}
           >
             <div className="p-6">
-              <motion.h3
-                className="text-lg text-[#018136] mb-4"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 }}
-              >
-                {item.label}
-              </motion.h3>
+              <Link to={item.path || "#"}>
+                <motion.h3
+                  className="text-lg text-[#018136] mb-4 cursor-pointer hover:text-[#016429] transition-colors duration-300"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  {item.label}
+                </motion.h3>
+              </Link>
               <div className="space-y-3">
                 {item.subPages.map((subPage, index) => (
                   <motion.button
                     key={subPage.id}
-                    onClick={() => handlePageChange(subPage.id)}
-                    className="w-full text-left p-3 rounded-xl hover:bg-[#018136]/5 transition-all duration-300 group"
+                    onClick={() => handleNavigation(subPage.path)}
+                    className={`w-full text-left p-3 rounded-xl transition-all duration-300 group ${
+                      isActivePath(subPage.path)
+                        ? "bg-[#018136]/10 text-[#018136]"
+                        : "hover:bg-[#018136]/5"
+                    }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + index * 0.05 }}
@@ -322,11 +436,21 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                   >
                     <div className="flex items-start space-x-3">
                       <motion.div
-                        className="w-2 h-2 bg-[#018136] rounded-full mt-2 group-hover:scale-125"
+                        className={`w-2 h-2 rounded-full mt-2 transition-colors duration-300 ${
+                          isActivePath(subPage.path)
+                            ? "bg-[#018136] scale-125"
+                            : "bg-[#018136] group-hover:scale-125"
+                        }`}
                         transition={{ duration: 0.2 }}
                       />
                       <div>
-                        <h4 className="text-gray-800 group-hover:text-[#018136] transition-colors duration-300">
+                        <h4
+                          className={`transition-colors duration-300 ${
+                            isActivePath(subPage.path)
+                              ? "text-[#018136] font-medium"
+                              : "text-gray-800 group-hover:text-[#018136]"
+                          }`}
+                        >
                           {subPage.label}
                         </h4>
                         {subPage.description && (
@@ -379,13 +503,23 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
             {activeSubItem.subPages.map((subSubPage, index) => (
               <motion.button
                 key={subSubPage.id}
-                onClick={() => handlePageChange(subSubPage.id)}
-                className="w-full text-left p-4 bg-gray-50 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+                onClick={() => handleNavigation(subSubPage.path)}
+                className={`w-full text-left p-4 rounded-xl transition-all duration-300 ${
+                  isActivePath(subSubPage.path)
+                    ? "bg-[#018136]/10 text-[#018136]"
+                    : "bg-gray-50 hover:bg-[#018136]/5"
+                }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
               >
-                <h4 className="text-gray-800 hover:text-[#018136] transition-colors duration-300">
+                <h4
+                  className={`transition-colors duration-300 ${
+                    isActivePath(subSubPage.path)
+                      ? "text-[#018136] font-medium"
+                      : "text-gray-800 hover:text-[#018136]"
+                  }`}
+                >
                   {subSubPage.label}
                 </h4>
                 {subSubPage.description && (
@@ -435,10 +569,20 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                 {subPage.subPages ? (
                   <button
                     onClick={() => handleMobileSubSubMenu(subPage.id)}
-                    className="w-full text-left p-4 bg-gray-50 hover:bg-[#018136]/5 rounded-xl transition-all duration-300 flex items-center justify-between"
+                    className={`w-full text-left p-4 rounded-xl transition-all duration-300 flex items-center justify-between ${
+                      hasActiveChild(subPage)
+                        ? "bg-[#018136]/10 text-[#018136]"
+                        : "bg-gray-50 hover:bg-[#018136]/5"
+                    }`}
                   >
                     <div>
-                      <h4 className="text-gray-800 hover:text-[#018136] transition-colors duration-300">
+                      <h4
+                        className={`transition-colors duration-300 ${
+                          hasActiveChild(subPage)
+                            ? "text-[#018136] font-medium"
+                            : "text-gray-800 hover:text-[#018136]"
+                        }`}
+                      >
                         {subPage.label}
                       </h4>
                       {subPage.description && (
@@ -451,10 +595,20 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                   </button>
                 ) : (
                   <button
-                    onClick={() => handlePageChange(subPage.id)}
-                    className="w-full text-left p-4 bg-gray-50 hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+                    onClick={() => handleNavigation(subPage.path)}
+                    className={`w-full text-left p-4 rounded-xl transition-all duration-300 ${
+                      isActivePath(subPage.path)
+                        ? "bg-[#018136]/10 text-[#018136]"
+                        : "bg-gray-50 hover:bg-[#018136]/5"
+                    }`}
                   >
-                    <h4 className="text-gray-800 hover:text-[#018136] transition-colors duration-300">
+                    <h4
+                      className={`transition-colors duration-300 ${
+                        isActivePath(subPage.path)
+                          ? "text-[#018136] font-medium"
+                          : "text-gray-800 hover:text-[#018136]"
+                      }`}
+                    >
                       {subPage.label}
                     </h4>
                     {subPage.description && (
@@ -484,7 +638,11 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
             {item.subPages ? (
               <button
                 onClick={() => handleMobileSubMenu(item.id)}
-                className="w-full flex items-center justify-between text-left text-lg font-medium py-3 px-4 text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5 rounded-xl transition-all duration-300"
+                className={`w-full flex items-center justify-between text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-300 ${
+                  hasActiveChild(item)
+                    ? "text-[#018136] bg-[#018136]/10"
+                    : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
+                }`}
               >
                 <span>{item.label}</span>
                 <motion.div
@@ -496,11 +654,12 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
               </button>
             ) : (
               <button
-                onClick={() => handlePageChange(item.id)}
+                onClick={() => item.path && handleNavigation(item.path)}
                 className={`w-full text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-300 ${
-                  currentPage === item.id
-                    ? "text-[#018136] bg-[#018136]/10"
-                    : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
+                  // isActivePath(item.path)
+                  // ?
+                  "text-[#018136] bg-[#018136]/10"
+                  // : "text-gray-700 hover:text-[#018136] hover:bg-[#018136]/5"
                 }`}
               >
                 {item.label}
@@ -528,19 +687,16 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a href="/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img
                 src="/able-logo.png"
                 alt="Able Software Solutions"
                 className="h-16 mr-3"
-              />{" "}
-              <button
-                onClick={() => handlePageChange("home")}
-                className="text-xl pl-2 font-bold text-[#018136] hover:text-[#016429] transition-colors duration-300"
-              >
+              />
+              <span className="text-xl pl-2 font-bold text-[#018136] hover:text-[#016429] transition-colors duration-300">
                 Able Software Solutions
-              </button>
-            </a>
+              </span>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -552,41 +708,76 @@ export function Navigation({ currentPage, onPageChange }: NavigationProps) {
                 onMouseEnter={() => handleMouseEnter(item.id)}
                 onMouseLeave={handleMouseLeave}
               >
-                <motion.button
-                  onClick={() => !item.subPages && handlePageChange(item.id)}
-                  className={`relative flex items-center space-x-1 text-gray-700 hover:text-[#018136] font-medium transition-colors duration-300 ${
-                    currentPage === item.id ? "text-[#018136]" : ""
-                  }`}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ y: 0 }}
-                >
-                  <span>{item.label}</span>
-                  {item.subPages && (
+                {item.path && !item.subPages ? (
+                  // Simple navigation items (About, Contact)
+                  <Link to={item.path}>
                     <motion.div
-                      animate={{ rotate: hoveredMenu === item.id ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
+                      className={`relative flex items-center space-x-1 text-gray-700 hover:text-[#018136] font-medium transition-colors duration-300 ${
+                        isActivePath(item.path) ? "text-[#018136]" : ""
+                      }`}
+                      whileHover={{ y: -2 }}
+                      whileTap={{ y: 0 }}
                     >
-                      <ChevronDown className="w-4 h-4" />
+                      <span>{item.label}</span>
+                      {isActivePath(item.path) && (
+                        <motion.div
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#018136]"
+                          layoutId="underline"
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#018136] origin-left"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: isActivePath(item.path) ? 1 : 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
                     </motion.div>
-                  )}
-                  {currentPage === item.id && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#018136]"
-                      layoutId="underline"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#018136] origin-left"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: currentPage === item.id ? 1 : 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.button>
-
-                {renderDesktopDropdown(item)}
+                  </Link>
+                ) : (
+                  // Dropdown navigation items (Products, Services)
+                  <div className="relative">
+                    <Link to={item.path || "#"}>
+                      <motion.div
+                        className={`relative flex items-center space-x-1 text-gray-700 hover:text-[#018136] font-medium transition-colors duration-300 cursor-pointer ${
+                          hasActiveChild(item) ? "text-[#018136]" : ""
+                        }`}
+                        whileHover={{ y: -2 }}
+                        whileTap={{ y: 0 }}
+                      >
+                        <span>{item.label}</span>
+                        {item.subPages && (
+                          <motion.div
+                            animate={{
+                              rotate: hoveredMenu === item.id ? 180 : 0,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <ChevronDown className="w-4 h-4" />
+                          </motion.div>
+                        )}
+                        {hasActiveChild(item) && (
+                          <motion.div
+                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#018136]"
+                            layoutId="underline"
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ duration: 0.3 }}
+                          />
+                        )}
+                        <motion.div
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#018136] origin-left"
+                          initial={{ scaleX: 0 }}
+                          whileHover={{ scaleX: hasActiveChild(item) ? 1 : 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </motion.div>
+                    </Link>
+                    {renderDesktopDropdown(item)}
+                  </div>
+                )}
               </div>
             ))}
           </nav>

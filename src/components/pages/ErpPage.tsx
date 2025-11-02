@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
@@ -20,16 +21,15 @@ import {
 import { CTASection } from "../CTASection";
 import { HeroSection } from "../HeroSection";
 import React, { useEffect, useRef } from "react";
+import { ERPSolutionsGrid } from "../ERPGrid";
 
 interface ERPSoftwaresPageProps {
-  onPageChange: (page: string) => void;
+  // Remove onPageChange prop since we'll use React Router
   initialSection?: string;
 }
 
-export function ERPSoftwaresPage({
-  onPageChange,
-  initialSection,
-}: ERPSoftwaresPageProps) {
+export function ERPSoftwaresPage({ initialSection }: ERPSoftwaresPageProps) {
+  const navigate = useNavigate();
   const sage300Ref = useRef<HTMLDivElement>(null);
   const sage200Ref = useRef<HTMLDivElement>(null);
   const busyRef = useRef<HTMLDivElement>(null);
@@ -49,7 +49,6 @@ export function ERPSoftwaresPage({
       });
     }
   }, [initialSection]);
-
   const erpSolutions = [
     {
       id: "sage300",
@@ -58,6 +57,7 @@ export function ERPSoftwaresPage({
         "Advanced ERP for mid-market businesses with comprehensive financial management and operational control",
       icon: Building,
       color: "from-blue-500 to-cyan-500",
+      categoryBadge: "Enterprise",
       features: [
         "Multi-company & Multi-currency",
         "Advanced Financial Management",
@@ -72,7 +72,8 @@ export function ERPSoftwaresPage({
         "Scalable for growing enterprises",
         "Global business capabilities",
       ],
-      image: "/sage300-erp.png",
+      imageSrc: "/sage300-erp.png",
+      path: "/sage300",
     },
     {
       id: "sage200",
@@ -81,6 +82,7 @@ export function ERPSoftwaresPage({
         "Comprehensive business management solution offering end-to-end visibility and control",
       icon: Workflow,
       color: "from-purple-500 to-pink-500",
+      categoryBadge: "Business",
       features: [
         "End-to-End Business Management",
         "Inventory & Stock Control",
@@ -95,7 +97,8 @@ export function ERPSoftwaresPage({
         "Enhanced customer service",
         "Flexible deployment options",
       ],
-      image: "/sage200-erp.png",
+      imageSrc: "/sage200-erp.png",
+      path: "/sage200",
     },
     {
       id: "busy-erp",
@@ -104,6 +107,7 @@ export function ERPSoftwaresPage({
         "GST-ready accounting and business management solution for small to medium enterprises",
       icon: BarChart3,
       color: "from-green-500 to-emerald-500",
+      categoryBadge: "SME",
       features: [
         "GST Compliant Accounting",
         "Inventory Management",
@@ -118,7 +122,8 @@ export function ERPSoftwaresPage({
         "Easy to use interface",
         "Localized for Indian market",
       ],
-      image: "/busy-erp.png",
+      imageSrc: "/busy-erp.png",
+      path: "/busy-erp",
     },
     {
       id: "zoho",
@@ -127,6 +132,7 @@ export function ERPSoftwaresPage({
         "Cloud-based business applications suite with integrated CRM and productivity tools",
       icon: Cloud,
       color: "from-orange-500 to-red-500",
+      categoryBadge: "Cloud",
       features: [
         "Cloud-Based Platform",
         "Integrated CRM",
@@ -141,7 +147,8 @@ export function ERPSoftwaresPage({
         "Regular updates",
         "Pay-per-user pricing",
       ],
-      image: "/zoho-erp.png",
+      imageSrc: "/zoho-erp.png",
+      path: "/zoho",
     },
   ];
 
@@ -170,10 +177,8 @@ export function ERPSoftwaresPage({
         title1="ERP Softwares"
         title2="& Business Solutions"
         description="Comprehensive ERP solutions tailored to your business needs. From advanced enterprise resource planning to cloud-based business applications, we have the perfect solution to streamline your operations."
-        onPageChange={onPageChange}
-        imgSrc={"/erp-solutions.png"}
+        imgSrc={"/erpsoftwares.jpg"}
       />
-
       {/* Stats Section */}
       <AnimatedSection className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -199,156 +204,15 @@ export function ERPSoftwaresPage({
           </div>
         </div>
       </AnimatedSection>
-
       {/* ERP Solutions */}
-      <AnimatedSection className="px-6 py-16 bg-gradient-to-br from-blue-50 to-cyan-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <Badge className="bg-[#018136]/10 text-[#018136] px-4 py-2 uppercase">
-                Our Solutions
-              </Badge>
-              <motion.h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 py-4"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                Comprehensive ERP Solutions
-              </motion.h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Choose from our portfolio of industry-leading ERP solutions,
-                each designed to address specific business needs and scales
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="space-y-12">
-            {erpSolutions.map((erp, index) => (
-              <motion.div
-                key={erp.id}
-                ref={
-                  erp.id === "sage300"
-                    ? sage300Ref
-                    : erp.id === "sage200"
-                    ? sage200Ref
-                    : erp.id === "busy-erp"
-                    ? busyRef
-                    : zohoRef
-                }
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card
-                  className={`p-8 hover:shadow-xl transition-all duration-300 border-0 ${
-                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                  }`}
-                >
-                  <div
-                    className={`flex flex-col lg:flex-row items-center gap-8 ${
-                      index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                    }`}
-                  >
-                    <div className="lg:w-1/3">
-                      <motion.div
-                        className="relative group cursor-pointer"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div
-                          className={`w-64 h-64 bg-gradient-to-br ${erp.color} rounded-2xl flex items-center justify-center mx-auto shadow-lg`}
-                        >
-                          <erp.icon className="w-32 h-32 text-white" />
-                        </div>
-                        <div className="absolute inset-0 bg-black/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </motion.div>
-                    </div>
-
-                    <div className="lg:w-2/3">
-                      <div className="flex items-center gap-4 mb-4">
-                        <h3 className="text-3xl font-bold text-gray-900">
-                          {erp.name}
-                        </h3>
-                        <Badge
-                          className={`bg-gradient-to-r ${erp.color} text-white px-3 py-1`}
-                        >
-                          {erp.id === "sage300"
-                            ? "Enterprise"
-                            : erp.id === "sage200"
-                            ? "Business"
-                            : erp.id === "busy-erp"
-                            ? "SME"
-                            : "Cloud"}
-                        </Badge>
-                      </div>
-
-                      <p className="text-xl text-gray-600 mb-6">
-                        {erp.description}
-                      </p>
-
-                      <div className="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                            <CheckCircle className="w-5 h-5 text-[#018136]" />
-                            Key Features
-                          </h4>
-                          <ul className="space-y-2">
-                            {erp.features.map((feature, idx) => (
-                              <li
-                                key={idx}
-                                className="flex items-center gap-2 text-gray-600"
-                              >
-                                <div className="w-1.5 h-1.5 bg-[#018136] rounded-full" />
-                                {feature}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                            <Target className="w-5 h-5 text-[#018136]" />
-                            Business Benefits
-                          </h4>
-                          <ul className="space-y-2">
-                            {erp.benefits.map((benefit, idx) => (
-                              <li
-                                key={idx}
-                                className="flex items-center gap-2 text-gray-600"
-                              >
-                                <div className="w-1.5 h-1.5 bg-[#018136] rounded-full" />
-                                {benefit}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      <Button
-                        onClick={() => onPageChange(erp.id)}
-                        className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-3 rounded-full"
-                      >
-                        Learn More About {erp.name}
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
-
+      <ERPSolutionsGrid
+        solutions={erpSolutions}
+        onLearnMore={(solution) => {
+          console.log("Learn more about:", solution.name);
+        }}
+      />{" "}
       {/* Industries Served */}
-      <AnimatedSection className="px-6 py-16 bg-white">
+      {/* <AnimatedSection className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.h2
@@ -385,10 +249,9 @@ export function ERPSoftwaresPage({
             ))}
           </div>
         </div>
-      </AnimatedSection>
-
+      </AnimatedSection> */}
       {/* Implementation Process */}
-      <AnimatedSection className="px-6 py-16 bg-gradient-to-br from-gray-50 to-white">
+      {/* <AnimatedSection className="px-6 py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <motion.h2
@@ -455,9 +318,8 @@ export function ERPSoftwaresPage({
             ))}
           </div>
         </div>
-      </AnimatedSection>
-
-      <CTASection onPageChange={onPageChange} />
+      </AnimatedSection> */}
+      <CTASection />
     </div>
   );
 }

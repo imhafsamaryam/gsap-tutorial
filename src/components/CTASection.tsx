@@ -1,13 +1,14 @@
 import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { AnimatedSection } from "./ui/animated-section";
+import { Link } from "react-router-dom";
 import React from "react";
 
 interface CTASectionProps {
-  onPageChange: (page: string) => void;
+  // Remove onPageChange prop since we'll use React Router
 }
 
-export function CTASection({ onPageChange }: CTASectionProps) {
+export function CTASection({}: CTASectionProps) {
   return (
     <AnimatedSection
       className="py-20 bg-gradient-to-br from-[#018136]/5 via-white to-[#FFDF58]/10 relative overflow-hidden"
@@ -75,36 +76,36 @@ export function CTASection({ onPageChange }: CTASectionProps) {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                onClick={() => onPageChange("contact")}
-                className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-4 rounded-full text-lg font-medium relative overflow-hidden group min-h-[52px]"
-              >
-                <motion.div className="absolute inset-0 bg-[#016429] -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-                <span className="relative z-10">
-                  Schedule Free Consultation
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20 rounded-full"
-                  animate={{
-                    scale: [0, 1.5, 0],
-                    opacity: [0, 0.5, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeOut",
-                  }}
-                />
-              </Button>
+              <Link to="/contact">
+                <Button className="bg-[#018136] hover:bg-[#016429] text-white px-8 py-4 rounded-full text-lg font-medium relative overflow-hidden group min-h-[52px]">
+                  <motion.div className="absolute inset-0 bg-[#016429] -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                  <span className="relative z-10">
+                    Schedule Free Consultation
+                  </span>
+                  <motion.div
+                    className="absolute inset-0 bg-white/20 rounded-full"
+                    animate={{
+                      scale: [0, 1.5, 0],
+                      opacity: [0, 0.5, 0],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeOut",
+                    }}
+                  />
+                </Button>
+              </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                onClick={() => onPageChange("products")}
-                variant="outline"
-                className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 min-h-[52px] hover:shadow-lg"
-              >
-                Compare Solutions
-              </Button>
+              <Link to="/products">
+                <Button
+                  variant="outline"
+                  className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 min-h-[52px] hover:shadow-lg"
+                >
+                  Compare Solutions
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.div>

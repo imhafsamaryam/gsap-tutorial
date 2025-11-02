@@ -1,4 +1,9 @@
-import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
@@ -26,24 +31,204 @@ import React from "react";
 import { AzurePage } from "./components/pages/subpages/AzurePage";
 import { ERPSoftwaresPage } from "./components/pages/ErpPage";
 import { CloudHostingPage } from "./components/pages/CloudHostingPage";
+import { HardwarePage } from "./components/pages/HardwarePage";
+
+// AnimatedRoutes component to handle page transitions
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location}>
+        <Route
+          path="/"
+          element={
+            <PageWrapper>
+              <HomePage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PageWrapper>
+              <AboutPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <PageWrapper>
+              <ProductsPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <PageWrapper>
+              <ServicesPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageWrapper>
+              <ContactPage />
+            </PageWrapper>
+          }
+        />
+
+        {/* ERP Software Sub-pages */}
+        <Route
+          path="/erp-softwares"
+          element={
+            <PageWrapper>
+              <ERPSoftwaresPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/sage300"
+          element={
+            <PageWrapper>
+              <Sage300Page />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/sage200"
+          element={
+            <PageWrapper>
+              <Sage200Page />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/zoho"
+          element={
+            <PageWrapper>
+              <ZohoPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/busy-erp"
+          element={
+            <PageWrapper>
+              <BusyAccountingPage />
+            </PageWrapper>
+          }
+        />
+
+        {/* Cloud Hosting Sub-pages */}
+        <Route
+          path="/cloud-hosting"
+          element={
+            <PageWrapper>
+              <CloudHostingPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/azure"
+          element={
+            <PageWrapper>
+              <AzurePage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/ts-plus"
+          element={
+            <PageWrapper>
+              <TSPlusPage />
+            </PageWrapper>
+          }
+        />
+
+        {/* Hardware Sub-pages */}
+        <Route
+          path="/hardware"
+          element={
+            <PageWrapper>
+              <HardwarePage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/servers"
+          element={
+            <PageWrapper>
+              <ServersPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/laptops"
+          element={
+            <PageWrapper>
+              <LaptopsPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/desktops"
+          element={
+            <PageWrapper>
+              <DesktopsPage />
+            </PageWrapper>
+          }
+        />
+
+        {/* Service Sub-pages */}
+        <Route
+          path="/product-development"
+          element={
+            <PageWrapper>
+              <ProductDevelopmentPage />
+            </PageWrapper>
+          }
+        />
+        <Route
+          path="/software-support"
+          element={
+            <PageWrapper>
+              <SoftwareSupportPage />
+            </PageWrapper>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+// PageWrapper component to handle scroll-to-top and animations
+function PageWrapper({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
+  return (
+    <motion.main
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="min-h-screen"
+    >
+      {children}
+    </motion.main>
+  );
+}
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
-  const [isPageChanging, setIsPageChanging] = useState(false);
-
-  const handlePageChange = (newPage: string) => {
-    if (newPage === currentPage) return;
-
-    setIsPageChanging(true);
-    setTimeout(() => {
-      setCurrentPage(newPage);
-      setIsPageChanging(false);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 150);
-  };
-
   // Add smooth scrolling for anchor links
-  useEffect(() => {
+  React.useEffect(() => {
     const handleSmoothScroll = (e: Event) => {
       const target = e.target as HTMLAnchorElement;
       if (target.hash) {
@@ -59,76 +244,17 @@ export default function App() {
     return () => document.removeEventListener("click", handleSmoothScroll);
   }, []);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <HomePage onPageChange={handlePageChange} />;
-      case "about":
-        return <AboutPage onPageChange={handlePageChange} />;
-      case "products":
-        return <ProductsPage onPageChange={handlePageChange} />;
-      case "services":
-        return <ServicesPage onPageChange={handlePageChange} />;
-      case "contact":
-        return <ContactPage onPageChange={handlePageChange} />;
-      // ERP Software Sub-pages
-      case "erp-softwares":
-        return <ERPSoftwaresPage onPageChange={handlePageChange} />;
-      case "sage300":
-        return <Sage300Page onPageChange={handlePageChange} />;
-      case "sage200":
-        return <Sage200Page onPageChange={handlePageChange} />;
-      case "zoho":
-        return <ZohoPage onPageChange={handlePageChange} />;
-      case "busy-erp":
-        return <BusyAccountingPage onPageChange={handlePageChange} />;
-      // Cloud Hosting Sub-pages
-      case "cloud-hosting":
-        return <CloudHostingPage onPageChange={handlePageChange} />;
-      case "azure":
-        return <AzurePage onPageChange={handlePageChange} />;
-      case "ts-plus":
-        return <TSPlusPage onPageChange={handlePageChange} />;
-      // Hardware Sub-pages
-      case "servers":
-        return <ServersPage onPageChange={handlePageChange} />;
-      case "laptops":
-        return <LaptopsPage onPageChange={handlePageChange} />;
-      case "desktops":
-        return <DesktopsPage onPageChange={handlePageChange} />;
-      // Service Sub-pages
-      case "product-development":
-        return <ProductDevelopmentPage onPageChange={handlePageChange} />;
-      case "software-support":
-        return <SoftwareSupportPage onPageChange={handlePageChange} />;
-      default:
-        return <HomePage onPageChange={handlePageChange} />;
-    }
-  };
-
   return (
     <PerformanceWrapper>
-      <div className="min-h-screen bg-white">
-        <Navigation currentPage={currentPage} onPageChange={handlePageChange} />
-
-        <AnimatePresence mode="wait">
-          <motion.main
-            key={currentPage}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: isPageChanging ? 0 : 1,
-              y: isPageChanging ? 20 : 0,
-            }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="min-h-screen"
-          >
-            {renderPage()}
-          </motion.main>
-        </AnimatePresence>
-
-        <Footer onPageChange={handlePageChange} />
-      </div>
+      <Router>
+        <div className="min-h-screen bg-white">
+          {/* Remove currentPage prop since Navigation will use useLocation hook */}
+          <Navigation />
+          <AnimatedRoutes />
+          {/* Remove onPageChange prop from Footer since we'll use Link components */}
+          <Footer />
+        </div>
+      </Router>
     </PerformanceWrapper>
   );
 }

@@ -17,14 +17,9 @@ import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
+import { Link } from "react-router-dom";
 
-interface SoftwareSupportPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function SoftwareSupportPage({
-  onPageChange,
-}: SoftwareSupportPageProps) {
+export function SoftwareSupportPage() {
   const features = [
     {
       icon: Clock,
@@ -128,7 +123,6 @@ export function SoftwareSupportPage({
                   Able Software Solution's comprehensive support services. Our
                   expert team provides proactive maintenance, rapid issue
                   resolution, and continuous optimization."
-        onPageChange={onPageChange}
         imgSrc={"/support2.jpg"}
       />
 
@@ -209,10 +203,11 @@ export function SoftwareSupportPage({
                   </motion.div>
                 )}
                 <Card
-                  className={`p-8 h-full ${plan.popular
-                    ? "ring-2 ring-[#018136] shadow-2xl"
-                    : "shadow-lg"
-                    }`}
+                  className={`p-8 h-full ${
+                    plan.popular
+                      ? "ring-2 ring-[#018136] shadow-2xl"
+                      : "shadow-lg"
+                  }`}
                 >
                   <div className="text-center mb-8">
                     <h3 className="text-2xl text-gray-900 mb-2">{plan.name}</h3>
@@ -238,11 +233,11 @@ export function SoftwareSupportPage({
                   </div>
 
                   <Button
-                    onClick={() => onPageChange("contact")}
-                    className={`w-full py-3 rounded-full ${plan.popular
-                      ? "bg-[#018136] hover:bg-[#016429] text-white"
-                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
-                      }`}
+                    className={`w-full py-3 rounded-full ${
+                      plan.popular
+                        ? "bg-[#018136] hover:bg-[#016429] text-white"
+                        : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                    }`}
                     variant={plan.popular ? "default" : "outline"}
                   >
                     Choose Plan
@@ -301,12 +296,11 @@ export function SoftwareSupportPage({
                   Our support team is ready to assist you. Contact us now for
                   immediate help with your systems.
                 </p>
-                <Button
-                  onClick={() => onPageChange("contact")}
-                  className="w-full bg-[#018136] hover:bg-[#016429] text-white py-3 rounded-full"
-                >
-                  Contact Support Team
-                </Button>
+                <Link to="/contact">
+                  <Button className="w-full bg-[#018136] hover:bg-[#016429] text-white py-3 rounded-full">
+                    Contact Support Team
+                  </Button>
+                </Link>
               </Card>
             </motion.div>
           </div>
@@ -314,7 +308,7 @@ export function SoftwareSupportPage({
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

@@ -15,12 +15,9 @@ import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
+import { Link } from "react-router-dom";
 
-interface LaptopsPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
+export function LaptopsPage() {
   const laptopCategories = [
     {
       name: "Business Essentials",
@@ -115,7 +112,6 @@ export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
                   from Able Software Solution. We offer business-class mobile
                   workstations designed for productivity, security, and
                   long-term reliability."
-        onPageChange={onPageChange}
         imgSrc={"/laptops.webp"}
       />
 
@@ -156,19 +152,22 @@ export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
                   </motion.div>
                 )}
                 <Card
-                  className={`p-8 h-full ${laptop.popular
-                    ? "ring-2 ring-[#018136] shadow-2xl"
-                    : "shadow-lg"
-                    }`}
+                  className={`p-8 h-full ${
+                    laptop.popular
+                      ? "ring-2 ring-[#018136] shadow-2xl"
+                      : "shadow-lg"
+                  }`}
                 >
                   <motion.div
-                    className={`w-12 h-12 ${laptop.popular ? "bg-[#018136]" : "bg-[#018136]/10"
-                      } rounded-xl flex items-center justify-center mb-6`}
+                    className={`w-12 h-12 ${
+                      laptop.popular ? "bg-[#018136]" : "bg-[#018136]/10"
+                    } rounded-xl flex items-center justify-center mb-6`}
                     whileHover={{ scale: 1.1 }}
                   >
                     <laptop.icon
-                      className={`w-6 h-6 ${laptop.popular ? "text-white" : "text-[#018136]"
-                        }`}
+                      className={`w-6 h-6 ${
+                        laptop.popular ? "text-white" : "text-[#018136]"
+                      }`}
                     />
                   </motion.div>
 
@@ -191,16 +190,18 @@ export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
                     ))}
                   </div>
 
-                  <Button
-                    onClick={() => onPageChange("contact")}
-                    className={`w-full py-3 rounded-full ${laptop.popular
-                      ? "bg-[#018136] hover:bg-[#016429] text-white"
-                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                  <Link to="/contact">
+                    <Button
+                      className={`w-full py-3 rounded-full ${
+                        laptop.popular
+                          ? "bg-[#018136] hover:bg-[#016429] text-white"
+                          : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
-                    variant={laptop.popular ? "default" : "outline"}
-                  >
-                    Explore Options
-                  </Button>
+                      variant={laptop.popular ? "default" : "outline"}
+                    >
+                      Explore Options
+                    </Button>
+                  </Link>
                 </Card>
               </motion.div>
             ))}
@@ -308,7 +309,7 @@ export function LaptopsPage({ onPageChange }: LaptopsPageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

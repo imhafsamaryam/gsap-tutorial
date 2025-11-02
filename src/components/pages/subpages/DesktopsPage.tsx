@@ -15,12 +15,9 @@ import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
+import { Link } from "react-router-dom";
 
-interface DesktopsPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
+export function DesktopsPage() {
   const desktopCategories = [
     {
       name: "Business Workstations",
@@ -150,7 +147,6 @@ export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
                   Able Software Solution. From office productivity to
                   professional workstations, we deliver systems configured
                   precisely to your requirements."
-        onPageChange={onPageChange}
         imgSrc={"/desktops1.jpeg"}
       />
 
@@ -190,19 +186,22 @@ export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
                   </motion.div>
                 )}
                 <Card
-                  className={`p-8 h-full ${desktop.popular
-                    ? "ring-2 ring-[#018136] shadow-2xl"
-                    : "shadow-lg"
-                    }`}
+                  className={`p-8 h-full ${
+                    desktop.popular
+                      ? "ring-2 ring-[#018136] shadow-2xl"
+                      : "shadow-lg"
+                  }`}
                 >
                   <motion.div
-                    className={`w-12 h-12 ${desktop.popular ? "bg-[#018136]" : "bg-[#018136]/10"
-                      } rounded-xl flex items-center justify-center mb-6`}
+                    className={`w-12 h-12 ${
+                      desktop.popular ? "bg-[#018136]" : "bg-[#018136]/10"
+                    } rounded-xl flex items-center justify-center mb-6`}
                     whileHover={{ scale: 1.1 }}
                   >
                     <desktop.icon
-                      className={`w-6 h-6 ${desktop.popular ? "text-white" : "text-[#018136]"
-                        }`}
+                      className={`w-6 h-6 ${
+                        desktop.popular ? "text-white" : "text-[#018136]"
+                      }`}
                     />
                   </motion.div>
 
@@ -227,16 +226,18 @@ export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
                     ))}
                   </div>
 
-                  <Button
-                    onClick={() => onPageChange("contact")}
-                    className={`w-full py-3 rounded-full ${desktop.popular
-                      ? "bg-[#018136] hover:bg-[#016429] text-white"
-                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                  <Link to="/contact">
+                    <Button
+                      className={`w-full py-3 rounded-full ${
+                        desktop.popular
+                          ? "bg-[#018136] hover:bg-[#016429] text-white"
+                          : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
-                    variant={desktop.popular ? "default" : "outline"}
-                  >
-                    Customize & Order
-                  </Button>
+                      variant={desktop.popular ? "default" : "outline"}
+                    >
+                      Customize & Order
+                    </Button>
+                  </Link>
                 </Card>
               </motion.div>
             ))}
@@ -387,7 +388,7 @@ export function DesktopsPage({ onPageChange }: DesktopsPageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

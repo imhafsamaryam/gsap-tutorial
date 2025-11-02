@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
@@ -9,14 +10,14 @@ import React from "react";
 import FeaturesUpClose from "../featurecard";
 
 interface HomePageProps {
-  onPageChange: (page: string) => void;
+  // Remove onPageChange prop since we'll use React Router
 }
 
-export function HomePage({ onPageChange }: HomePageProps) {
+export function HomePage({}: HomePageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className=" relative min-h-[600px] sm:min-h-[700px] bg-gradient-to-br from-green-50 to-white overflow-hidden">
+      <section className="relative min-h-[600px] sm:min-h-[700px] bg-gradient-to-br from-green-50 to-white overflow-hidden">
         {/* Background geometric shapes */}
         <motion.div
           className="absolute inset-0"
@@ -69,7 +70,7 @@ export function HomePage({ onPageChange }: HomePageProps) {
         </motion.div>
 
         <div className="px-4 relative z-10 max-w-6xl mx-auto py-20 sm:py-32">
-          <div className=" grid grid-cols-1 lg:grid-cols-2 gap-12 items-center  ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, x: -50 }}
@@ -91,8 +92,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Empowering UAE Businesses                <br />
-                with {" "}
+                Empowering UAE Businesses <br />
+                with{" "}
                 <motion.span
                   className="text-[#018136]"
                   animate={{
@@ -104,8 +105,10 @@ export function HomePage({ onPageChange }: HomePageProps) {
                     ease: "easeInOut",
                   }}
                 >
-                  Integrated              </motion.span>
-                Technology              </motion.h1>
+                  Integrated{" "}
+                </motion.span>
+                Technology{" "}
+              </motion.h1>
 
               <motion.p
                 className="text-lg text-gray-600 leading-relaxed max-w-md"
@@ -113,7 +116,9 @@ export function HomePage({ onPageChange }: HomePageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                From Sage ERP implementations and Zoho CRM to custom software, hardware, and ongoing support we're your single source for technology that drives growth.
+                From Sage ERP implementations and Zoho CRM to custom software,
+                hardware, and ongoing support we're your single source for
+                technology that drives growth.
               </motion.p>
 
               <motion.div
@@ -126,25 +131,25 @@ export function HomePage({ onPageChange }: HomePageProps) {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button
-                    onClick={() => onPageChange("contact")}
-                    className="bg-[#FFDF58] hover:bg-[#e6c84d] text-gray-900 px-8 py-3 rounded-full font-medium relative overflow-hidden group min-h-[44px]"
-                  >
-                    <motion.div className="absolute inset-0 bg-[#e6c84d] -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-                    <span className="relative z-10">Get Free Demo</span>
-                  </Button>
+                  <Link to="/contact">
+                    <Button className="bg-[#FFDF58] hover:bg-[#e6c84d] text-gray-900 px-8 py-3 rounded-full font-medium relative overflow-hidden group min-h-[44px]">
+                      <motion.div className="absolute inset-0 bg-[#e6c84d] -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                      <span className="relative z-10">Get Free Demo</span>
+                    </Button>
+                  </Link>
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button
-                    onClick={() => onPageChange("sage300")}
-                    variant="outline"
-                    className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 min-h-[44px]"
-                  >
-                    View Products
-                  </Button>
+                  <Link to="/sage300">
+                    <Button
+                      variant="outline"
+                      className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 min-h-[44px]"
+                    >
+                      View Products
+                    </Button>
+                  </Link>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -379,7 +384,10 @@ export function HomePage({ onPageChange }: HomePageProps) {
           </div>
         </div>
       </AnimatedSection>
+
+      {/* Update FeaturesUpClose component to remove onPageChange prop if it exists */}
       <FeaturesUpClose />
+
       {/* Product Showcase */}
       <AnimatedSection className="py-20 bg-white" animation="fadeInUp">
         <div className="max-w-6xl mx-auto px-6">
@@ -402,7 +410,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                page: "sage300", badge: {
+                page: "/sage300",
+                badge: {
                   text: "Enterprise",
                   className: "bg-[#018136]/10 text-[#018136]",
                 },
@@ -411,7 +420,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
                   "Comprehensive enterprise solution for large organizations with complex requirements.",
               },
               {
-                page: "sage200", badge: {
+                page: "/sage200",
+                badge: {
                   text: "Mid-Market",
                   className: "bg-[#FFDF58]/20 text-gray-800",
                 },
@@ -420,7 +430,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
                   "Perfect for growing businesses that need robust functionality without enterprise complexity.",
               },
               {
-                page: "zoho", badge: {
+                page: "/zoho",
+                badge: {
                   text: "Cloud-Based",
                   className: "bg-[#018136]/10 text-[#018136]",
                 },
@@ -429,7 +440,8 @@ export function HomePage({ onPageChange }: HomePageProps) {
                   "An integrated suite of web-based applications. From CRM and email to projects and finance, run your entire business from one ecosystem.",
               },
               {
-                page: "busy-erp", badge: {
+                page: "/busy-erp",
+                badge: {
                   text: "SME Focused",
                   className: "bg-[#FFDF58]/20 text-gray-800",
                 },
@@ -450,48 +462,48 @@ export function HomePage({ onPageChange }: HomePageProps) {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Card
-                  className="p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer group h-full border-gray-100"
-                  onClick={() => onPageChange(product.page)}
-                >
-                  <CardContent className="p-0 flex flex-col h-full">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Badge className={`${product.badge.className} mb-4`}>
-                        {product.badge.text}
-                      </Badge>
-                    </motion.div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#018136] transition-colors duration-300">
-                      {product.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4 flex-grow leading-relaxed">
-                      {product.description}
-                    </p>
-                    <motion.div
-                      className="text-sm text-[#018136] font-medium group-hover:text-[#016429] transition-colors duration-300 flex items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      Learn More
-                      <motion.span
-                        className="ml-1"
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                <Link to={product.page}>
+                  <Card className="p-6 hover:shadow-2xl transition-all duration-300 cursor-pointer group h-full border-gray-100">
+                    <CardContent className="p-0 flex flex-col h-full">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
                       >
-                        →
-                      </motion.span>
-                    </motion.div>
-                  </CardContent>
-                </Card>
+                        <Badge className={`${product.badge.className} mb-4`}>
+                          {product.badge.text}
+                        </Badge>
+                      </motion.div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-[#018136] transition-colors duration-300">
+                        {product.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-4 flex-grow leading-relaxed">
+                        {product.description}
+                      </p>
+                      <motion.div
+                        className="text-sm text-[#018136] font-medium group-hover:text-[#016429] transition-colors duration-300 flex items-center"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        Learn More
+                        <motion.span
+                          className="ml-1"
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          →
+                        </motion.span>
+                      </motion.div>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </AnimatedSection>
 
-      <CTASection onPageChange={onPageChange} />
+      {/* Update CTASection to remove onPageChange prop */}
+      <CTASection />
     </div>
   );
 }

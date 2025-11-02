@@ -1,0 +1,107 @@
+/* ERPGrid.css */
+.erp-solutions-grid-section {
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, #f0f9f0 0%, #ffffff 100%);
+}
+
+.erp-solutions-container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.erp-solutions-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.erp-solutions-badge {
+  background-color: rgba(1, 129, 54, 0.1);
+  color: #018136;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  font-size: 0.75rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+.erp-solutions-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.erp-solutions-subtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.erp-solutions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.erp-solutions-footer {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.erp-solutions-footer-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.erp-solutions-footer-highlight {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Animation classes for grid */
+.erp-solutions-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.erp-solutions-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .erp-solutions-grid-section {
+    padding: 3rem 1rem;
+  }
+
+  .erp-solutions-title {
+    font-size: 1.875rem;
+  }
+
+  .erp-solutions-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .erp-solutions-header {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .erp-solutions-title {
+    font-size: 1.5rem;
+  }
+
+  .erp-solutions-subtitle {
+    font-size: 1rem;
+  }
+}

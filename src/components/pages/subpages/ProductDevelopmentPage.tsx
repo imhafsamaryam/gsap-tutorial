@@ -28,13 +28,7 @@ import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
 
-interface ProductDevelopmentPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function ProductDevelopmentPage({
-  onPageChange,
-}: ProductDevelopmentPageProps) {
+export function ProductDevelopmentPage() {
   const services = [
     {
       title: "Website Development",
@@ -62,21 +56,33 @@ export function ProductDevelopmentPage({
       description:
         "RESTful and GraphQL APIs with seamless third-party system integrations for connected digital ecosystems",
       image: "/api.jpg",
-      features: ["REST & GraphQL", "WebSocket Support", "Third-party Integration"],
+      features: [
+        "REST & GraphQL",
+        "WebSocket Support",
+        "Third-party Integration",
+      ],
     },
     {
       title: "CMS Development",
       description:
         "Custom content management systems that empower your team to manage content efficiently without technical expertise",
       image: "/cms.jpg",
-      features: ["User-friendly Admin", "Custom Content Types", "Multi-user Roles"],
+      features: [
+        "User-friendly Admin",
+        "Custom Content Types",
+        "Multi-user Roles",
+      ],
     },
     {
       title: "User Interface Design",
       description:
         "Beautiful, intuitive user interfaces that enhance user experience and drive engagement across all platforms",
       image: "/product.jpg",
-      features: ["User-centered Design", "Interactive Prototypes", "Design Systems"],
+      features: [
+        "User-centered Design",
+        "Interactive Prototypes",
+        "Design Systems",
+      ],
     },
   ];
 
@@ -138,7 +144,6 @@ export function ProductDevelopmentPage({
         title1="Product Development"
         title2="Services"
         description="Transform your business ideas into robust, scalable software solutions. Able Software Solution delivers custom development services that align perfectly with your unique business requirements and strategic goals."
-        onPageChange={onPageChange}
         imgSrc={"/product1.jpg"}
       />
 
@@ -182,17 +187,14 @@ export function ProductDevelopmentPage({
       {/* Services */}
       <AnimatedSection className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
-
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-
               <Badge className="bg-[#018136]/10 text-[#018136] px-4 py-2 uppercase">
                 Our Expertise
-
               </Badge>
               <motion.h2
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 py-4"
@@ -220,7 +222,6 @@ export function ProductDevelopmentPage({
                 className="group cursor-pointer"
               >
                 <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300 border-0 rounded-3xl">
-
                   <motion.div
                     className=" rounded-3xl-top overflow-hidden"
                     transition={{ duration: 0.3 }}
@@ -240,7 +241,10 @@ export function ProductDevelopmentPage({
                     <p className="text-gray-600 mb-4">{service.description}</p>
                     <div className="space-y-2">
                       {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-sm text-gray-500">
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 text-sm text-gray-500"
+                        >
                           <CheckCircle className="w-4 h-4 text-[#018136] " />
                           {feature}
                         </div>
@@ -263,10 +267,8 @@ export function ProductDevelopmentPage({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-
               <Badge className="bg-[#018136]/10 text-[#018136] px-4 py-2 uppercase">
                 How We Work
-
               </Badge>
               <motion.h2
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 py-4"
@@ -278,8 +280,8 @@ export function ProductDevelopmentPage({
                 Our Development Process
               </motion.h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                A proven methodology that ensures on-time delivery, quality code,
-                and successful project outcomes
+                A proven methodology that ensures on-time delivery, quality
+                code, and successful project outcomes
               </p>
             </motion.div>
           </div>
@@ -299,9 +301,7 @@ export function ProductDevelopmentPage({
                       {/* <div className={`w-16 h-16 bg-gradient-to-r ${item.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                         <item.icon className="w-8 h-8 text-white" />
                       </div> */}
-                      <div
-                        className=" overflow-hidden"
-                      >
+                      <div className=" overflow-hidden">
                         <img
                           src={item.icon}
                           alt={item.title}
@@ -337,10 +337,8 @@ export function ProductDevelopmentPage({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-
               <Badge className="bg-[#018136]/10 text-[#018136] px-4 py-2 uppercase">
                 Our Stack
-
               </Badge>
               <motion.h2
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 py-4"
@@ -352,12 +350,11 @@ export function ProductDevelopmentPage({
                 Technologies We Work With
               </motion.h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Modern technology stack for building robust, scalable, and secure
-                applications
+                Modern technology stack for building robust, scalable, and
+                secure applications
               </p>
             </motion.div>
           </div>
-
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {technologies.map((tech, index) => (
@@ -373,7 +370,9 @@ export function ProductDevelopmentPage({
                 <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-[#018136] transition-colors duration-300 shadow-sm">
                   <tech.icon className="w-6 h-6 text-[#018136] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-gray-900 font-medium text-sm">{tech.name}</h3>
+                <h3 className="text-gray-900 font-medium text-sm">
+                  {tech.name}
+                </h3>
                 <div className="mt-2">
                   <Badge variant="outline" className="text-xs bg-white/50">
                     {tech.category}
@@ -386,7 +385,7 @@ export function ProductDevelopmentPage({
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

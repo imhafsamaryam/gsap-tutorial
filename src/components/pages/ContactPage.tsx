@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
@@ -17,10 +18,10 @@ import { CollapsibleFAQ } from "../ui/collapsible-faq";
 import React from "react";
 
 interface ContactPageProps {
-  onPageChange: (page: string) => void;
+  // Remove onPageChange prop since we'll use React Router
 }
 
-export function ContactPage({ onPageChange }: ContactPageProps) {
+export function ContactPage({}: ContactPageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -342,42 +343,11 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                       </h3>
                       <div className="space-y-1 text-gray-600">
                         <p>Hamriyah Free Zone, Sharjah, UAE</p>
-
                       </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-
-              {/* <Card className="p-8 hover:shadow-xl transition-shadow">
-                <CardContent className="p-0">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-[#FFDF58]/20 flex items-center justify-center flex-shrink-0">
-                      <svg
-                        className="w-6 h-6 text-gray-800"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div className="space-y-3">
-                      <h3 className="font-semibold text-gray-900">
-                        Regional Office
-                      </h3>
-                      <div className="space-y-1 text-gray-600">
-                        <p>456 Enterprise Boulevard</p>
-                        <p>Floor 12, Innovation Center</p>
-                        <p>New York, NY 10001</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card> */}
 
               {/* Contact Methods */}
               <div className="space-y-6">
@@ -406,74 +376,6 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                       </div>
                     </div>
                   </div>
-
-                  {/* <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FFDF58]/20 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-gray-800"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="font-medium text-gray-900">
-                        Sales Email
-                      </div>
-                      <div className="text-gray-600">
-                        sales@erpsolutions.com
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        Response within 2 hours
-                      </div>
-                    </div>
-                  </div> */}
-
-                  {/* <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 rounded-full bg-[#018136]/10 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-[#018136]"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="font-medium text-gray-900">Live Chat</div>
-                      <div className="text-gray-600">Available on website</div>
-                      <div className="text-sm text-gray-500">
-                        24/7 support available
-                      </div>
-                    </div>
-                  </div> */}
-
-                  {/* <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 rounded-full bg-[#FFDF58]/20 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-gray-800"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="font-medium text-gray-900">
-                        Support Hotline
-                      </div>
-                      <div className="text-gray-600">+1 (800) 555-0299</div>
-                      <div className="text-sm text-gray-500">
-                        24/7 technical support
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
 
@@ -484,40 +386,46 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Button
-                    onClick={() => onPageChange("sage300")}
-                    variant="outline"
-                    className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
-                  >
-                    View Products
-                  </Button>
-                  <Button
-                    onClick={() => onPageChange("ts-plus")}
-                    variant="outline"
-                    className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
-                  >
-                    Cloud Hosting
-                  </Button>
-                  <Button
-                    onClick={() => onPageChange("laptops")}
-                    variant="outline"
-                    className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
-                  >
-                    Hardware Solutions
-                  </Button>
-                  <Button
-                    onClick={() => onPageChange("about")}
-                    variant="outline"
-                    className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
-                  >
-                    About Our Team
-                  </Button>
+                  <Link to="/sage300">
+                    <Button
+                      variant="outline"
+                      className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
+                    >
+                      View Products
+                    </Button>
+                  </Link>
+                  <Link to="/ts-plus">
+                    <Button
+                      variant="outline"
+                      className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
+                    >
+                      Cloud Hosting
+                    </Button>
+                  </Link>
+                  <Link to="/laptops">
+                    <Button
+                      variant="outline"
+                      className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
+                    >
+                      Hardware Solutions
+                    </Button>
+                  </Link>
+                  <Link to="/about">
+                    <Button
+                      variant="outline"
+                      className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
+                    >
+                      About Our Team
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Map Section */}
       <section className="my-16 max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">
           Find Us On The Map
@@ -534,6 +442,7 @@ export function ContactPage({ onPageChange }: ContactPageProps) {
           ></iframe>
         </div>
       </section>
+
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-br from-green-50 to-white">
         <div className="max-w-4xl mx-auto px-6">

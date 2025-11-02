@@ -18,11 +18,7 @@ import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
 
-interface Sage200PageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function Sage200Page({ onPageChange }: Sage200PageProps) {
+export function Sage200Page() {
   const features = [
     {
       icon: Users,
@@ -115,7 +111,6 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
         description="Comprehensive ERP software designed for growing businesses.
                   Manage finances, operations, and customer relationships from a
                   single, integrated platform."
-        onPageChange={onPageChange}
         imgSrc={"/sage200.png"}
       />
 
@@ -136,7 +131,6 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
               Sage 200 provides everything you need to manage your business
               operations efficiently
             </p>
-
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -183,7 +177,6 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
               Core modules included with additional options for complete
               business management
             </p>
-
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
@@ -259,7 +252,6 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
               Our structured approach ensures successful Sage 200 deployment
               with minimal disruption
             </p>
-
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
@@ -308,7 +300,7 @@ export function Sage200Page({ onPageChange }: Sage200PageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

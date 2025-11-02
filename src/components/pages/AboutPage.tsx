@@ -8,11 +8,7 @@ import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { AnimatedSection } from "../ui/animated-section";
 
-interface AboutPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function AboutPage({ onPageChange }: AboutPageProps) {
+export function AboutPage() {
   return (
     <div className="min-h-screen bg-white ">
       <AnimatedSection className=" bg-gradient-to-br from-green-50 to-white relative overflow-hidden">
@@ -31,10 +27,13 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 ABOUT US
               </Badge>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-center">
-                Leading ERP Solutions Provider  <span className="  text-[#018136]">Since 2015 </span>
+                Leading ERP Solutions Provider{" "}
+                <span className="  text-[#018136]">Since 2015 </span>
               </h1>
               <p className="text-[20px] text-gray-600 leading-relaxed text-center max-w-3xl ">
-                We've been helping businesses optimize their operations through cutting-edge technology solutions, transforming how companies manage their resources and drive growth.
+                We've been helping businesses optimize their operations through
+                cutting-edge technology solutions, transforming how companies
+                manage their resources and drive growth.
               </p>
             </motion.div>
           </div>
@@ -134,10 +133,11 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 {[
                   "At Able Software Solutions, our mission is to empower businesses with cutting-edge technology solutions that drive growth, efficiency, and innovation. We believe that the right software can transform how businesses operate, making them more agile, productive, and competitive in today's fast-paced market.",
                   "We're committed to understanding each client's unique challenges and goals, allowing us to recommend and implement solutions that deliver real value. Our approach is collaborative and client-focused, ensuring that the technology we provide aligns perfectly with your business objectives.",
-                  "Beyond just providing software, we aim to be a trusted technology partner for our clients, offering ongoing support, training, and consultation to help them maximize their investment and adapt to changing business needs."
+                  "Beyond just providing software, we aim to be a trusted technology partner for our clients, offering ongoing support, training, and consultation to help them maximize their investment and adapt to changing business needs.",
                 ].map((text, index) => (
                   <motion.p
-                    key={index} style={{ textAlign: "justify" }}
+                    key={index}
+                    style={{ textAlign: "justify" }}
                     className="text-md leading-relaxed text-gray-600  "
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -192,10 +192,11 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 {[
                   "Our vision is to be the most trusted and innovative ERP solutions provider, recognized for our ability to transform businesses through technology that not only meets today's needs but also anticipates tomorrow's challenges.",
                   "We envision a future where every business, regardless of size, has access to enterprise-level technology that drives efficiency, fosters innovation, and creates sustainable competitive advantages in an increasingly digital world.",
-                  "Through continuous innovation and unwavering commitment to our clients' success, we aim to set new standards in the ERP industry while maintaining the personal touch and deep partnerships that have defined our journey since 2015."
+                  "Through continuous innovation and unwavering commitment to our clients' success, we aim to set new standards in the ERP industry while maintaining the personal touch and deep partnerships that have defined our journey since 2015.",
                 ].map((text, index) => (
                   <motion.p
-                    key={index} style={{ textAlign: "justify" }}
+                    key={index}
+                    style={{ textAlign: "justify" }}
                     className="text-md leading-relaxed text-gray-600"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -296,33 +297,37 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
               {
                 icon: "",
                 title: "Built on Trust,",
-                description: " Driven by Purpose"
+                description: " Driven by Purpose",
               },
               {
                 icon: "/innovation.png",
                 title: "Innovation",
-                description: "We continuously explore new technologies and methodologies to provide our clients with cutting-edge solutions that keep them ahead in today's competitive business environment."
+                description:
+                  "We continuously explore new technologies and methodologies to provide our clients with cutting-edge solutions that keep them ahead in today's competitive business environment.",
               },
               {
                 icon: "/experience.png",
                 title: "Client Focus",
-                description: "We put our clients at the center of everything we do, taking the time to understand their unique needs and challenges to deliver tailored solutions that drive real business value."
+                description:
+                  "We put our clients at the center of everything we do, taking the time to understand their unique needs and challenges to deliver tailored solutions that drive real business value.",
               },
               {
                 icon: "/technology.png",
                 title: "Excellence",
-                description: "We strive for excellence in every aspect of our work, from the quality of our software implementations to the level of support we provide, ensuring that we exceed client expectations."
+                description:
+                  "We strive for excellence in every aspect of our work, from the quality of our software implementations to the level of support we provide, ensuring that we exceed client expectations.",
               },
               {
                 icon: "/quality-assurance.png",
                 title: "Reliability",
-                description: "We are committed to being a dependable partner for our clients, delivering on our promises and providing consistent, high-quality service they can count on."
+                description:
+                  "We are committed to being a dependable partner for our clients, delivering on our promises and providing consistent, high-quality service they can count on.",
               },
               {
                 icon: "",
                 title: " Rooted in Integrity, ",
-                description: " Growing with You"
-              }
+                description: " Growing with You",
+              },
             ].map((value, index) => (
               <motion.div
                 key={index}
@@ -332,38 +337,44 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
               >
-                {value.icon !== "" ? <Card className="p-6 text-center hover:shadow-xl transition-shadow h-full">
-                  <CardContent className="p-0 flex flex-col items-center justify-center h-full">
-                    <motion.div
-                      className="w-16 h-16 mx-auto flex items-center justify-center mb-4"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <img
-                        src={value.icon}
-                        alt={value.title}
-                        className="w-full h-full rounded-xl"
-                      />
-                    </motion.div>
+                {value.icon !== "" ? (
+                  <Card className="p-6 text-center hover:shadow-xl transition-shadow h-full">
+                    <CardContent className="p-0 flex flex-col items-center justify-center h-full">
+                      <motion.div
+                        className="w-16 h-16 mx-auto flex items-center justify-center mb-4"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <img
+                          src={value.icon}
+                          alt={value.title}
+                          className="w-full h-full rounded-xl"
+                        />
+                      </motion.div>
 
-                    <h3 className="text-md font-semibold text-gray-900 mb-2">
-                      {value.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">
-                      {value.description}
-                    </p>
-                  </CardContent>
-                </Card> :
-                  <div className="p-6 text-left    h-full">
-                    <div style={{ "justify-content": "end" }} className="p-0 flex flex-col items-end justify-end h-full">
-
-
-                      <h3 className="text-3xl   lg:text-4xl  text-gray-900 leading-tight text-left">
-                        {value.title} <span className="  text-[#018136]">{value.description} </span>
+                      <h3 className="text-md font-semibold text-gray-900 mb-2">
+                        {value.title}
                       </h3>
-
+                      <p className="text-gray-600 text-sm mb-4">
+                        {value.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ) : (
+                  <div className="p-6 text-left    h-full">
+                    <div
+                      style={{ "justify-content": "end" }}
+                      className="p-0 flex flex-col items-end justify-end h-full"
+                    >
+                      <h3 className="text-3xl   lg:text-4xl  text-gray-900 leading-tight text-left">
+                        {value.title}{" "}
+                        <span className="  text-[#018136]">
+                          {value.description}{" "}
+                        </span>
+                      </h3>
                     </div>
-                  </div>}
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
@@ -409,26 +420,29 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 color: "bg-[#018136]/10",
                 dotColor: "bg-[#018136]",
                 title: "ERP Specialists",
-                description: "Certified professionals with deep expertise in various ERP platforms and implementation methodologies.",
+                description:
+                  "Certified professionals with deep expertise in various ERP platforms and implementation methodologies.",
                 badge: "25+ Specialists",
-                badgeColor: "bg-[#018136]/10 text-[#018136]"
+                badgeColor: "bg-[#018136]/10 text-[#018136]",
               },
               {
                 color: "bg-[#FFDF58]/20",
                 dotColor: "bg-[#FFDF58]",
                 title: "Implementation Experts",
-                description: "Project managers and technical consultants who ensure smooth deployment and user adoption.",
+                description:
+                  "Project managers and technical consultants who ensure smooth deployment and user adoption.",
                 badge: "15+ Experts",
-                badgeColor: "bg-[#FFDF58]/20 text-gray-800"
+                badgeColor: "bg-[#FFDF58]/20 text-gray-800",
               },
               {
                 color: "bg-[#018136]/10",
                 dotColor: "bg-[#018136]",
                 title: "Support Staff",
-                description: "Dedicated support team providing 24/7 assistance and ongoing system maintenance.",
+                description:
+                  "Dedicated support team providing 24/7 assistance and ongoing system maintenance.",
                 badge: "20+ Staff",
-                badgeColor: "bg-[#018136]/10 text-[#018136]"
-              }
+                badgeColor: "bg-[#018136]/10 text-[#018136]",
+              },
             ].map((team, index) => (
               <motion.div
                 key={index}
@@ -440,8 +454,12 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
               >
                 <Card className="p-6 text-center hover:shadow-xl transition-shadow h-full">
                   <CardContent className="p-0">
-                    <div className={`w-16 h-16 rounded-full ${team.color} mx-auto mb-4 flex items-center justify-center`}>
-                      <div className={`w-8 h-8 rounded-full ${team.dotColor}`}></div>
+                    <div
+                      className={`w-16 h-16 rounded-full ${team.color} mx-auto mb-4 flex items-center justify-center`}
+                    >
+                      <div
+                        className={`w-8 h-8 rounded-full ${team.dotColor}`}
+                      ></div>
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       {team.title}
@@ -449,9 +467,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                     <p className="text-gray-600 text-sm mb-4">
                       {team.description}
                     </p>
-                    <Badge className={team.badgeColor}>
-                      {team.badge}
-                    </Badge>
+                    <Badge className={team.badgeColor}>{team.badge}</Badge>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -516,20 +532,23 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
                 year: "2023",
                 badgeColor: "bg-[#FFDF58]/20 text-gray-800",
                 title: "ERP Partner of the Year",
-                description: "Recognized by Sage for outstanding implementation success and customer satisfaction"
+                description:
+                  "Recognized by Sage for outstanding implementation success and customer satisfaction",
               },
               {
                 year: "2023",
                 badgeColor: "bg-[#018136]/10 text-[#018136]",
                 title: "ISO 27001 Certified",
-                description: "Information security management certification ensuring data protection"
+                description:
+                  "Information security management certification ensuring data protection",
               },
               {
                 year: "2022",
                 badgeColor: "bg-[#FFDF58]/20 text-gray-800",
                 title: "Best Customer Support",
-                description: "Industry award for exceptional 24/7 customer support and service quality"
-              }
+                description:
+                  "Industry award for exceptional 24/7 customer support and service quality",
+              },
             ].map((achievement, index) => (
               <motion.div
                 key={index}
@@ -558,7 +577,7 @@ export function AboutPage({ onPageChange }: AboutPageProps) {
         </div>
       </AnimatedSection>
 
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

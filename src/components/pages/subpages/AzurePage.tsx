@@ -24,14 +24,9 @@ import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
+ 
 
-interface AzurePageProps {
-    onPageChange: (page: string) => void;
-}
-
-export function AzurePage({
-    onPageChange,
-}: AzurePageProps) {
+export function AzurePage( ) {
     const services = [
         {
             title: "Azure Virtual Machines",
@@ -164,8 +159,7 @@ export function AzurePage({
                 title1="Microsoft Azure"
                 title2="Cloud Services"
                 description="Transform your business with Microsoft Azure's comprehensive cloud platform. Able Software Solution delivers enterprise-grade cloud solutions that scale with your business and drive digital transformation."
-                onPageChange={onPageChange}
-                imgSrc={"/azure.png"}
+                 imgSrc={"/azure.png"}
             />
 
             {/* Stats Section */}
@@ -434,7 +428,7 @@ export function AzurePage({
             </AnimatedSection>
 
             {/* CTA Section */}
-            <CTASection onPageChange={onPageChange} />
+            <CTASection  />
         </div>
     );
 }

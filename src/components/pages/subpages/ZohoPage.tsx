@@ -18,12 +18,9 @@ import { ImageWithFallback } from "../../figma/ImageWithFallback";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
+import { Link } from "react-router-dom";
 
-interface ZohoPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function ZohoPage({ onPageChange }: ZohoPageProps) {
+export function ZohoPage() {
   const features = [
     {
       icon: Cloud,
@@ -171,7 +168,6 @@ export function ZohoPage({ onPageChange }: ZohoPageProps) {
                 partner in Dubai, Able Software Solution empowers businesses to
                 leverage Zoho's comprehensive suite—from CRM and accounting to
                 HR and automation tools."
-        onPageChange={onPageChange}
         imgSrc={"/zoho.webp"}
       />
 
@@ -250,12 +246,11 @@ export function ZohoPage({ onPageChange }: ZohoPageProps) {
                       <p className="text-lg text-gray-600 mb-6">
                         {product.description}
                       </p>
-                      <Button
-                        onClick={() => onPageChange("contact")}
-                        className="bg-[#018136] hover:bg-[#016429] text-white px-6 py-2 rounded-full"
-                      >
-                        Learn More
-                      </Button>
+                      <Link to="/contact">
+                        <Button className="bg-[#018136] hover:bg-[#016429] text-white px-6 py-2 rounded-full">
+                          Learn More
+                        </Button>
+                      </Link>
                     </div>
                     <div className="space-y-3">
                       {product.features.map((feature, featureIndex) => (
@@ -372,7 +367,7 @@ export function ZohoPage({ onPageChange }: ZohoPageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

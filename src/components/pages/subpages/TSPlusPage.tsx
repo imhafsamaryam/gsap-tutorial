@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { Button } from "../../ui/button";
 import { Card } from "../../ui/card";
 import { Badge } from "../../ui/badge";
@@ -18,11 +19,7 @@ import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
 import React from "react";
 
-interface TSPlusPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
+export function TSPlusPage() {
   const features = [
     {
       icon: Monitor,
@@ -145,7 +142,6 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
         description=" Powerful and affordable remote desktop solution that enables
                   secure access to Windows applications from any device,
                   anywhere in the world."
-        onPageChange={onPageChange}
         imgSrc={"/tsplus.png"}
       />
 
@@ -264,10 +260,11 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                   </motion.div>
                 )}
                 <Card
-                  className={`p-8 h-full ${pkg.popular
-                    ? "ring-2 ring-[#018136] shadow-2xl"
-                    : "shadow-lg"
-                    }`}
+                  className={`p-8 h-full ${
+                    pkg.popular
+                      ? "ring-2 ring-[#018136] shadow-2xl"
+                      : "shadow-lg"
+                  }`}
                 >
                   <div className="text-center mb-8">
                     <h3 className="text-2xl text-gray-900 mb-2">{pkg.name}</h3>
@@ -298,16 +295,18 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                     ))}
                   </div>
 
-                  <Button
-                    onClick={() => onPageChange("contact")}
-                    className={`w-full py-3 rounded-full ${pkg.popular
-                      ? "bg-[#018136] hover:bg-[#016429] text-white"
-                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                  <Link to="/contact">
+                    <Button
+                      className={`w-full py-3 rounded-full ${
+                        pkg.popular
+                          ? "bg-[#018136] hover:bg-[#016429] text-white"
+                          : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
-                    variant={pkg.popular ? "default" : "outline"}
-                  >
-                    Get Started
-                  </Button>
+                      variant={pkg.popular ? "default" : "outline"}
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
                 </Card>
               </motion.div>
             ))}
@@ -426,12 +425,11 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
                   Contact us for a free consultation and see how TS Plus can
                   transform your business.
                 </p>
-                <Button
-                  onClick={() => onPageChange("contact")}
-                  className="w-full bg-[#018136] hover:bg-[#016429] text-white py-3 rounded-full"
-                >
-                  Schedule Consultation
-                </Button>
+                <Link to="/contact">
+                  <Button className="w-full bg-[#018136] hover:bg-[#016429] text-white py-3 rounded-full">
+                    Schedule Consultation
+                  </Button>
+                </Link>
               </Card>
             </motion.div>
           </div>
@@ -439,7 +437,7 @@ export function TSPlusPage({ onPageChange }: TSPlusPageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }

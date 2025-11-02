@@ -1,0 +1,282 @@
+/* ERPSolutionSection.css */
+.erp-solution-section {
+  margin-bottom: 5rem;
+}
+
+.erp-solution-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .erp-solution-container {
+    flex-direction: row;
+  }
+
+  .erp-solution-container.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.erp-solution-image-container {
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .erp-solution-image-container {
+    width: 50%;
+  }
+}
+
+.erp-solution-image-wrapper {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+}
+
+.erp-solution-image-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.erp-solution-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  border-radius: 1rem;
+}
+
+.erp-solution-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.erp-solution-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.3),
+    transparent,
+    transparent
+  );
+}
+
+.erp-solution-icon-container {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.erp-solution-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: white;
+}
+
+.erp-solution-content {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .erp-solution-content {
+    width: 50%;
+  }
+}
+
+.erp-solution-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.erp-solution-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .erp-solution-title {
+    font-size: 2.25rem;
+  }
+}
+
+.erp-solution-badge {
+  background-color: rgba(1, 129, 54, 0.1);
+  color: #018136;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  font-size: 0.75rem;
+  display: inline-block;
+  border: none;
+  align-self: flex-start;
+}
+
+.erp-solution-description {
+  font-size: 1.25rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.erp-solution-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .erp-solution-features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.erp-solution-features-column,
+.erp-solution-benefits-column {
+  flex: 1;
+}
+
+.erp-solution-subtitle {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.erp-solution-subtitle-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #018136;
+}
+
+.erp-solution-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.erp-solution-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #6b7280;
+}
+
+.erp-solution-list-bullet {
+  width: 0.375rem;
+  height: 0.375rem;
+  background-color: #018136;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+
+.erp-solution-list-text {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.erp-solution-button {
+  background-color: #018136;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.erp-solution-button:hover {
+  background-color: #016429;
+}
+
+.erp-solution-button-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.erp-solution-button:hover .erp-solution-button-icon {
+  transform: translateX(0.25rem);
+}
+
+/* Animation classes */
+.erp-solution-fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.erp-solution-fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Color utilities for gradients */
+.from-blue-500.to-cyan-500 {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+}
+
+.from-purple-500.to-pink-500 {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+.from-green-500.to-emerald-500 {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.from-orange-500.to-red-500 {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+/* New color scheme matching HeroSection */
+.gradient-blue-cyan {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+}
+
+.gradient-purple-pink {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+.gradient-green-emerald {
+  background: linear-gradient(135deg, #018136, #059669);
+}
+
+.gradient-orange-red {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+}

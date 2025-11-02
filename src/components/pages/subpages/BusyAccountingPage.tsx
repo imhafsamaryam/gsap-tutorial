@@ -16,12 +16,9 @@ import {
 } from "lucide-react";
 import { CTASection } from "../../CTASection";
 import { HeroSection } from "../../HeroSection";
+import { Link } from "react-router-dom";
 
-interface BusyAccountingPageProps {
-  onPageChange: (page: string) => void;
-}
-
-export function BusyAccountingPage({ onPageChange }: BusyAccountingPageProps) {
+export function BusyAccountingPage() {
   const features = [
     {
       icon: IndianRupee,
@@ -127,7 +124,6 @@ export function BusyAccountingPage({ onPageChange }: BusyAccountingPageProps) {
         description="UAE's most trusted accounting software with comprehensive
                   GST compliance, inventory management, and business
                   intelligence for all business sizes."
-        onPageChange={onPageChange}
         imgSrc={"/erpsoftwares.jpg"}
       />
 
@@ -267,10 +263,11 @@ export function BusyAccountingPage({ onPageChange }: BusyAccountingPageProps) {
                   </motion.div>
                 )}
                 <Card
-                  className={`p-8 h-full ${version.popular
-                    ? "ring-2 ring-[#018136] shadow-2xl"
-                    : "shadow-lg"
-                    }`}
+                  className={`p-8 h-full ${
+                    version.popular
+                      ? "ring-2 ring-[#018136] shadow-2xl"
+                      : "shadow-lg"
+                  }`}
                 >
                   <div className="text-center mb-8">
                     <h3 className="text-2xl text-gray-900 mb-2">
@@ -303,16 +300,18 @@ export function BusyAccountingPage({ onPageChange }: BusyAccountingPageProps) {
                     ))}
                   </div>
 
-                  <Button
-                    onClick={() => onPageChange("contact")}
-                    className={`w-full py-3 rounded-full ${version.popular
-                      ? "bg-[#018136] hover:bg-[#016429] text-white"
-                      : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
+                  <Link to="/contact">
+                    <Button
+                      className={`w-full py-3 rounded-full ${
+                        version.popular
+                          ? "bg-[#018136] hover:bg-[#016429] text-white"
+                          : "border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white"
                       }`}
-                    variant={version.popular ? "default" : "outline"}
-                  >
-                    Get Started
-                  </Button>
+                      variant={version.popular ? "default" : "outline"}
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
                 </Card>
               </motion.div>
             ))}
@@ -380,7 +379,7 @@ export function BusyAccountingPage({ onPageChange }: BusyAccountingPageProps) {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <CTASection onPageChange={onPageChange} />
+      <CTASection />
     </div>
   );
 }
