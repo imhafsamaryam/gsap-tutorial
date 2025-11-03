@@ -83,7 +83,7 @@ export function HomePage({}: HomePageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                SINCE 2015
+                SINCE 2020
               </motion.div>
 
               <motion.h1

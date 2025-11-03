@@ -192,7 +192,7 @@ export function AboutPage() {
                 {[
                   "Our vision is to be the most trusted and innovative ERP solutions provider, recognized for our ability to transform businesses through technology that not only meets today's needs but also anticipates tomorrow's challenges.",
                   "We envision a future where every business, regardless of size, has access to enterprise-level technology that drives efficiency, fosters innovation, and creates sustainable competitive advantages in an increasingly digital world.",
-                  "Through continuous innovation and unwavering commitment to our clients' success, we aim to set new standards in the ERP industry while maintaining the personal touch and deep partnerships that have defined our journey since 2015.",
+                  "Through continuous innovation and unwavering commitment to our clients' success, we aim to set new standards in the ERP industry while maintaining the personal touch and deep partnerships that have defined our journey since 2020.",
                 ].map((text, index) => (
                   <motion.p
                     key={index}
