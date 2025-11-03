@@ -104,7 +104,7 @@ export function Footer({}: FooterProps) {
                   </svg>
                 </div>
                 <span className="text-gray-600 text-sm">
-                  7:30AM-5:30PM (Sun – Thur)
+                  8:00AM-5:00PM (Mon – Fri)
                 </span>
               </div>
             </div>

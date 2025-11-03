@@ -372,7 +372,7 @@ export function ContactPage({}: ContactPageProps) {
                       </div>
                       <div className="text-gray-600">+971 585198723</div>
                       <div className="text-sm text-gray-500">
-                        Sun-Thurs 7:30AM-5:30PM GST
+                        Mon-Fri 8:00AM-5:00PM GST
                       </div>
                     </div>
                   </div>
