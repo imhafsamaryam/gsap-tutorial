@@ -72,7 +72,7 @@ export function Navigation({}: NavigationProps) {
             {
               id: "busy-erp",
               label: "Busy ERP",
-              description: "GST-ready accounting solution",
+              description: "VAT Compliant accounting solution",
               path: "/busy-erp",
             },
             {

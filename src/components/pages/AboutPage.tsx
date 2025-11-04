@@ -28,7 +28,7 @@ export function AboutPage() {
               </Badge>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight text-center">
                 Leading ERP Solutions Provider{" "}
-                <span className="  text-[#018136]">Since 2015 </span>
+                <span className="  text-[#018136]">Since 2020 </span>
               </h1>
               <p className="text-[20px] text-gray-600 leading-relaxed text-center max-w-3xl ">
                 We've been helping businesses optimize their operations through
@@ -43,7 +43,7 @@ export function AboutPage() {
       {/* <HeroSection
         badge={" ABOUT US "}
         title1=" Leading ERP Solutions Provider "
-        title2="Since 2015"
+        title2="Since 2020"
         description=" We've been helping businesses optimize their operations through
                 cutting-edge technology solutions, transforming how companies
                 manage their resources and drive growth."
@@ -422,7 +422,7 @@ export function AboutPage() {
                 title: "ERP Specialists",
                 description:
                   "Certified professionals with deep expertise in various ERP platforms and implementation methodologies.",
-                badge: "25+ Specialists",
+                badge: "",
                 badgeColor: "bg-[#018136]/10 text-[#018136]",
               },
               {
@@ -431,7 +431,7 @@ export function AboutPage() {
                 title: "Implementation Experts",
                 description:
                   "Project managers and technical consultants who ensure smooth deployment and user adoption.",
-                badge: "15+ Experts",
+                badge: " Exp15+erts",
                 badgeColor: "bg-[#FFDF58]/20 text-gray-800",
               },
               {
@@ -467,7 +467,7 @@ export function AboutPage() {
                     <p className="text-gray-600 text-sm mb-4">
                       {team.description}
                     </p>
-                    <Badge className={team.badgeColor}>{team.badge}</Badge>
+                    {/* <Badge className={team.badgeColor}>{team.badge}</Badge> */}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -477,7 +477,7 @@ export function AboutPage() {
       </AnimatedSection>
 
       {/* Achievements */}
-      <AnimatedSection
+      {/* <AnimatedSection
         className="py-20 bg-gradient-to-br from-[#018136]/5 via-white to-[#FFDF58]/10 relative overflow-hidden"
         animation="fadeInUp"
       >
@@ -575,7 +575,7 @@ export function AboutPage() {
             ))}
           </div>
         </div>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       <CTASection />
     </div>

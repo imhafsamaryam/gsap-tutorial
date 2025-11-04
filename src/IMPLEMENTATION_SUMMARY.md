@@ -15,7 +15,7 @@
 - **Sage 300** → Detailed ERP features and pricing
 - **Sage 200** → Business management solutions  
 - **Zoho Books** → Cloud accounting with GST compliance
-- **Busy Accounting** → Indian GST-ready software
+- **Busy Accounting** → Indian VAT Compliant software
 
 #### Cloud Hosting Dropdowns
 - **Microsoft Azure** → Enterprise cloud infrastructure

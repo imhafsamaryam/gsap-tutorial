@@ -22,8 +22,8 @@ export function BusyAccountingPage() {
   const features = [
     {
       icon: IndianRupee,
-      title: "GST Ready",
-      description: "Complete GST compliance with auto-calculations",
+      title: "VAT Ready",
+      description: "Complete VAT compliance with auto-calculations",
     },
     {
       icon: FileText,
@@ -60,7 +60,7 @@ export function BusyAccountingPage() {
       features: [
         "Single User License",
         "Basic Accounting",
-        "GST Compliance",
+        "VAT Compliant",
         "Basic Reports",
         "Email Support",
       ],
@@ -97,14 +97,14 @@ export function BusyAccountingPage() {
     },
   ];
 
-  const gstFeatures = [
-    "GSTR-1, GSTR-2A, GSTR-3B Generation",
-    "E-Way Bill Integration",
-    "HSN/SAC Code Management",
-    "Reverse Charge Calculation",
-    "Input Tax Credit Tracking",
-    "GST Reconciliation Reports",
-  ];
+  // const gstFeatures = [
+  //   "GSTR-1, GSTR-2A, GSTR-3B Generation",
+  //   "E-Way Bill Integration",
+  //   "HSN/SAC Code Management",
+  //   "Reverse Charge Calculation",
+  //   "Input Tax Credit Tracking",
+  //   "GST Reconciliation Reports",
+  // ];
 
   const stats = [
     { value: 100000, label: "Active Users", suffix: "+" },
@@ -118,11 +118,11 @@ export function BusyAccountingPage() {
       {/* Hero Section */}
 
       <HeroSection
-        badge={"GST-Ready Accounting Software"}
+        badge={"VAT Compliant Accounting Software"}
         title1="Busy Accounting"
         title2="Made Simple"
         description="UAE's most trusted accounting software with comprehensive
-                  GST compliance, inventory management, and business
+                VAT Compliant, inventory management, and business
                   intelligence for all business sizes."
         imgSrc={"/erpsoftwares.jpg"}
       />
@@ -168,7 +168,7 @@ export function BusyAccountingPage() {
       </AnimatedSection>
 
       {/* GST Compliance Section */}
-      <AnimatedSection className="px-6 py-20 bg-gradient-to-br from-orange-50 to-white">
+      {/* <AnimatedSection className="px-6 py-20 bg-gradient-to-br from-orange-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -224,7 +224,7 @@ export function BusyAccountingPage() {
             </motion.div>
           </div>
         </div>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* Pricing Plans */}
       <AnimatedSection className="px-6 py-20 bg-white">
@@ -235,7 +235,7 @@ export function BusyAccountingPage() {
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Select the version that best fits your business needs. All
-              versions include GST compliance.
+              versions include VAT compliant.
             </p>
           </div>
 
@@ -269,24 +269,24 @@ export function BusyAccountingPage() {
                       : "shadow-lg"
                   }`}
                 >
-                  <div className="text-center mb-8">
+                  <div className="text-center mb-2">
                     <h3 className="text-2xl text-gray-900 mb-2">
                       {version.name}
                     </h3>
-                    <p className="text-gray-600 mb-4">{version.description}</p>
-                    <div className="flex items-baseline justify-center">
+                    <p className="text-gray-600">{version.description}</p>
+                   {/* <div className="flex items-baseline justify-center">
                       <span className="text-4xl text-[#018136]">
                         ₹{version.price.toLocaleString()}
                       </span>
                       <span className="text-gray-600 ml-1">/year</span>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="space-y-4 mb-8">
                     {version.features.map((feature, featureIndex) => (
                       <motion.div
                         key={feature}
-                        className="flex items-center space-x-3"
+                        className="flex items-center mx-auto space-x-3"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{

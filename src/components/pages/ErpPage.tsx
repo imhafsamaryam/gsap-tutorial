@@ -104,7 +104,7 @@ export function ERPSoftwaresPage({ initialSection }: ERPSoftwaresPageProps) {
       id: "busy-erp",
       name: "Busy ERP",
       description:
-        "GST-ready accounting and business management solution for small to medium enterprises",
+        "VAT Compliant accounting and business management solution for small to medium enterprises",
       icon: BarChart3,
       color: "from-green-500 to-emerald-500",
       categoryBadge: "SME",

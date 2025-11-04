@@ -117,7 +117,7 @@ export function ContactPage({}: ContactPageProps) {
                         htmlFor="email"
                         className="text-gray-900 font-medium"
                       >
-                        Business Email *
+                         Email *
                       </Label>
                       <Input
                         id="email"
@@ -165,109 +165,16 @@ export function ContactPage({}: ContactPageProps) {
                       </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label
-                          htmlFor="industry"
-                          className="text-gray-900 font-medium"
-                        >
-                          Industry
-                        </Label>
-                        <Select>
-                          <SelectTrigger className="border-gray-200 focus:border-[#018136] focus:ring-[#018136]">
-                            <SelectValue placeholder="Select your industry" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="manufacturing">
-                              Manufacturing
-                            </SelectItem>
-                            <SelectItem value="retail">
-                              Retail & E-commerce
-                            </SelectItem>
-                            <SelectItem value="healthcare">
-                              Healthcare
-                            </SelectItem>
-                            <SelectItem value="construction">
-                              Construction
-                            </SelectItem>
-                            <SelectItem value="professional">
-                              Professional Services
-                            </SelectItem>
-                            <SelectItem value="distribution">
-                              Distribution
-                            </SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-2">
-                        <Label
-                          htmlFor="employees"
-                          className="text-gray-900 font-medium"
-                        >
-                          Company Size
-                        </Label>
-                        <Select>
-                          <SelectTrigger className="border-gray-200 focus:border-[#018136] focus:ring-[#018136]">
-                            <SelectValue placeholder="Number of employees" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="1-10">1-10 employees</SelectItem>
-                            <SelectItem value="11-50">
-                              11-50 employees
-                            </SelectItem>
-                            <SelectItem value="51-200">
-                              51-200 employees
-                            </SelectItem>
-                            <SelectItem value="201-500">
-                              201-500 employees
-                            </SelectItem>
-                            <SelectItem value="500+">500+ employees</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
+                    
 
-                    <div className="space-y-2">
-                      <Label
-                        htmlFor="service"
-                        className="text-gray-900 font-medium"
-                      >
-                        Service Interest
-                      </Label>
-                      <Select>
-                        <SelectTrigger className="border-gray-200 focus:border-[#018136] focus:ring-[#018136]">
-                          <SelectValue placeholder="What service are you interested in?" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="sage300">
-                            Sage 300 Implementation
-                          </SelectItem>
-                          <SelectItem value="sage200">
-                            Sage 200 Implementation
-                          </SelectItem>
-                          <SelectItem value="zoho">Zoho Books Setup</SelectItem>
-                          <SelectItem value="busy">Busy Accounting</SelectItem>
-                          <SelectItem value="cloud">Cloud Hosting</SelectItem>
-                          <SelectItem value="hardware">
-                            Hardware Solutions
-                          </SelectItem>
-                          <SelectItem value="support">
-                            Support & Maintenance
-                          </SelectItem>
-                          <SelectItem value="consultation">
-                            General Consultation
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    
 
                     <div className="space-y-2">
                       <Label
                         htmlFor="message"
                         className="text-gray-900 font-medium"
                       >
-                        Project Details
+                        Message
                       </Label>
                       <Textarea
                         id="message"
@@ -372,7 +279,7 @@ export function ContactPage({}: ContactPageProps) {
                       </div>
                       <div className="text-gray-600">+971 585198723</div>
                       <div className="text-sm text-gray-500">
-                        Mon-Fri 8:00AM-5:00PM GST
+                        Mon-Fri 8:00AM-5:00PM 
                       </div>
                     </div>
                   </div>

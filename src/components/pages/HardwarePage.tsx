@@ -188,7 +188,7 @@ export function HardwarePage({ initialSection }: HardwarePageProps) {
       />
 
       {/* Stats Section */}
-      <AnimatedSection className="px-6 py-16 bg-white">
+      {/* <AnimatedSection className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -211,7 +211,7 @@ export function HardwarePage({ initialSection }: HardwarePageProps) {
             ))}
           </div>
         </div>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       {/* Hardware Solutions */}
       <ERPSolutionsGrid
