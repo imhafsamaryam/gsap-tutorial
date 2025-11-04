@@ -293,7 +293,7 @@ export function ContactPage({}: ContactPageProps) {
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Link to="/sage300">
+                  <Link to="/erp-softwares">
                     <Button
                       variant="outline"
                       className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
@@ -301,7 +301,7 @@ export function ContactPage({}: ContactPageProps) {
                       View Products
                     </Button>
                   </Link>
-                  <Link to="/ts-plus">
+                  <Link to="/cloud-hosting">
                     <Button
                       variant="outline"
                       className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
@@ -309,7 +309,7 @@ export function ContactPage({}: ContactPageProps) {
                       Cloud Hosting
                     </Button>
                   </Link>
-                  <Link to="/laptops">
+                  <Link to="/hardware">
                     <Button
                       variant="outline"
                       className="border-[#018136] text-[#018136] hover:bg-[#018136] hover:text-white w-full"
