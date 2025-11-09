@@ -5,23 +5,95 @@ import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
 import { Label } from "../ui/label";
-import { AnimatedSection } from "../ui/animated-section";
 import { CollapsibleFAQ } from "../ui/collapsible-faq";
-import React from "react";
+import React, { useState } from "react";
 
 interface ContactPageProps {
   // Remove onPageChange prop since we'll use React Router
 }
 
 export function ContactPage({}: ContactPageProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    // Prepare data for API
+    const contactData = {
+      userEmail: formData.email,
+      fullName: `${formData.firstName} ${formData.lastName}`,
+      subject: `ERP Consultation Request from ${formData.company}`,
+      message: `
+Company: ${formData.company}
+Phone: ${formData.phone}
+
+Message:
+${formData.message}
+      `.trim(),
+    };
+
+    try {
+      // Use relative path since Nginx is configured to proxy /api to backend
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        });
+
+        // Reset form elements
+        const form = e.target as HTMLFormElement;
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        console.error("Server error:", errorData);
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -63,9 +135,77 @@ export function ContactPage({}: ContactPageProps) {
                 </p>
               </div>
 
+              {/* Success/Error Messages */}
+              {submitStatus === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-green-50 border border-green-200 rounded-lg p-4"
+                >
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <svg
+                        className="h-5 w-5 text-green-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div className="ml-3">
+                      <h3 className="text-sm font-medium text-green-800">
+                        Thank you for your message!
+                      </h3>
+                      <div className="mt-1 text-sm text-green-700">
+                        We've received your inquiry and will contact you within
+                        24 hours.
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {submitStatus === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-red-50 border border-red-200 rounded-lg p-4"
+                >
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <svg
+                        className="h-5 w-5 text-red-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <div className="ml-3">
+                      <h3 className="text-sm font-medium text-red-800">
+                        Error submitting form
+                      </h3>
+                      <div className="mt-1 text-sm text-red-700">
+                        There was an error sending your message. Please try
+                        again or contact us directly.
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
               <Card className="p-8 shadow-xl">
                 <CardContent className="p-0">
                   <motion.form
+                    onSubmit={handleSubmit}
                     className="space-y-6"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -85,8 +225,12 @@ export function ContactPage({}: ContactPageProps) {
                         </Label>
                         <Input
                           id="firstName"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
                           placeholder="John"
                           className="border-gray-200 focus:border-[#018136] focus:ring-[#018136] transition-all duration-300 min-h-[44px] text-base"
+                          required
                         />
                       </motion.div>
                       <motion.div
@@ -102,8 +246,12 @@ export function ContactPage({}: ContactPageProps) {
                         </Label>
                         <Input
                           id="lastName"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
                           placeholder="Smith"
                           className="border-gray-200 focus:border-[#018136] focus:ring-[#018136] transition-all duration-300 min-h-[44px] text-base"
+                          required
                         />
                       </motion.div>
                     </div>
@@ -117,13 +265,17 @@ export function ContactPage({}: ContactPageProps) {
                         htmlFor="email"
                         className="text-gray-900 font-medium"
                       >
-                         Email *
+                        Email *
                       </Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         placeholder="john.smith@company.com"
                         className="border-gray-200 focus:border-[#018136] focus:ring-[#018136] transition-all duration-300 min-h-[44px] text-base"
+                        required
                       />
                     </motion.div>
 
@@ -141,9 +293,13 @@ export function ContactPage({}: ContactPageProps) {
                         </Label>
                         <Input
                           id="phone"
+                          name="phone"
                           type="tel"
+                          value={formData.phone}
+                          onChange={handleInputChange}
                           placeholder="+1 (555) 123-4567"
                           className="border-gray-200 focus:border-[#018136] focus:ring-[#018136] transition-all duration-300 min-h-[44px] text-base"
+                          required
                         />
                       </motion.div>
                       <motion.div
@@ -159,15 +315,15 @@ export function ContactPage({}: ContactPageProps) {
                         </Label>
                         <Input
                           id="company"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleInputChange}
                           placeholder="Your Company Ltd."
                           className="border-gray-200 focus:border-[#018136] focus:ring-[#018136] transition-all duration-300 min-h-[44px] text-base"
+                          required
                         />
                       </motion.div>
                     </div>
-
-                    
-
-                    
 
                     <div className="space-y-2">
                       <Label
@@ -178,6 +334,9 @@ export function ContactPage({}: ContactPageProps) {
                       </Label>
                       <Textarea
                         id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         placeholder="Tell us about your current systems, challenges, and goals..."
                         rows={4}
                         className="border-gray-200 focus:border-[#018136] focus:ring-[#018136]"
@@ -188,7 +347,9 @@ export function ContactPage({}: ContactPageProps) {
                       <input
                         type="checkbox"
                         id="terms"
+                        name="terms"
                         className="mt-1 w-4 h-4 text-[#018136] border-gray-300 rounded focus:ring-[#018136]"
+                        required
                       />
                       <Label htmlFor="terms" className="text-sm text-gray-600">
                         I agree to receive communications about ERP solutions
@@ -203,11 +364,14 @@ export function ContactPage({}: ContactPageProps) {
                     >
                       <Button
                         type="submit"
-                        className="w-full bg-[#018136] hover:bg-[#016429] text-white py-4 rounded-full text-lg font-medium min-h-[52px] relative overflow-hidden group"
+                        disabled={isSubmitting}
+                        className="w-full bg-[#018136] hover:bg-[#016429] text-white py-4 rounded-full text-lg font-medium min-h-[52px] relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <motion.div className="absolute inset-0 bg-[#016429] -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
                         <span className="relative z-10">
-                          Schedule Free Consultation
+                          {isSubmitting
+                            ? "Sending..."
+                            : "Schedule Free Consultation"}
                         </span>
                       </Button>
                     </motion.div>
@@ -279,7 +443,7 @@ export function ContactPage({}: ContactPageProps) {
                       </div>
                       <div className="text-gray-600">+971 585198723</div>
                       <div className="text-sm text-gray-500">
-                        Mon-Fri 8:00AM-5:00PM 
+                        Mon-Fri 8:00AM-5:00PM
                       </div>
                     </div>
                   </div>
