@@ -130,8 +130,7 @@ ${formData.message}
                 </h2>
                 <p className="text-lg text-gray-600">
                   Fill out the form below and our ERP specialists will contact
-                  you within 24 hours to discuss your requirements and provide a
-                  customized solution.
+                  you within 24 hours.
                 </p>
               </div>
 
