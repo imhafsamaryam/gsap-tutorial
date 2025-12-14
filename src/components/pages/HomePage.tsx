@@ -8,6 +8,7 @@ import { AnimatedCounter } from "../ui/animated-counter";
 import { CTASection } from "../CTASection";
 import React from "react";
 import FeaturesUpClose from "../featurecard";
+import { LogoCarousel } from "../logCarousel";
 
 interface HomePageProps {
   // Remove onPageChange prop since we'll use React Router
@@ -16,6 +17,7 @@ interface HomePageProps {
 export function HomePage({}: HomePageProps) {
   return (
     <div className="min-h-screen bg-white">
+      {/* Hero Section */}
       {/* Hero Section */}
       <section className="relative min-h-[600px] sm:min-h-[700px] bg-gradient-to-br from-green-50 to-white overflow-hidden">
         {/* Background geometric shapes */}
@@ -69,7 +71,7 @@ export function HomePage({}: HomePageProps) {
           </motion.div>
         </motion.div>
 
-        <div className="px-4 relative z-10 max-w-6xl mx-auto py-20 sm:py-32">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 sm:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               className="space-y-6"
@@ -160,67 +162,7 @@ export function HomePage({}: HomePageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="relative w-full h-[300px] sm:h-[400px]">
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{
-                    duration: 30,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <div className="w-60 sm:w-80 h-60 sm:h-80 rounded-full border-8 border-[#018136]/20 flex items-center justify-center">
-                    <motion.div
-                      className="w-40 sm:w-60 h-40 sm:h-60 rounded-full bg-gradient-to-br from-[#018136]/10 to-[#FFDF58]/10"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                    />
-                  </div>
-                </motion.div>
-                <motion.div
-                  className="absolute top-10 left-10 w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-[#FFDF58]/40"
-                  animate={{
-                    y: [0, -20, 0],
-                    scale: [1, 1.2, 1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <motion.div
-                  className="absolute bottom-20 right-10 w-8 sm:w-12 h-8 sm:h-12 rounded-full bg-[#018136]/30"
-                  animate={{
-                    x: [0, 15, 0],
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5,
-                  }}
-                />
-                <motion.div
-                  className="absolute top-1/2 right-0 w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-[#FFDF58]/60"
-                  animate={{
-                    y: [0, 25, 0],
-                    opacity: [0.6, 1, 0.6],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1,
-                  }}
-                />
-              </div>
+              <LogoCarousel />
             </motion.div>
           </div>
         </div>
